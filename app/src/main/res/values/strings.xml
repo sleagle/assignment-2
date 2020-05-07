@@ -2,7 +2,7 @@
     <string name="app_name">Raffle</string>
     <string name="menu_home">Home</string>
     <string name="menu_create_raffle">Create Raffle</string>
-    <string name="menu_sell_raffle">Sell Raffle</string>
+    <string name="menu_sell_raffle">Sell Tickets</string>
     <string name="menu_create_user">Create User</string>
     <string name="nav_header_user">Admin User</string>
     <string name="nav_header_email">admin@raffles.com</string>
@@ -10,4 +10,20 @@
     <string name="navigation_draw_close">Close Navigation Draw</string>
     <string name="tab_current">Current Raffles</string>
     <string name="tab_past">Past Raffles</string>
+
+    <string-array name="current_list">
+        <item>Homer</item>
+        <item>Marge</item>
+        <item>Bart</item>
+        <item>Lisa</item>
+        <item>Maggie</item>
+    </string-array>
+
+    <string-array name="past_list">
+        <item>PasHomer</item>
+        <item>PasMarge</item>
+        <item>PasBart</item>
+        <item>PasLisa</item>
+        <item>PasMaggie</item>
+    </string-array>
 </resources>
