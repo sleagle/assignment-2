@@ -3,6 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_home">
 
+    <fragment
+        android:id="@+id/nav_create_raffle"
+        android:name="au.edu.utas.sddhewa.assignment.ui.create.raffle.CreateRaffle"
+        android:label="@string/menu_create_raffle"
+        tools:layout="@layout/fragment_create_raffle" />
+    <fragment
+        android:id="@+id/nav_sell_raffle"
+        android:name="au.edu.utas.sddhewa.assignment.ui.sell.SellTicket"
+        android:label="@string/menu_sell_raffle"
+        tools:layout="@layout/fragment_sell_ticket" />
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="au.edu.utas.sddhewa.assignment.ui.home.Home"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_create_customer"
+        android:name="au.edu.utas.sddhewa.assignment.ui.create.user.CreateUser"
+        android:label="@string/menu_create_user"
+        tools:layout="@layout/fragment_create_user" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="au.edu.utas.sddhewa.assignment.MainActivity"
+        android:label="app_bar_main"
+        tools:layout="@layout/app_bar_main" />
 </navigation>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.create.user.CreateUser">
+
+    <TextView
+        android:id="@+id/lblCreateCustomer"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="16dp"
+        android:text="@string/create_customer_form"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/txtLastName"
+        android:layout_width="@dimen/txt_width"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/last_name"
+        android:hint="@string/last_name"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/txtFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/txtFirstName" />
+
+    <EditText
+        android:id="@+id/txtMobile"
+        android:layout_width="216dp"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/mobile"
+        android:hint="@string/mobile"
+        android:ems="10"
+        android:inputType="phone"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/txtLastName"
+        app:layout_constraintTop_toBottomOf="@+id/txtLastName" />
+
+    <EditText
+        android:id="@+id/txtFirstName"
+        android:layout_width="@dimen/txt_width"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/first_name"
+        android:hint="@string/first_name"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/title_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/title_spinner" />
+
+    <EditText
+        android:id="@+id/txtLSuburb"
+        android:layout_width="@dimen/txt_width"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/suburb"
+        android:hint="@string/suburb"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/txtAddress"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+
+    <TextView
+        android:id="@+id/lblState"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:text="@string/state"
+        app:layout_constraintStart_toStartOf="@+id/lblSuburb"
+        app:layout_constraintTop_toBottomOf="@+id/lblSuburb" />
+
+    <TextView
+        android:id="@+id/lblPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:text="@string/mobile"
+        app:layout_constraintStart_toStartOf="@+id/lblLastName"
+        app:layout_constraintTop_toBottomOf="@+id/lblLastName" />
+
+    <TextView
+        android:id="@+id/lblEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:text="@string/email"
+        app:layout_constraintStart_toStartOf="@+id/lblPhone"
+        app:layout_constraintTop_toBottomOf="@+id/lblPhone" />
+
+    <TextView
+        android:id="@+id/lblFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:text="@string/first_name"
+        app:layout_constraintStart_toStartOf="@+id/lblTitle"
+        app:layout_constraintTop_toBottomOf="@+id/lblTitle" />
+
+    <Spinner
+        android:id="@+id/state_spinner"
+        android:layout_width="102dp"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/txtLSuburb"
+        app:layout_constraintTop_toBottomOf="@+id/txtLSuburb" />
+
+    <TextView
+        android:id="@+id/lblTitle"
+        android:layout_width="57dp"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreateCustomer" />
+
+    <TextView
+        android:id="@+id/lblAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:text="@string/address"
+        app:layout_constraintStart_toStartOf="@+id/lblEmail"
+        app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
+
+    <Spinner
+        android:id="@+id/title_spinner"
+        android:layout_width="102dp"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        app:layout_constraintStart_toEndOf="@+id/lblTitle"
+        app:layout_constraintTop_toTopOf="@+id/lblTitle" />
+
+    <TextView
+        android:id="@+id/lblLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:text="@string/last_name"
+        app:layout_constraintStart_toStartOf="@+id/lblFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/lblFirstName" />
+
+    <EditText
+        android:id="@+id/txtAddress"
+        android:layout_width="@dimen/txt_width"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/address"
+        android:hint="@string/address"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/txtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+    <TextView
+        android:id="@+id/lblSuburb"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:text="@string/suburb"
+        app:layout_constraintStart_toStartOf="@+id/lblAddress"
+        app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
+
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="@dimen/txt_width"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/email"
+        android:hint="@string/email"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/txtMobile"
+        app:layout_constraintTop_toBottomOf="@+id/txtMobile" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="68dp"
+        android:background="@color/btn_discard"
+        android:text="@string/discard"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblState" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:background="@color/btn_success"
+        android:text="@string/create"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

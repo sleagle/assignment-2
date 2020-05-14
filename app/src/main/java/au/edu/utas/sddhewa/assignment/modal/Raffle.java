@@ -1,5 +1,6 @@
 package au.edu.utas.sddhewa.assignment.modal;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ import au.edu.utas.sddhewa.assignment.util.RaffleType;
  */
 public class Raffle {
 
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     /** id of the raffle */
     private int raffleId;
@@ -52,6 +53,24 @@ public class Raffle {
 
     /** number of tickets allowed per a person */
     private int maxTickets;
+
+    public Raffle() {}
+
+    public Raffle(String name, String description, RaffleType typeId, String startingDate,
+                  String drawDate, boolean isActive, String location, float ticketPrice,
+                  int noOfTickets, int ticketsSold, int maxTickets) throws ParseException {
+        this.name = name;
+        this.description = description;
+        this.typeId = typeId;
+        this.startingDate = dateFormat.parse(startingDate);
+        this.drawDate = dateFormat.parse(drawDate);
+        this.isActive = isActive;
+        this.location = location;
+        this.ticketPrice = ticketPrice;
+        this.noOfTickets = noOfTickets;
+        this.ticketsSold = ticketsSold;
+        this.maxTickets = maxTickets;
+    }
 
     /**
      * get the raffle id
@@ -121,8 +140,19 @@ public class Raffle {
      *
      * @param typeId - raffle type
      */
-    public void setTypeId(RaffleType typeId) {
-        this.typeId = typeId;
+    public void setTypeId(int typeId) {
+        switch (typeId) {
+            case 1:
+                this.typeId =  RaffleType.NORMAL_RAFFLE;
+                break;
+
+            case 2:
+                this.typeId = RaffleType.MARGIN_RAFFLE;
+                break;
+
+            default:
+                break;
+        }
     }
 
     /**
@@ -139,8 +169,8 @@ public class Raffle {
      *
      * @param startingDate - starting date
      */
-    public void setStartingDate(Date startingDate) {
-        this.startingDate = startingDate;
+    public void setStartingDate(String startingDate) throws ParseException {
+        this.startingDate = dateFormat.parse(startingDate);
     }
 
     /**
@@ -157,8 +187,8 @@ public class Raffle {
      *
      * @param drawDate - draw date
      */
-    public void setDrawDate(Date drawDate) {
-        this.drawDate = drawDate;
+    public void setDrawDate(String drawDate) throws ParseException {
+        this.drawDate = dateFormat.parse(drawDate);;
     }
 
     /**
@@ -175,8 +205,8 @@ public class Raffle {
      *
      * @param active - state
      */
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setActive(int active) {
+        isActive = active == 1;
     }
 
     /**
