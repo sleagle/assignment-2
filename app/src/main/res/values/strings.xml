@@ -3,27 +3,44 @@
     <string name="menu_home">Home</string>
     <string name="menu_create_raffle">Create Raffle</string>
     <string name="menu_sell_raffle">Sell Tickets</string>
-    <string name="menu_create_user">Create User</string>
+    <string name="menu_create_user">Create Customer</string>
     <string name="nav_header_user">Admin User</string>
     <string name="nav_header_email">admin@raffles.com</string>
     <string name="navigation_draw_open">Open Navigation Draw</string>
     <string name="navigation_draw_close">Close Navigation Draw</string>
     <string name="tab_current">Current Raffles</string>
     <string name="tab_past">Past Raffles</string>
+    <string name="draw_date">Draw Date</string>
+    <string name="create_customer_form">Create Customer</string>
+    <string name="title">Title:</string>
+    <string name="first_name">First Name:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="mobile">Mobile:</string>
+    <string name="email">e-Mail:</string>
+    <string name="address">Address:</string>
+    <string name="suburb">Suburb:</string>
+    <string name="state">State:</string>
+    <string name="post_code">Post Code:</string>
+    <string name="create">Create</string>
+    <string name="discard">Discard</string>
 
-    <string-array name="current_list">
-        <item>Homer</item>
-        <item>Marge</item>
-        <item>Bart</item>
-        <item>Lisa</item>
-        <item>Maggie</item>
+    <string-array name="title_array">
+        <item>Dr</item>
+        <item>Mr</item>
+        <item>Miss</item>
+        <item>Mrs</item>
+        <item>Ms</item>
     </string-array>
 
-    <string-array name="past_list">
-        <item>PasHomer</item>
-        <item>PasMarge</item>
-        <item>PasBart</item>
-        <item>PasLisa</item>
-        <item>PasMaggie</item>
+    <string-array name="states_array">
+        <item>ACT</item>
+        <item>NSW</item>
+        <item>NT</item>
+        <item>SA</item>
+        <item>TAS</item>
+        <item>WA</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
