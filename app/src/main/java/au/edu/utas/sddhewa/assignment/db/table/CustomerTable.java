@@ -1,5 +1,10 @@
 package au.edu.utas.sddhewa.assignment.db.table;
 
+import android.database.Cursor;
+
+import java.text.ParseException;
+
+import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.util.FieldKey;
 
 public class CustomerTable {
@@ -28,5 +33,27 @@ public class CustomerTable {
             .append(KEY_STATE).append(FieldKey.STRING.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_POST_CODE).append(FieldKey.INT.value).append(FieldKey.NOT_NULL_WITHOUT.value)
             .append(FieldKey.CREATE_TABLE_CLOSE.value).toString();
+
+    private static Customer createFromCursor(Cursor cursor) throws ParseException {
+
+        if (cursor == null || cursor.isAfterLast() || cursor.isBeforeFirst()) {
+            return null;
+        }
+
+        else {
+            Customer customer = new Customer();
+            customer.setCustomerId(cursor.getInt(cursor.getColumnIndex(KEY_CUSTOMER_ID)));
+            customer.setFirstName(cursor.getString(cursor.getColumnIndex(KEY_FIRST_NAME)));
+            customer.setLastName(cursor.getString(cursor.getColumnIndex(KEY_LAST_NAME)));
+            customer.setMobileNo(cursor.getInt(cursor.getColumnIndex(KEY_MOBILE_NO)));
+            customer.setEmail(cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
+            customer.setAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
+            customer.setSuburb(cursor.getString(cursor.getColumnIndex(KEY_SUBURB)));
+            customer.setState(cursor.getString(cursor.getColumnIndex(KEY_STATE)));
+            customer.setPostCode(cursor.getInt(cursor.getColumnIndex(KEY_POST_CODE)));
+
+            return customer;
+        }
+    }
 }
 

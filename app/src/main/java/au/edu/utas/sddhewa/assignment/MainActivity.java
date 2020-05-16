@@ -2,8 +2,6 @@ package au.edu.utas.sddhewa.assignment;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Debug;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
