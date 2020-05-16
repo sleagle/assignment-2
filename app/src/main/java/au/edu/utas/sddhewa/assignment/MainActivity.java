@@ -2,6 +2,8 @@ package au.edu.utas.sddhewa.assignment;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_create_customer:
                 getSupportFragmentManager().beginTransaction().
-                        replace(R.id.fragment_container, new CreateUser()).commit();
+                        replace(R.id.fragment_container, new CreateUser(getApplicationContext())).commit();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

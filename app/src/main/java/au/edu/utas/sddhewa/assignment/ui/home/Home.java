@@ -36,10 +36,10 @@ public class Home extends Fragment {
         adapter = new TabPageAdapter(fm, context, db);
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d("????", "???");
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final ViewPager viewPager = root.findViewById(R.id.view_pager);

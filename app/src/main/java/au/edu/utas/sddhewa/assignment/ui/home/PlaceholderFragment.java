@@ -56,6 +56,7 @@ public class PlaceholderFragment extends Fragment {
             Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_tab_home, container, false);
+        Log.d("***************", "Inflated view");
         final ListView tabListView = root.findViewById(R.id.rafflesList);
 
         try {
