@@ -43,13 +43,6 @@ public class CurrentRaffleAdapter extends ArrayAdapter<Raffle> {
         assert raffle != null;
         Log.d("***************TAB-ID", String.valueOf(tabId));
 
-        /*if (tabId == 0) {
-            setCurrentRaffleDetails(raffle, row);
-        }
-        else {
-            setPastRaffleDetails(raffle, row);
-        }*/
-
         setCurrentRaffleDetails(raffle, row);
 
         return row;
@@ -68,20 +61,5 @@ public class CurrentRaffleAdapter extends ArrayAdapter<Raffle> {
 
         TextView lblDrawDate = row.findViewById(R.id.lblDrawDate);
         lblDrawDate.setText(raffle.getDrawDate());
-    }
-
-    private void setPastRaffleDetails(Raffle raffle, View row) {
-
-        TextView lblRaffleP = row.findViewById(R.id.lblRaffleP);
-        lblRaffleP.setText(raffle.getName());
-
-        TextView lblDescP = row.findViewById(R.id.lblDescP);
-        lblDescP.setText(raffle.getDescription());
-
-        TextView lblRaffleTypeP = row.findViewById(R.id.lblRaffleTypeP);
-        lblRaffleTypeP.setText(raffle.getTypeId().name);
-
-        TextView lblDrawDateP = row.findViewById(R.id.lblDrawDateP);
-        lblDrawDateP.setText(raffle.getDrawDate());
     }
 }

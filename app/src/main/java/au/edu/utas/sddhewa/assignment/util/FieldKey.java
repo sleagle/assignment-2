@@ -12,7 +12,8 @@ public enum FieldKey {
     DATE(" DATE"),
     FLOAT(" FLOAT"),
     COMMA(", "),
-    NOT_NULL(" NOT NULL,");
+    NOT_NULL(" NOT NULL,"),
+    NOT_NULL_WITHOUT(" NOT NULL");
 
     public String value;
 
