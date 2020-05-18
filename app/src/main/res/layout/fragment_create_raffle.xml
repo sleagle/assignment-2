@@ -260,10 +260,22 @@
         android:id="@+id/lblCoverImage"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="28dp"
         android:text="@string/cover_image"
         app:layout_constraintStart_toStartOf="@+id/cbxCoverImage"
         app:layout_constraintTop_toBottomOf="@+id/cbxCoverImage" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="68dp"
+        android:layout_marginRight="68dp"
+        android:background="@color/btn_success"
+        android:text="@string/create"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
 
     <Button
         android:id="@+id/btnDiscard"
@@ -271,23 +283,33 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="92dp"
         android:background="@color/btn_discard"
         android:text="@string/discard"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCoverImage" />
 
+    <ImageView
+        android:id="@+id/imgCover"
+        android:layout_width="88dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:contentDescription="@string/cover_image"
+        app:layout_constraintBottom_toBottomOf="@+id/btnTakeImage"
+        app:layout_constraintStart_toEndOf="@+id/lblCoverImage"
+        app:layout_constraintTop_toTopOf="@+id/btnTakeImage" />
+
     <Button
-        android:id="@+id/btnCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
-        android:background="@color/btn_success"
-        android:text="@string/create"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
+        android:id="@+id/btnTakeImage"
+        android:layout_width="40dp"
+        android:layout_height="@dimen/txt_height"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="73dp"
+        android:background="@drawable/ic_camera"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreate"
+        app:layout_constraintStart_toEndOf="@+id/imgCover" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

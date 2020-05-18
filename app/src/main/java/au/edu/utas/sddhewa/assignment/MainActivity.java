@@ -103,7 +103,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_create_raffle:
                 getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container,
-                                new CreateRaffle(getApplicationContext(), db, getSupportFragmentManager()))
+                                new CreateRaffle(getApplicationContext(), db, getSupportFragmentManager(),
+                                        getPackageManager()))
                         .addToBackStack("createRaffle").commit();
                 break;
             case R.id.nav_sell_raffle:
