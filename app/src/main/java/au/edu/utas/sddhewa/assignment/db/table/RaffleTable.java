@@ -48,7 +48,7 @@ public class RaffleTable {
             .append(KEY_RAFFLE_COVER).append(FieldKey.BLOB.value)
             .append(FieldKey.CREATE_TABLE_CLOSE.value).toString();
 
-    public static void insert(SQLiteDatabase db, Raffle raffle) {
+    public static long insert(SQLiteDatabase db, Raffle raffle) {
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, raffle.getName());
@@ -63,7 +63,7 @@ public class RaffleTable {
         values.put(KEY_MAX_TICKETS, raffle.getMaxTickets());
         values.put(KEY_TICKETS_SOLD, raffle.getTicketsSold());
 
-        db.insert(TABLE_NAME, null, values);
+        return db.insert(TABLE_NAME, null, values);
     }
 
     public static ArrayList<Raffle> selectAll(SQLiteDatabase db) throws ParseException {

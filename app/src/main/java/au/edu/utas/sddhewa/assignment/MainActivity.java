@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_create_customer:
                 getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container,
-                                new CreateUser(getApplicationContext(), db))
+                                new CreateUser(getApplicationContext(), db, getSupportFragmentManager()))
                         .addToBackStack("createCustomer").commit();
                 break;
         }

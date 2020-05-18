@@ -248,7 +248,7 @@
         app:layout_constraintTop_toTopOf="@+id/lblMaxTickets" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/cbxCoverImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -262,8 +262,8 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/cover_image"
-        app:layout_constraintStart_toStartOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintStart_toStartOf="@+id/cbxCoverImage"
+        app:layout_constraintTop_toBottomOf="@+id/cbxCoverImage" />
 
     <Button
         android:id="@+id/btnDiscard"
