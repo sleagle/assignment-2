@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import au.edu.utas.sddhewa.assignment.util.RaffleType;
+import au.edu.utas.sddhewa.assignment.util.Utility;
 
 /**
  * Modal class of raffle object
@@ -15,8 +16,6 @@ import au.edu.utas.sddhewa.assignment.util.RaffleType;
  * @version 1
  */
 public class Raffle {
-
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     /** id of the raffle */
     private int raffleId;
@@ -54,6 +53,8 @@ public class Raffle {
     /** number of tickets allowed per a person */
     private int maxTickets;
 
+    private byte[] raffleCover;
+
     public Raffle() {}
 
     public Raffle(String name, String description, RaffleType typeId, String startingDate,
@@ -62,8 +63,8 @@ public class Raffle {
         this.name = name;
         this.description = description;
         this.typeId = typeId;
-        this.startingDate = dateFormat.parse(startingDate);
-        this.drawDate = dateFormat.parse(drawDate);
+        this.startingDate = Utility.DATE_FORMAT.parse(startingDate);
+        this.drawDate = Utility.DATE_FORMAT.parse(drawDate);
         this.isActive = isActive;
         this.location = location;
         this.ticketPrice = ticketPrice;
@@ -161,7 +162,7 @@ public class Raffle {
      * @return - starting date in string format
      */
     public String getStartingDate() {
-        return dateFormat.format(startingDate);
+        return Utility.DATE_FORMAT.format(startingDate);
     }
 
     /**
@@ -170,7 +171,7 @@ public class Raffle {
      * @param startingDate - starting date
      */
     public void setStartingDate(String startingDate) throws ParseException {
-        this.startingDate = dateFormat.parse(startingDate);
+        this.startingDate = Utility.DATE_FORMAT.parse(startingDate);
     }
 
     /**
@@ -179,7 +180,7 @@ public class Raffle {
      * @return - draw date in string format
      */
     public String getDrawDate() {
-        return dateFormat.format(drawDate);
+        return Utility.DATE_FORMAT.format(drawDate);
     }
 
     /**
@@ -188,7 +189,7 @@ public class Raffle {
      * @param drawDate - draw date
      */
     public void setDrawDate(String drawDate) throws ParseException {
-        this.drawDate = dateFormat.parse(drawDate);;
+        this.drawDate = Utility.DATE_FORMAT.parse(drawDate);;
     }
 
     /**
@@ -297,6 +298,14 @@ public class Raffle {
      */
     public void setMaxTickets(int maxTickets) {
         this.maxTickets = maxTickets;
+    }
+
+    public byte[] getRaffleCover() {
+        return raffleCover;
+    }
+
+    public void setRaffleCover(byte[] raffleCover) {
+        this.raffleCover = raffleCover;
     }
 
     /**

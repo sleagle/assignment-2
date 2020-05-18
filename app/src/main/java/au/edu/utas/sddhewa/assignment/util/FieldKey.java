@@ -11,6 +11,7 @@ public enum FieldKey {
     BOOLEAN(" BOOLEAN"),
     DATE(" DATE"),
     FLOAT(" FLOAT"),
+    BLOB(" BLOB "),
     COMMA(", "),
     NOT_NULL(" NOT NULL,"),
     NOT_NULL_WITHOUT(" NOT NULL");

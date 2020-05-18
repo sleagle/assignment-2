@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Raffle</string>
+
+    <!-- Menu and Navigation -->
     <string name="menu_home">Home</string>
     <string name="menu_create_raffle">Create Raffle</string>
     <string name="menu_sell_raffle">Sell Tickets</string>
@@ -10,7 +12,27 @@
     <string name="navigation_draw_close">Close Navigation Draw</string>
     <string name="tab_current">Current Raffles</string>
     <string name="tab_past">Past Raffles</string>
-    <string name="draw_date">Draw Date</string>
+
+
+    <!-- strings related to create raffle fragment -->
+    <string name="create_raffle_form">Create Raffle</string>
+    <string name="name">Name:</string>
+    <string name="description">Description:</string>
+    <string name="type">Raffle Type:</string>
+    <string name="start_date">Start Date:</string>
+    <string name="location">Location:</string>
+    <string name="ticket_price">Ticket Price:</string>
+    <string name="num_tickets">No of Tickets:</string>
+    <string name="max_tickets">Max tickets per person:</string>
+    <string name="add_cover">Add a cover image for the raffle</string>
+    <string name="cover_image">Cover Image:</string>
+
+    <!-- common string resources -->
+    <string name="create">Create</string>
+    <string name="discard">Discard</string>
+    <string name="draw_date">Draw Date:</string>
+
+    <!-- strings related to create customer fragment -->
     <string name="create_customer_form">Create Customer</string>
     <string name="title">Title:</string>
     <string name="first_name">First Name:</string>
@@ -21,8 +43,6 @@
     <string name="suburb">Suburb:</string>
     <string name="state">State:</string>
     <string name="post_code">Post Code:</string>
-    <string name="create">Create</string>
-    <string name="discard">Discard</string>
 
     <string-array name="title_array">
         <item>Dr</item>
@@ -40,6 +60,26 @@
         <item>TAS</item>
         <item>WA</item>
     </string-array>
+
+    <string-array name="raffle_types_array">
+        <item>Normal Raffle</item>
+        <item>Margin Raffle</item>
+    </string-array>
+
+    <string-array name="raffle_tickets_array">
+        <item>10</item>
+        <item>25</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+        <item>150</item>
+        <item>200</item>
+        <item>250</item>
+        <item>500</item>
+    </string-array>
+
+    <string name="create_customer_success">Created Customer Successfully</string>
+    <string name="create_raffle_success">Created Raffle Successfully</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
