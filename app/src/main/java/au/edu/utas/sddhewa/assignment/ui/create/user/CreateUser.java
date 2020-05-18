@@ -5,13 +5,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,16 +23,19 @@ import java.util.Arrays;
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.modal.Customer;
+import au.edu.utas.sddhewa.assignment.ui.CustomAlertDialog;
+import au.edu.utas.sddhewa.assignment.ui.create.Create;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class CreateUser extends Fragment {
+public class CreateUser extends Fragment implements Create {
 
-    private Context context;
-    private SQLiteDatabase db;
+    private final FragmentManager fm;
+    private final Context context;
+    private final SQLiteDatabase db;
 
     private Spinner titleSpinner;
     private TextView fName;
@@ -44,16 +47,17 @@ public class CreateUser extends Fragment {
     private TextView postCode;
     private Spinner stateSpinner;
 
-    public CreateUser(Context context, SQLiteDatabase db) {
+    public CreateUser(Context context, SQLiteDatabase db, FragmentManager fm) {
         this.context = context;
         this.db = db;
+        this.fm = fm;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View createUser = inflater.inflate(R.layout.fragment_create_user, container, false);
+        final View createUser = inflater.inflate(R.layout.fragment_create_user, container, false);
 
         //textFields;
         fName = createUser.findViewById(R.id.txtFirstName);
@@ -86,22 +90,26 @@ public class CreateUser extends Fragment {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createCustomer();
+                createEntity();
             }
         });
 
         Button discardButton = createUser.findViewById(R.id.btnDiscard);
+
+        final CreateUser createUserObj = this;
+
         discardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetForm();
+                CustomAlertDialog fragment = new CustomAlertDialog(createUserObj);
+                fragment.show(fm, "alert");
             }
         });
 
         return createUser;
     }
 
-    private void resetForm() {
+    public void resetForm() {
         titleSpinner.setSelection(0);
         fName.setText("");
         lName.setText("");
@@ -113,7 +121,7 @@ public class CreateUser extends Fragment {
         postCode.setText("");
     }
 
-    private void createCustomer () {
+    public void createEntity() {
 
         Customer customer = new Customer(
                 titleSpinner.getSelectedItem().toString(), fName.getText().toString(),

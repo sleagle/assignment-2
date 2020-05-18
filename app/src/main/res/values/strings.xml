@@ -81,6 +81,11 @@
     <string name="create_customer_success">Created Customer Successfully</string>
     <string name="create_raffle_success">Created Raffle Successfully</string>
 
+    <string name="alert_dialog_title">Alert!</string>
+    <string name="alert_dialog_msg">Are you sure you want to discard the changes?</string>
+    <string name="alert_dialog_yes">Yes</string>
+    <string name="alert_dialog_no">No</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

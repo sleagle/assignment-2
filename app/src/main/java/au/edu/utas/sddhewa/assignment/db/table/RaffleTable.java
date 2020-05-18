@@ -48,7 +48,7 @@ public class RaffleTable {
             .append(KEY_RAFFLE_COVER).append(FieldKey.BLOB.value)
             .append(FieldKey.CREATE_TABLE_CLOSE.value).toString();
 
-    public static void insert(SQLiteDatabase db, Raffle raffle) {
+    public static long insert(SQLiteDatabase db, Raffle raffle) {
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, raffle.getName());
@@ -62,8 +62,9 @@ public class RaffleTable {
         values.put(KEY_NUM_TICKETS, raffle.getNoOfTickets());
         values.put(KEY_MAX_TICKETS, raffle.getMaxTickets());
         values.put(KEY_TICKETS_SOLD, raffle.getTicketsSold());
+        values.put(KEY_RAFFLE_COVER, raffle.getRaffleCover());
 
-        db.insert(TABLE_NAME, null, values);
+        return db.insert(TABLE_NAME, null, values);
     }
 
     public static ArrayList<Raffle> selectAll(SQLiteDatabase db) throws ParseException {
@@ -146,6 +147,7 @@ public class RaffleTable {
             raffle.setNoOfTickets(cursor.getInt(cursor.getColumnIndex(KEY_NUM_TICKETS)));
             raffle.setTicketsSold(cursor.getInt(cursor.getColumnIndex(KEY_TICKETS_SOLD)));
             raffle.setMaxTickets(cursor.getInt(cursor.getColumnIndex(KEY_MAX_TICKETS)));
+            raffle.setRaffleCover(cursor.getBlob(cursor.getColumnIndex(KEY_RAFFLE_COVER)));
             //TODO raffle.setRaffleCover(cursor.getBlob(cursor.getColumnIndex(KEY_RAFFLE_COVER)));
             return raffle;
         }
