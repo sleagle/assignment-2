@@ -148,7 +148,6 @@ public class RaffleTable {
             raffle.setTicketsSold(cursor.getInt(cursor.getColumnIndex(KEY_TICKETS_SOLD)));
             raffle.setMaxTickets(cursor.getInt(cursor.getColumnIndex(KEY_MAX_TICKETS)));
             raffle.setRaffleCover(cursor.getBlob(cursor.getColumnIndex(KEY_RAFFLE_COVER)));
-            //TODO raffle.setRaffleCover(cursor.getBlob(cursor.getColumnIndex(KEY_RAFFLE_COVER)));
             return raffle;
         }
     }

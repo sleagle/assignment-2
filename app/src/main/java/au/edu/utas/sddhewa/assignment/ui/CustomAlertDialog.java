@@ -38,6 +38,9 @@ public class CustomAlertDialog extends DialogFragment {
             }
         });
 
+        /*
+         * code snippet: https://android--examples.blogspot.com/2016/10/android-alertdialog-button-text-and.html
+         */
         AlertDialog dialog = builder.create();
         dialog.show();
 

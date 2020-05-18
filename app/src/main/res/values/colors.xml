@@ -7,4 +7,5 @@
     <color name="pased_raffles">#F5CC99</color>
     <color name="btn_success">#195A24</color>
     <color name="btn_discard">#66201B</color>
+    <color name="btn_txt">#FFFFFF</color>
 </resources>

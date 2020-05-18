@@ -273,7 +273,7 @@
         android:layout_marginRight="68dp"
         android:background="@color/btn_success"
         android:text="@string/create"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/btn_txt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
 
@@ -286,7 +286,7 @@
         android:layout_marginTop="92dp"
         android:background="@color/btn_discard"
         android:text="@string/discard"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/btn_txt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCoverImage" />
 
