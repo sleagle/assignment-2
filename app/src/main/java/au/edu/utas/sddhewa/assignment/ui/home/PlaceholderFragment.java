@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -58,6 +59,8 @@ public class PlaceholderFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_tab_home, container, false);
         Log.d("***************", "Inflated view");
         final ListView tabListView = root.findViewById(R.id.rafflesList);
+        final Button editButton = root.findViewById(R.id.btnEdit);
+        final Button deleteButton = root.findViewById(R.id.btnDelete);
 
         try {
             if (selectedTab == 0) {
@@ -67,6 +70,13 @@ public class PlaceholderFragment extends Fragment {
             }
             if (selectedTab == 1) {
                 ArrayList<Raffle> raffles = RaffleTable.selectPastRaffles(db);
+                editButton.setEnabled(false);
+                editButton.setAlpha(0.5f);
+                editButton.setClickable(false);
+
+                deleteButton.setEnabled(false);
+                deleteButton.setAlpha(0.5f);
+                deleteButton.setClickable(false);
                 pageViewModel.setPastRaffles(context, R.layout.list_past_raffles, raffles, selectedTab);
                 Log.d("***************", "set the past raffles adapter");
             }

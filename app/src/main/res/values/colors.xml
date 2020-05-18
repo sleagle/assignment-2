@@ -8,4 +8,7 @@
     <color name="btn_success">#195A24</color>
     <color name="btn_discard">#66201B</color>
     <color name="btn_txt">#FFFFFF</color>
+    <color name="edit_btn">#2B78E4</color>
+    <color name="delete_btn">#CF2A27</color>
+    <color name="separator_line">#A0A0A0</color>
 </resources>

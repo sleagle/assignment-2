@@ -11,7 +11,7 @@
             android:id="@+id/lblRaffle"
             android:layout_width="187dp"
             android:layout_height="27dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="24dp"
             android:layout_marginTop="4dp"
             android:layout_weight="5"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -19,7 +19,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="16dp" />
+            android:layout_marginStart="24dp" />
 
     <TextView
         android:id="@+id/lblDesc"
@@ -27,6 +27,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginTop="2dp"
         android:layout_weight="1"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textSize="12sp"
@@ -64,5 +65,13 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/txtDrawDate"
         app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="25dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
