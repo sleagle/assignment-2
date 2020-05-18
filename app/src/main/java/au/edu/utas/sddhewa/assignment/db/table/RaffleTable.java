@@ -29,6 +29,7 @@ public class RaffleTable {
     private static final String KEY_NUM_TICKETS = "num_tickets";
     private static final String KEY_MAX_TICKETS = "max_tickets";
     private static final String KEY_TICKETS_SOLD = "tickets_sold";
+    private static final String KEY_RAFFLE_COVER = "raffle_cover";
 
     public static final String CREATE_STATEMENT = new StringBuilder(FieldKey.CREATE_TABLE.value)
             .append(TABLE_NAME).append(FieldKey.CREATE_TABLE_OPEN.value)
@@ -43,7 +44,8 @@ public class RaffleTable {
             .append(KEY_TICKET_PRICE).append(FieldKey.FLOAT.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_NUM_TICKETS).append(FieldKey.INT.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_MAX_TICKETS).append(FieldKey.INT.value).append(FieldKey.COMMA.value)
-            .append(KEY_TICKETS_SOLD).append(FieldKey.INT.value)
+            .append(KEY_TICKETS_SOLD).append(FieldKey.INT.value).append(FieldKey.COMMA.value)
+            .append(KEY_RAFFLE_COVER).append(FieldKey.BLOB.value)
             .append(FieldKey.CREATE_TABLE_CLOSE.value).toString();
 
     public static void insert(SQLiteDatabase db, Raffle raffle) {
@@ -144,7 +146,7 @@ public class RaffleTable {
             raffle.setNoOfTickets(cursor.getInt(cursor.getColumnIndex(KEY_NUM_TICKETS)));
             raffle.setTicketsSold(cursor.getInt(cursor.getColumnIndex(KEY_TICKETS_SOLD)));
             raffle.setMaxTickets(cursor.getInt(cursor.getColumnIndex(KEY_MAX_TICKETS)));
-
+            //TODO raffle.setRaffleCover(cursor.getBlob(cursor.getColumnIndex(KEY_RAFFLE_COVER)));
             return raffle;
         }
     }

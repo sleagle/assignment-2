@@ -20,12 +20,12 @@ public class Customer {
 
     private String state;
 
-    private String postCode;
+    private int postCode;
 
     public Customer() {}
 
     public Customer(String title, String firstName, String lastName, int mobileNo, String email,
-                    String address, String suburb, String state, String postCode) {
+                    String address, String suburb, String state, int postCode) {
         this.title = title;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -109,11 +109,11 @@ public class Customer {
         this.state = state;
     }
 
-    public String getPostCode() {
+    public int getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(String postCode) {
+    public void setPostCode(int postCode) {
         this.postCode = postCode;
     }
 
@@ -130,10 +130,10 @@ public class Customer {
     @Override
     public String toString() {
         return new StringBuilder("Customer { customerId: ").append(customerId)
-                .append("title: ").append(title).append("firstName: ").append(firstName)
-                .append("lastName: ").append(lastName).append("mobileNo: ").append(mobileNo)
-                .append("email: ").append(email).append("address: ").append(address)
-                .append("suburb: ").append(suburb).append("state: ").append(state)
-                .append("postCode: ").append(postCode).append(" }").toString();
+                .append(" title: ").append(title).append(" firstName: ").append(firstName)
+                .append(" lastName: ").append(lastName).append(" mobileNo: ").append(mobileNo)
+                .append(" email: ").append(email).append(" address: ").append(address)
+                .append(" suburb: ").append(suburb).append(" state: ").append(state)
+                .append(" postCode: ").append(postCode).append(" }").toString();
     }
 }

@@ -8,6 +8,10 @@ public class Ticket {
 
     private int raffleId;
 
+    private float price;
+
     private Date purchasedDate;
+
+    private int customerId;
 
 }

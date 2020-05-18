@@ -23,7 +23,7 @@
         android:id="@+id/txtLastName"
         android:layout_width="@dimen/txt_width"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:autofillHints="@string/last_name"
         android:ems="10"
         android:hint="@string/last_name"
@@ -36,7 +36,7 @@
         android:id="@+id/txtMobile"
         android:layout_width="216dp"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:autofillHints="@string/mobile"
         android:ems="10"
         android:hint="@string/mobile"
@@ -49,7 +49,7 @@
         android:id="@+id/txtFirstName"
         android:layout_width="@dimen/txt_width"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:autofillHints="@string/first_name"
         android:ems="10"
         android:hint="@string/first_name"
@@ -59,10 +59,10 @@
         app:layout_constraintTop_toBottomOf="@+id/title_spinner" />
 
     <EditText
-        android:id="@+id/txtLSuburb"
+        android:id="@+id/txtSuburb"
         android:layout_width="@dimen/txt_width"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:autofillHints="@string/suburb"
         android:ems="10"
         android:hint="@string/suburb"
@@ -75,7 +75,7 @@
         android:id="@+id/lblState"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="@string/state"
         app:layout_constraintStart_toStartOf="@+id/lblSuburb"
         app:layout_constraintTop_toBottomOf="@+id/lblSuburb" />
@@ -84,7 +84,7 @@
         android:id="@+id/lblPhone"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="@string/mobile"
         app:layout_constraintStart_toStartOf="@+id/lblLastName"
         app:layout_constraintTop_toBottomOf="@+id/lblLastName" />
@@ -93,7 +93,7 @@
         android:id="@+id/lblEmail"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="@string/email"
         app:layout_constraintStart_toStartOf="@+id/lblPhone"
         app:layout_constraintTop_toBottomOf="@+id/lblPhone" />
@@ -102,7 +102,7 @@
         android:id="@+id/lblFirstName"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="@string/first_name"
         app:layout_constraintStart_toStartOf="@+id/lblTitle"
         app:layout_constraintTop_toBottomOf="@+id/lblTitle" />
@@ -111,9 +111,9 @@
         android:id="@+id/state_spinner"
         android:layout_width="133dp"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@+id/txtLSuburb"
-        app:layout_constraintTop_toBottomOf="@+id/txtLSuburb" />
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@+id/txtSuburb"
+        app:layout_constraintTop_toBottomOf="@+id/txtSuburb" />
 
     <TextView
         android:id="@+id/lblTitle"
@@ -130,7 +130,7 @@
         android:id="@+id/lblAddress"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="@string/address"
         app:layout_constraintStart_toStartOf="@+id/lblEmail"
         app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
@@ -148,7 +148,7 @@
         android:id="@+id/lblLastName"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="@string/last_name"
         app:layout_constraintStart_toStartOf="@+id/lblFirstName"
         app:layout_constraintTop_toBottomOf="@+id/lblFirstName" />
@@ -157,7 +157,7 @@
         android:id="@+id/txtAddress"
         android:layout_width="@dimen/txt_width"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:autofillHints="@string/address"
         android:ems="10"
         android:hint="@string/address"
@@ -170,7 +170,7 @@
         android:id="@+id/lblSuburb"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="@string/suburb"
         app:layout_constraintStart_toStartOf="@+id/lblAddress"
         app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
@@ -179,7 +179,7 @@
         android:id="@+id/txtEmail"
         android:layout_width="@dimen/txt_width"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:autofillHints="@string/email"
         android:ems="10"
         android:hint="@string/email"
@@ -189,7 +189,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtMobile" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnDiscard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -202,7 +202,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lblState" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="72dp"
@@ -211,17 +211,18 @@
         android:text="@string/create"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
 
     <EditText
         android:id="@+id/txtPostCode"
         android:layout_width="137dp"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:autofillHints="@string/post_code"
-        android:hint="@string/post_code"
         android:ems="10"
+        android:hint="@string/post_code"
         android:inputType="textPostalAddress"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/state_spinner"
         app:layout_constraintTop_toBottomOf="@+id/state_spinner" />
 
@@ -229,7 +230,7 @@
         android:id="@+id/lblPostCode"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="@string/post_code"
         app:layout_constraintStart_toStartOf="@+id/lblState"
         app:layout_constraintTop_toBottomOf="@+id/lblState" />

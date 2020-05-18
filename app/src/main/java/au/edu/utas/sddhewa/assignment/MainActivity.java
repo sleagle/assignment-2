@@ -2,8 +2,6 @@ package au.edu.utas.sddhewa.assignment;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Debug;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -98,20 +96,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().
-                        replace(R.id.fragment_container, new Home(db, getSupportFragmentManager(),
-                                getApplicationContext())).commit();
+                        replace(R.id.fragment_container,
+                                new Home(db, getSupportFragmentManager(), getApplicationContext()))
+                        .addToBackStack("home").commit();
                 break;
             case R.id.nav_create_raffle:
                 getSupportFragmentManager().beginTransaction().
-                        replace(R.id.fragment_container, new CreateRaffle()).commit();
+                        replace(R.id.fragment_container,
+                                new CreateRaffle(getApplicationContext(), db, getSupportFragmentManager()))
+                        .addToBackStack("createRaffle").commit();
                 break;
             case R.id.nav_sell_raffle:
                 getSupportFragmentManager().beginTransaction().
-                        replace(R.id.fragment_container, new SellTicket()).commit();
+                        replace(R.id.fragment_container,
+                                new SellTicket())
+                        .addToBackStack("sellTicket").commit();
                 break;
             case R.id.nav_create_customer:
                 getSupportFragmentManager().beginTransaction().
-                        replace(R.id.fragment_container, new CreateUser(getApplicationContext())).commit();
+                        replace(R.id.fragment_container,
+                                new CreateUser(getApplicationContext(), db))
+                        .addToBackStack("createCustomer").commit();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

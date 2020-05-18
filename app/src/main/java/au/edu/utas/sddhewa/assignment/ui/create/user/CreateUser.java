@@ -1,20 +1,28 @@
 package au.edu.utas.sddhewa.assignment.ui.create.user;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import au.edu.utas.sddhewa.assignment.R;
+import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
+import au.edu.utas.sddhewa.assignment.modal.Customer;
 
 
 /**
@@ -24,9 +32,21 @@ import au.edu.utas.sddhewa.assignment.R;
 public class CreateUser extends Fragment {
 
     private Context context;
+    private SQLiteDatabase db;
 
-    public CreateUser(Context context) {
+    private Spinner titleSpinner;
+    private TextView fName;
+    private TextView lName;
+    private TextView mobile;
+    private TextView email;
+    private TextView address;
+    private TextView suburb;
+    private TextView postCode;
+    private Spinner stateSpinner;
+
+    public CreateUser(Context context, SQLiteDatabase db) {
         this.context = context;
+        this.db = db;
     }
 
     @Override
@@ -35,24 +55,84 @@ public class CreateUser extends Fragment {
         // Inflate the layout for this fragment
         View createUser = inflater.inflate(R.layout.fragment_create_user, container, false);
 
+        //textFields;
+        fName = createUser.findViewById(R.id.txtFirstName);
+        lName = createUser.findViewById(R.id.txtLastName);
+        mobile = createUser.findViewById(R.id.txtMobile);
+        email = createUser.findViewById(R.id.txtEmail);
+        address = createUser.findViewById(R.id.txtAddress);
+        suburb = createUser.findViewById(R.id.txtSuburb);
+        postCode = createUser.findViewById(R.id.txtPostCode);
+
         final ArrayList<String> titleList = new ArrayList<>(Arrays.asList(
                 getResources().getStringArray(R.array.title_array)));
 
-        ArrayAdapter<String> titleDropDown = new ArrayAdapter<>(
+        final ArrayAdapter<String> titleDropDown = new ArrayAdapter<>(
                 context, android.R.layout.simple_spinner_dropdown_item, titleList);
 
         final ArrayList<String>statesList = new ArrayList<>(Arrays.asList(
                 getResources().getStringArray(R.array.states_array)));
 
-        ArrayAdapter<String> stateDropDown = new ArrayAdapter<>(
+        final ArrayAdapter<String> stateDropDown = new ArrayAdapter<>(
                 context, android.R.layout.simple_spinner_dropdown_item, statesList);
 
-        Spinner titleSpinner = createUser.findViewById(R.id.title_spinner);
+        titleSpinner = createUser.findViewById(R.id.title_spinner);
         titleSpinner.setAdapter(titleDropDown);
 
-        Spinner stateSpinner = createUser.findViewById(R.id.state_spinner);
+        stateSpinner = createUser.findViewById(R.id.state_spinner);
         stateSpinner.setAdapter(stateDropDown);
 
+        Button createButton = createUser.findViewById(R.id.btnCreate);
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createCustomer();
+            }
+        });
+
+        Button discardButton = createUser.findViewById(R.id.btnDiscard);
+        discardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetForm();
+            }
+        });
+
         return createUser;
+    }
+
+    private void resetForm() {
+        titleSpinner.setSelection(0);
+        fName.setText("");
+        lName.setText("");
+        mobile.setText("");
+        email.setText("");
+        address.setText("");
+        suburb.setText("");
+        stateSpinner.setSelection(0);
+        postCode.setText("");
+    }
+
+    private void createCustomer () {
+
+        Customer customer = new Customer(
+                titleSpinner.getSelectedItem().toString(), fName.getText().toString(),
+                lName.getText().toString(), Integer.parseInt(mobile.getText().toString()),
+                email.getText().toString(), address.getText().toString(),
+                suburb.getText().toString(), stateSpinner.getSelectedItem().toString(),
+                Integer.parseInt(postCode.getText().toString())
+        );
+        Log.d("######", customer.toString());
+        long cid = CustomerTable.insert(db, customer);
+
+        if (cid != -1) {
+            Log.d("###### Create Customer","insert successful");
+            Toast toast = Toast.makeText(context, R.string.create_customer_success, Toast.LENGTH_LONG);
+            toast.show();
+        }
+        else {
+            Log.d("###### Create Customer","insert error");
+        }
+        resetForm();
     }
 }
