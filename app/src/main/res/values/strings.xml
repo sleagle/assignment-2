@@ -44,6 +44,8 @@
     <string name="state">State:</string>
     <string name="post_code">Post Code:</string>
 
+    <string name="raffle_details">Raffle Details</string>
+
     <string-array name="title_array">
         <item>Dr</item>
         <item>Mr</item>

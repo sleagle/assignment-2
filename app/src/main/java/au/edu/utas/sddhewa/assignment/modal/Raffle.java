@@ -1,7 +1,9 @@
 package au.edu.utas.sddhewa.assignment.modal;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import au.edu.utas.sddhewa.assignment.util.RaffleType;
@@ -15,7 +17,7 @@ import au.edu.utas.sddhewa.assignment.util.Utility;
  * @updatedBy
  * @version 1
  */
-public class Raffle {
+public class Raffle implements Parcelable {
 
     /** id of the raffle */
     private int raffleId;
@@ -72,6 +74,50 @@ public class Raffle {
         this.ticketsSold = ticketsSold;
         this.maxTickets = maxTickets;
     }
+
+    protected Raffle(Parcel in) {
+        raffleId = in.readInt();
+        name = in.readString();
+        description = in.readString();
+        isActive = in.readByte() != 0;
+        location = in.readString();
+        ticketPrice = in.readFloat();
+        noOfTickets = in.readInt();
+        ticketsSold = in.readInt();
+        maxTickets = in.readInt();
+        raffleCover = in.createByteArray();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(raffleId);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeByte((byte) (isActive ? 1 : 0));
+        dest.writeString(location);
+        dest.writeFloat(ticketPrice);
+        dest.writeInt(noOfTickets);
+        dest.writeInt(ticketsSold);
+        dest.writeInt(maxTickets);
+        dest.writeByteArray(raffleCover);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Raffle> CREATOR = new Creator<Raffle>() {
+        @Override
+        public Raffle createFromParcel(Parcel in) {
+            return new Raffle(in);
+        }
+
+        @Override
+        public Raffle[] newArray(int size) {
+            return new Raffle[size];
+        }
+    };
 
     /**
      * get the raffle id
@@ -306,6 +352,11 @@ public class Raffle {
 
     public void setRaffleCover(byte[] raffleCover) {
         this.raffleCover = raffleCover;
+    }
+
+    public String getTicketPriceString() {
+
+        return String.format("$ %.2f", getTicketPrice());
     }
 
     /**

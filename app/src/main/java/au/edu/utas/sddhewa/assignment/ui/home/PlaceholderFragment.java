@@ -1,12 +1,15 @@
 package au.edu.utas.sddhewa.assignment.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -23,6 +26,8 @@ import java.util.ArrayList;
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
+import au.edu.utas.sddhewa.assignment.ui.view.ViewRaffle;
+import au.edu.utas.sddhewa.assignment.util.Utility;
 
 public class PlaceholderFragment extends Fragment {
 
@@ -30,6 +35,8 @@ public class PlaceholderFragment extends Fragment {
     private final SQLiteDatabase db;
     private int selectedTab;
     private PageViewModel pageViewModel;
+
+    private ArrayList<Raffle> rafflesCopy;
 
     static Fragment newInstance(int i, Context context, SQLiteDatabase db) {
 
@@ -59,6 +66,7 @@ public class PlaceholderFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_tab_home, container, false);
         Log.d("***************", "Inflated view");
         final ListView tabListView = root.findViewById(R.id.rafflesList);
+
         final Button editButton = root.findViewById(R.id.btnEdit);
         final Button deleteButton = root.findViewById(R.id.btnDelete);
 
@@ -67,9 +75,10 @@ public class PlaceholderFragment extends Fragment {
                 ArrayList<Raffle> raffles = RaffleTable.selectCurrentRaffles(db);
                 pageViewModel.setCurrentRaffles(context, R.layout.list_current_raffles, raffles, selectedTab);
                 Log.d("***************", "set the current raffles adapter");
+                rafflesCopy = raffles;
             }
-            if (selectedTab == 1) {
-                ArrayList<Raffle> raffles = RaffleTable.selectPastRaffles(db);
+            else if (selectedTab == 1) {
+                ArrayList<Raffle> raffles= RaffleTable.selectPastRaffles(db);
                 editButton.setEnabled(false);
                 editButton.setAlpha(0.5f);
                 editButton.setClickable(false);
@@ -89,6 +98,22 @@ public class PlaceholderFragment extends Fragment {
             public void onChanged(@Nullable ArrayAdapter<Raffle> adapter) {
                 Log.d("***************", "on change adapter");
                 tabListView.setAdapter(adapter);
+
+            }
+        });
+
+        tabListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d("#### rafflelist onclick", rafflesCopy.get(position).toString());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(Utility.KEY_SELECTED_RAFFLE, (Parcelable) rafflesCopy.get(position));
+
+                getActivity().getSupportFragmentManager().beginTransaction().
+                        replace(R.id.fragment_container,
+                                new ViewRaffle(bundle))
+                        .addToBackStack(null).commit();
             }
         });
 
