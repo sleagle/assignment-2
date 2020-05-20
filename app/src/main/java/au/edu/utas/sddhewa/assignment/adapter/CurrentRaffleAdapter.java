@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,7 +49,7 @@ public class CurrentRaffleAdapter extends ArrayAdapter<Raffle> {
         return row;
     }
 
-    private void setCurrentRaffleDetails(Raffle raffle, View row) {
+    private void setCurrentRaffleDetails(final Raffle raffle, View row) {
 
         TextView lblRaffle = row.findViewById(R.id.lblRaffle);
         lblRaffle.setText(raffle.getName());
@@ -61,5 +62,13 @@ public class CurrentRaffleAdapter extends ArrayAdapter<Raffle> {
 
         TextView lblDrawDate = row.findViewById(R.id.lblDrawDate);
         lblDrawDate.setText(raffle.getDrawDate());
+
+        CheckBox checkBox = row.findViewById(R.id.checkBox);
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("#### rafflelist onclick", raffle.toString());
+            }
+        });
     }
 }

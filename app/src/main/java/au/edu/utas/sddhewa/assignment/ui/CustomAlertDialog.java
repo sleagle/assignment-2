@@ -9,13 +9,13 @@ import android.widget.Button;
 import androidx.fragment.app.DialogFragment;
 
 import au.edu.utas.sddhewa.assignment.R;
-import au.edu.utas.sddhewa.assignment.ui.create.Create;
+import au.edu.utas.sddhewa.assignment.ui.create.FormInteraction;
 
 public class CustomAlertDialog extends DialogFragment {
 
-    private Create createObj;
+    private FormInteraction createObj;
 
-    public CustomAlertDialog(Create obj) {
+    public CustomAlertDialog(FormInteraction obj) {
         this.createObj = obj;
     }
 
@@ -38,6 +38,9 @@ public class CustomAlertDialog extends DialogFragment {
             }
         });
 
+        /*
+         * code snippet: https://android--examples.blogspot.com/2016/10/android-alertdialog-button-text-and.html
+         */
         AlertDialog dialog = builder.create();
         dialog.show();
 

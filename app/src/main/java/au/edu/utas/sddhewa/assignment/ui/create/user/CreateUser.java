@@ -3,35 +3,31 @@ package au.edu.utas.sddhewa.assignment.ui.create.user;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.ui.CustomAlertDialog;
-import au.edu.utas.sddhewa.assignment.ui.create.Create;
+import au.edu.utas.sddhewa.assignment.ui.create.FormInteraction;
+import au.edu.utas.sddhewa.assignment.util.Utility;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class CreateUser extends Fragment implements Create {
+public class CreateUser extends Fragment implements FormInteraction {
 
     private final FragmentManager fm;
     private final Context context;
@@ -68,23 +64,13 @@ public class CreateUser extends Fragment implements Create {
         suburb = createUser.findViewById(R.id.txtSuburb);
         postCode = createUser.findViewById(R.id.txtPostCode);
 
-        final ArrayList<String> titleList = new ArrayList<>(Arrays.asList(
-                getResources().getStringArray(R.array.title_array)));
-
-        final ArrayAdapter<String> titleDropDown = new ArrayAdapter<>(
-                context, android.R.layout.simple_spinner_dropdown_item, titleList);
-
-        final ArrayList<String>statesList = new ArrayList<>(Arrays.asList(
+        titleSpinner = createUser.findViewById(R.id.title_spinner);
+        titleSpinner.setAdapter(Utility.getUserTitleAdapter(context,
                 getResources().getStringArray(R.array.states_array)));
 
-        final ArrayAdapter<String> stateDropDown = new ArrayAdapter<>(
-                context, android.R.layout.simple_spinner_dropdown_item, statesList);
-
-        titleSpinner = createUser.findViewById(R.id.title_spinner);
-        titleSpinner.setAdapter(titleDropDown);
-
         stateSpinner = createUser.findViewById(R.id.state_spinner);
-        stateSpinner.setAdapter(stateDropDown);
+        stateSpinner.setAdapter(Utility.getUserStateAdapter(context,
+                getResources().getStringArray(R.array.states_array)));
 
         Button createButton = createUser.findViewById(R.id.btnCreate);
         createButton.setOnClickListener(new View.OnClickListener() {

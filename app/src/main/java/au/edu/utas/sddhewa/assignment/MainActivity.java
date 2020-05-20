@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawerLayout;
     private SQLiteDatabase db;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         setSupportActionBar(toolbar);
 
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         replace(R.id.fragment_container,
                                 new Home(db, getSupportFragmentManager(), getApplicationContext()))
                         .addToBackStack("home").commit();
+                navigationView.setCheckedItem(R.id.nav_home);
                 break;
             case R.id.nav_create_raffle:
                 getSupportFragmentManager().beginTransaction().
@@ -106,18 +108,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 new CreateRaffle(getApplicationContext(), db, getSupportFragmentManager(),
                                         getPackageManager()))
                         .addToBackStack("createRaffle").commit();
+                navigationView.setCheckedItem(R.id.nav_create_raffle);
                 break;
             case R.id.nav_sell_raffle:
                 getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container,
-                                new SellTicket())
+                                new SellTicket(getApplicationContext(), db))
                         .addToBackStack("sellTicket").commit();
+                navigationView.setCheckedItem(R.id.nav_sell_raffle);
                 break;
             case R.id.nav_create_customer:
                 getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container,
                                 new CreateUser(getApplicationContext(), db, getSupportFragmentManager()))
                         .addToBackStack("createCustomer").commit();
+                navigationView.setCheckedItem(R.id.nav_create_customer);
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

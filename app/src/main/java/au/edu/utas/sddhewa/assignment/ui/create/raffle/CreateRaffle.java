@@ -45,7 +45,7 @@ import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.ui.CustomAlertDialog;
 import au.edu.utas.sddhewa.assignment.ui.DatePickerFragment;
-import au.edu.utas.sddhewa.assignment.ui.create.Create;
+import au.edu.utas.sddhewa.assignment.ui.create.FormInteraction;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.RaffleType;
 
@@ -54,9 +54,9 @@ import au.edu.utas.sddhewa.assignment.util.RaffleType;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class CreateRaffle extends Fragment implements Create {
+public class CreateRaffle extends Fragment implements FormInteraction {
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private View createRaffle;
 
@@ -227,7 +227,7 @@ public class CreateRaffle extends Fragment implements Create {
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 
-                byte imageInByte[] = stream.toByteArray();
+                byte[] imageInByte = stream.toByteArray();
 
                 raffle.setRaffleCover(imageInByte);
             }
@@ -246,6 +246,10 @@ public class CreateRaffle extends Fragment implements Create {
         }
     }
 
+    /*
+     * code snippets referring to Week 7 android lecture and android developer guide:
+     * https://developer.android.com/guide/topics/media/camera
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -264,6 +268,10 @@ public class CreateRaffle extends Fragment implements Create {
         }
     }
 
+    /*
+     * code snippets referring to Week 7 android lecture and android developer guide:
+     * https://developer.android.com/guide/topics/media/camera
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -275,7 +283,10 @@ public class CreateRaffle extends Fragment implements Create {
         }
     }
 
-
+    /*
+     * code snippets referring to Week 7 android lecture and android developer guide:
+     * https://developer.android.com/guide/topics/media/camera
+     */
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
@@ -301,10 +312,18 @@ public class CreateRaffle extends Fragment implements Create {
         }
     }
 
+    /*
+     * code snippets referring to Week 7 android lecture and android developer guide:
+     * https://developer.android.com/guide/topics/media/camera
+     */
     private void requestToTakeAPicture(){
         requestPermissions(new String[] { Manifest.permission.CAMERA }, REQUEST_IMAGE_CAPTURE);
     }
 
+    /*
+     * code snippets referring to Week 7 android lecture and android developer guide:
+     * https://developer.android.com/guide/topics/media/camera
+     */
     private File createImageFile() throws IOException {
         // Create an image file name
         Log.d("######", "in create image file");
@@ -323,6 +342,10 @@ public class CreateRaffle extends Fragment implements Create {
         return image;
     }
 
+    /*
+     * code snippets referring to Week 7 android lecture and android developer guide:
+     * https://developer.android.com/guide/topics/media/camera
+     */
     private void setPic(ImageView imageView) {
         // Get the dimensions of the View
         int targetW = imageView.getWidth();

@@ -3,7 +3,6 @@ package au.edu.utas.sddhewa.assignment.ui;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -44,7 +43,6 @@ public class DatePickerFragment extends DialogFragment
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
-        Log.d("**********", Utility.DATE_FORMAT.format(calendar.getTime()));
         textView.setText(Utility.DATE_FORMAT.format(calendar.getTime()));
     }
 }

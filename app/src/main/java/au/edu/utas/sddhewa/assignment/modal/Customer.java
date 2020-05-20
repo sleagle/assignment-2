@@ -129,11 +129,12 @@ public class Customer {
 
     @Override
     public String toString() {
-        return new StringBuilder("Customer { customerId: ").append(customerId)
+        return  getFullName(); 
+        /*return new StringBuilder("Customer { customerId: ").append(customerId)
                 .append(" title: ").append(title).append(" firstName: ").append(firstName)
                 .append(" lastName: ").append(lastName).append(" mobileNo: ").append(mobileNo)
                 .append(" email: ").append(email).append(" address: ").append(address)
                 .append(" suburb: ").append(suburb).append(" state: ").append(state)
-                .append(" postCode: ").append(postCode).append(" }").toString();
+                .append(" postCode: ").append(postCode).append(" }").toString();*/
     }
 }
