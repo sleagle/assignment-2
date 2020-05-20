@@ -1,6 +1,6 @@
 package au.edu.utas.sddhewa.assignment.ui.create;
 
-public interface Create {
+public interface FormInteraction {
 
     void resetForm();
 

@@ -367,12 +367,13 @@ public class Raffle implements Parcelable {
     @Override
     public String toString() {
 
-        return new StringBuilder("Raffle { raffleId: ").append(raffleId)
+        return getName() + " - Starts: " + getStartingDate();
+        /*return new StringBuilder("Raffle { raffleId: ").append(raffleId)
                 .append(", name: ").append(name).append(", description: ").append(description)
                 .append(", typeId: ").append(typeId.toString()).append(", startingDate: ").append(startingDate)
                 .append(", drawDate: ").append(drawDate).append(", isActive: ").append(isActive)
                 .append(", location: ").append(location).append(", ticketPrice: ").append(ticketPrice)
                 .append(", noOfTickets: ").append(noOfTickets).append(", ticketsSold: ").append(ticketsSold)
-                .append(", maxTickets:").append(maxTickets).append(" }").toString();
+                .append(", maxTickets:").append(maxTickets).append(" }").toString();*/
     }
 }

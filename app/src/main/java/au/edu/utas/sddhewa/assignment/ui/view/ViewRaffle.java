@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -72,9 +73,22 @@ public class ViewRaffle extends Fragment {
             imageView.setImageBitmap(bitmap);
         }
 
+        Button editButton = viewRaffle.findViewById(R.id.btnEdit_RD);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+        Button deleteButton = viewRaffle.findViewById(R.id.btnDelete_RD);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         return viewRaffle;
-
     }
 }

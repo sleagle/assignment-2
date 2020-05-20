@@ -77,6 +77,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/state"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblSuburb"
         app:layout_constraintTop_toBottomOf="@+id/lblSuburb" />
 
@@ -86,6 +87,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/mobile"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblLastName"
         app:layout_constraintTop_toBottomOf="@+id/lblLastName" />
 
@@ -95,6 +97,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/email"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblPhone"
         app:layout_constraintTop_toBottomOf="@+id/lblPhone" />
 
@@ -104,6 +107,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/first_name"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblTitle"
         app:layout_constraintTop_toBottomOf="@+id/lblTitle" />
 
@@ -123,6 +127,7 @@
         android:layout_marginLeft="44dp"
         android:layout_marginTop="32dp"
         android:text="@string/title"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCreateCustomer" />
 
@@ -132,6 +137,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/address"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblEmail"
         app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
 
@@ -150,6 +156,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/last_name"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblFirstName"
         app:layout_constraintTop_toBottomOf="@+id/lblFirstName" />
 
@@ -172,6 +179,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/suburb"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblAddress"
         app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
 
@@ -198,6 +206,7 @@
         android:background="@color/btn_discard"
         android:text="@string/discard"
         android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblState" />
 
@@ -210,6 +219,7 @@
         android:background="@color/btn_success"
         android:text="@string/create"
         android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
 
@@ -232,6 +242,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/post_code"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblState"
         app:layout_constraintTop_toBottomOf="@+id/lblState" />
 

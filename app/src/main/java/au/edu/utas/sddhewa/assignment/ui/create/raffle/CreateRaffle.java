@@ -45,7 +45,7 @@ import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.ui.CustomAlertDialog;
 import au.edu.utas.sddhewa.assignment.ui.DatePickerFragment;
-import au.edu.utas.sddhewa.assignment.ui.create.Create;
+import au.edu.utas.sddhewa.assignment.ui.create.FormInteraction;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.RaffleType;
 
@@ -54,9 +54,9 @@ import au.edu.utas.sddhewa.assignment.util.RaffleType;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class CreateRaffle extends Fragment implements Create {
+public class CreateRaffle extends Fragment implements FormInteraction {
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private View createRaffle;
 
@@ -227,7 +227,7 @@ public class CreateRaffle extends Fragment implements Create {
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 
-                byte imageInByte[] = stream.toByteArray();
+                byte[] imageInByte = stream.toByteArray();
 
                 raffle.setRaffleCover(imageInByte);
             }

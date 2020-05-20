@@ -26,6 +26,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="25dp"
         android:text="@string/name"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCreateRaffle" />
 
@@ -50,6 +51,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/description"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblName"
         app:layout_constraintTop_toBottomOf="@+id/lblName" />
 
@@ -74,6 +76,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/type"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblDesc"
         app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
 
@@ -93,6 +96,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/start_date"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblRaffleType"
         app:layout_constraintTop_toBottomOf="@+id/lblRaffleType" />
 
@@ -127,6 +131,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/draw_date"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblStartDate"
         app:layout_constraintTop_toBottomOf="@+id/lblStartDate" />
 
@@ -162,6 +167,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/location"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblDrawDate"
         app:layout_constraintTop_toBottomOf="@+id/lblDrawDate" />
 
@@ -186,6 +192,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/ticket_price"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblLocation"
         app:layout_constraintTop_toBottomOf="@+id/lblLocation" />
 
@@ -210,6 +217,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/num_tickets"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
         app:layout_constraintTop_toBottomOf="@+id/lblTicketPrice" />
 
@@ -229,6 +237,7 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="5dp"
         android:text="@string/max_tickets"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblNumTickets"
         app:layout_constraintTop_toBottomOf="@+id/lblNumTickets" />
 
@@ -253,6 +262,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/add_cover"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblMaxTickets"
         app:layout_constraintTop_toBottomOf="@+id/lblMaxTickets" />
 
@@ -260,10 +270,25 @@
         android:id="@+id/lblCoverImage"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="48dp"
         android:text="@string/cover_image"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/cbxCoverImage"
         app:layout_constraintTop_toBottomOf="@+id/cbxCoverImage" />
+
+    <ImageView
+        android:id="@+id/imgCover"
+        android:layout_width="110dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:contentDescription="@string/cover_image"
+        app:layout_constraintBottom_toBottomOf="@+id/lblCoverImage"
+        app:layout_constraintStart_toEndOf="@+id/lblCoverImage"
+        app:layout_constraintTop_toTopOf="@+id/lblCoverImage"
+        app:layout_constraintVertical_bias="0.373" />
 
     <Button
         android:id="@+id/btnCreate"
@@ -274,6 +299,7 @@
         android:background="@color/btn_success"
         android:text="@string/create"
         android:textColor="@color/btn_txt"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
 
@@ -283,23 +309,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="76dp"
         android:background="@color/btn_discard"
         android:text="@string/discard"
         android:textColor="@color/btn_txt"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCoverImage" />
-
-    <ImageView
-        android:id="@+id/imgCover"
-        android:layout_width="88dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginLeft="26dp"
-        android:contentDescription="@string/cover_image"
-        app:layout_constraintBottom_toBottomOf="@+id/btnTakeImage"
-        app:layout_constraintStart_toEndOf="@+id/lblCoverImage"
-        app:layout_constraintTop_toTopOf="@+id/btnTakeImage" />
 
     <Button
         android:id="@+id/btnTakeImage"
@@ -307,9 +323,9 @@
         android:layout_height="@dimen/txt_height"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginBottom="73dp"
         android:background="@drawable/ic_camera"
-        app:layout_constraintBottom_toTopOf="@+id/btnCreate"
-        app:layout_constraintStart_toEndOf="@+id/imgCover" />
+        app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+        app:layout_constraintStart_toEndOf="@+id/imgCover"
+        app:layout_constraintTop_toTopOf="@+id/imgCover" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

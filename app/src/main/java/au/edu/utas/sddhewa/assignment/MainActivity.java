@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_sell_raffle:
                 getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container,
-                                new SellTicket())
+                                new SellTicket(getApplicationContext(), db))
                         .addToBackStack("sellTicket").commit();
                 navigationView.setCheckedItem(R.id.nav_sell_raffle);
                 break;

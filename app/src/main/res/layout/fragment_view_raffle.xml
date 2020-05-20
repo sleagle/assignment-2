@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnEdit_vr"
+        android:id="@+id/btnEdit_RD"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
         android:layout_marginStart="27dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnDelete_vr"
+        android:id="@+id/btnDelete_RD"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/txt_height"
         android:layout_marginStart="23dp"
@@ -44,8 +44,8 @@
         android:drawableLeft="@drawable/ic_delete"
         android:text="@string/delete"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/btnEdit_vr"
-        app:layout_constraintTop_toTopOf="@+id/btnEdit_vr" />
+        app:layout_constraintStart_toEndOf="@+id/btnEdit_RD"
+        app:layout_constraintTop_toTopOf="@+id/btnEdit_RD" />
 
     <TextView
         android:id="@+id/txtName_RD"

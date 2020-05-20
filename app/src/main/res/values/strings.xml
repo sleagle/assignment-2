@@ -22,7 +22,6 @@
     <string name="start_date">Start Date:</string>
     <string name="location">Location:</string>
     <string name="ticket_price">Ticket Price:</string>
-    <string name="num_tickets">No of Tickets:</string>
     <string name="max_tickets">Max tickets per person:</string>
     <string name="add_cover">Add a cover image for the raffle</string>
     <string name="cover_image">Cover Image:</string>
@@ -31,6 +30,9 @@
     <string name="create">Create</string>
     <string name="discard">Discard</string>
     <string name="draw_date">Draw Date:</string>
+    <string name="num_tickets">No of Tickets:</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 
     <!-- strings related to create customer fragment -->
     <string name="create_customer_form">Create Customer</string>
@@ -44,7 +46,16 @@
     <string name="state">State:</string>
     <string name="post_code">Post Code:</string>
 
+    <!-- strings related to view raffle fragment -->
     <string name="raffle_details">Raffle Details</string>
+
+    <!-- strings related to sell tickets fragment -->
+    <string name="sell_tickets">Sell Tickets</string>
+    <string name="raffle">Raffle:</string>
+    <string name="existing_details">Use existing customer details</string>
+    <string name="total_price">Total price:</string>
+    <string name="customer">Customer:</string>
+    <string name="sell">Sell</string>
 
     <string-array name="title_array">
         <item>Dr</item>
@@ -90,6 +101,4 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="delete">Delete</string>
-    <string name="edit">Edit</string>
 </resources>
