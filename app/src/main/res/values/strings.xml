@@ -47,7 +47,10 @@
     <string name="post_code">Post Code:</string>
 
     <!-- strings related to view raffle fragment -->
+    <string name="tab_details">Details</string>
+    <string name="tab_tickets">Tickets Sold</string>
     <string name="raffle_details">Raffle Details</string>
+    <string name="draw_winner">Draw Winner</string>
 
     <!-- strings related to sell tickets fragment -->
     <string name="sell_tickets">Sell Tickets</string>
@@ -71,6 +74,7 @@
         <item>NT</item>
         <item>SA</item>
         <item>TAS</item>
+        <item>VIC</item>
         <item>WA</item>
     </string-array>
 
@@ -93,6 +97,7 @@
 
     <string name="create_customer_success">Created Customer Successfully</string>
     <string name="create_raffle_success">Created Raffle Successfully</string>
+    <string name="sell_ticket_success">Sold Ticket(s) Successfully</string>
 
     <string name="alert_dialog_title">Alert!</string>
     <string name="alert_dialog_msg">Are you sure you want to discard the changes?</string>

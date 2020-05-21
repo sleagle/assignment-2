@@ -12,7 +12,7 @@
 
 
         <EditText
-            android:id="@+id/txtLastName"
+            android:id="@+id/txtLastName_ST"
             android:layout_width="@dimen/txt_width"
             android:layout_height="@dimen/txt_height"
             android:layout_marginTop="5dp"
@@ -21,11 +21,11 @@
             android:hint="@string/last_name"
             android:inputType="textPersonName"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/txtFirstName"
-            app:layout_constraintTop_toBottomOf="@+id/txtFirstName" />
+            app:layout_constraintStart_toStartOf="@+id/txtFirstName_ST"
+            app:layout_constraintTop_toBottomOf="@+id/txtFirstName_ST" />
 
         <EditText
-            android:id="@+id/txtMobile"
+            android:id="@+id/txtMobile_ST"
             android:layout_width="216dp"
             android:layout_height="@dimen/txt_height"
             android:layout_marginTop="5dp"
@@ -34,11 +34,11 @@
             android:hint="@string/mobile"
             android:inputType="phone"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/txtLastName"
-            app:layout_constraintTop_toBottomOf="@+id/txtLastName" />
+            app:layout_constraintStart_toStartOf="@+id/txtLastName_ST"
+            app:layout_constraintTop_toBottomOf="@+id/txtLastName_ST" />
 
         <EditText
-            android:id="@+id/txtFirstName"
+            android:id="@+id/txtFirstName_ST"
             android:layout_width="@dimen/txt_width"
             android:layout_height="@dimen/txt_height"
             android:layout_marginTop="5dp"
@@ -47,11 +47,11 @@
             android:hint="@string/first_name"
             android:inputType="textPersonName"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/title_spinner"
-            app:layout_constraintTop_toBottomOf="@+id/title_spinner" />
+            app:layout_constraintStart_toStartOf="@+id/title_spinner_ST"
+            app:layout_constraintTop_toBottomOf="@+id/title_spinner_ST" />
 
         <EditText
-            android:id="@+id/txtSuburb"
+            android:id="@+id/txtSuburb_ST"
             android:layout_width="@dimen/txt_width"
             android:layout_height="@dimen/txt_height"
             android:layout_marginTop="5dp"
@@ -60,8 +60,8 @@
             android:hint="@string/suburb"
             android:inputType="textPersonName"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/txtAddress"
-            app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+            app:layout_constraintStart_toStartOf="@+id/txtAddress_ST"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddress_ST" />
 
         <TextView
             android:id="@+id/lblState"
@@ -104,12 +104,12 @@
             app:layout_constraintTop_toBottomOf="@+id/lblTitle" />
 
         <Spinner
-            android:id="@+id/state_spinner"
+            android:id="@+id/state_spinner_ST"
             android:layout_width="133dp"
             android:layout_height="@dimen/txt_height"
             android:layout_marginTop="5dp"
-            app:layout_constraintStart_toStartOf="@+id/txtSuburb"
-            app:layout_constraintTop_toBottomOf="@+id/txtSuburb" />
+            app:layout_constraintStart_toStartOf="@+id/txtSuburb_ST"
+            app:layout_constraintTop_toBottomOf="@+id/txtSuburb_ST" />
 
         <TextView
             android:id="@+id/lblTitle"
@@ -134,7 +134,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
 
         <Spinner
-            android:id="@+id/title_spinner"
+            android:id="@+id/title_spinner_ST"
             android:layout_width="102dp"
             android:layout_height="@dimen/txt_height"
             android:layout_marginStart="48dp"
@@ -153,7 +153,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblFirstName" />
 
         <EditText
-            android:id="@+id/txtAddress"
+            android:id="@+id/txtAddress_ST"
             android:layout_width="@dimen/txt_width"
             android:layout_height="@dimen/txt_height"
             android:layout_marginTop="5dp"
@@ -162,8 +162,8 @@
             android:hint="@string/address"
             android:inputType="textPersonName"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/txtEmail"
-            app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+            app:layout_constraintStart_toStartOf="@+id/txtEmail_ST"
+            app:layout_constraintTop_toBottomOf="@+id/txtEmail_ST" />
 
         <TextView
             android:id="@+id/lblSuburb"
@@ -176,7 +176,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
 
         <EditText
-            android:id="@+id/txtEmail"
+            android:id="@+id/txtEmail_ST"
             android:layout_width="@dimen/txt_width"
             android:layout_height="@dimen/txt_height"
             android:layout_marginTop="5dp"
@@ -185,11 +185,11 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/txtMobile"
-            app:layout_constraintTop_toBottomOf="@+id/txtMobile" />
+            app:layout_constraintStart_toStartOf="@+id/txtMobile_ST"
+            app:layout_constraintTop_toBottomOf="@+id/txtMobile_ST" />
 
         <EditText
-            android:id="@+id/txtPostCode"
+            android:id="@+id/txtPostCode_ST"
             android:layout_width="137dp"
             android:layout_height="@dimen/txt_height"
             android:layout_marginTop="5dp"
@@ -198,8 +198,8 @@
             android:hint="@string/post_code"
             android:inputType="textPostalAddress"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/state_spinner"
-            app:layout_constraintTop_toBottomOf="@+id/state_spinner" />
+            app:layout_constraintStart_toStartOf="@+id/state_spinner_ST"
+            app:layout_constraintTop_toBottomOf="@+id/state_spinner_ST" />
 
         <TextView
             android:id="@+id/lblPostCode"
@@ -227,10 +227,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btnDiscard_Sell" />
+            app:layout_constraintTop_toTopOf="@+id/btnDiscard_ST" />
 
         <Button
-            android:id="@+id/btnDiscard_Sell"
+            android:id="@+id/btnDiscard_ST"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
@@ -243,7 +243,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPostCode" />
+            app:layout_constraintTop_toBottomOf="@+id/txtPostCode_ST" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

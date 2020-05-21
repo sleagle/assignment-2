@@ -1,7 +1,6 @@
 package au.edu.utas.sddhewa.assignment.ui.home;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -26,6 +25,7 @@ import java.util.ArrayList;
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
+import au.edu.utas.sddhewa.assignment.ui.view.RaffleDetail;
 import au.edu.utas.sddhewa.assignment.ui.view.ViewRaffle;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
@@ -110,9 +110,15 @@ public class PlaceholderFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(Utility.KEY_SELECTED_RAFFLE, (Parcelable) rafflesCopy.get(position));
 
+                /*getActivity().getSupportFragmentManager().beginTransaction().
+                        replace(R.id.fragment_container,
+                                new RaffleDetail(bundle))
+                        .addToBackStack(null).commit();*/
+
                 getActivity().getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container,
-                                new ViewRaffle(bundle))
+                                new ViewRaffle(db, getActivity().getSupportFragmentManager(),
+                                        context, bundle))
                         .addToBackStack(null).commit();
             }
         });

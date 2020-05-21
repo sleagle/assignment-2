@@ -20,7 +20,7 @@ import au.edu.utas.sddhewa.assignment.util.Utility;
 public class Raffle implements Parcelable {
 
     /** id of the raffle */
-    private int raffleId;
+    private long raffleId;
 
     /** name of the raffle */
     private String name;
@@ -90,7 +90,7 @@ public class Raffle implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(raffleId);
+        dest.writeLong(raffleId);
         dest.writeString(name);
         dest.writeString(description);
         dest.writeByte((byte) (isActive ? 1 : 0));
@@ -124,7 +124,7 @@ public class Raffle implements Parcelable {
      *
      * @return raffle id
      */
-    public int getRaffleId() {
+    public long getRaffleId() {
         return raffleId;
     }
 
@@ -133,7 +133,7 @@ public class Raffle implements Parcelable {
      *
      * @param raffleId - id
      */
-    public void setRaffleId(int raffleId) {
+    public void setRaffleId(long raffleId) {
         this.raffleId = raffleId;
     }
 
@@ -235,7 +235,7 @@ public class Raffle implements Parcelable {
      * @param drawDate - draw date
      */
     public void setDrawDate(String drawDate) throws ParseException {
-        this.drawDate = Utility.DATE_FORMAT.parse(drawDate);;
+        this.drawDate = Utility.DATE_FORMAT.parse(drawDate);
     }
 
     /**
@@ -356,7 +356,7 @@ public class Raffle implements Parcelable {
 
     public String getTicketPriceString() {
 
-        return String.format("$ %.2f", getTicketPrice());
+        return Utility.getFormattedPrice(getTicketPrice());
     }
 
     /**

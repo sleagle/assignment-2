@@ -8,12 +8,15 @@
 
     <TextView
         android:id="@+id/lblCreateCustomer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/txt_height"
         android:layout_marginTop="16dp"
         android:text="@string/create_customer_form"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:background="@color/fragment_heading"
+        android:textColor="@color/btn_txt"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

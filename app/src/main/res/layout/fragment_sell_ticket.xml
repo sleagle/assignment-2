@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sell_tickets_layout"
@@ -7,126 +7,133 @@
     android:layout_height="match_parent"
     tools:context=".ui.sell.SellTicket">
 
-    <TextView
-        android:id="@+id/lblSellTickets"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="16dp"
-        android:text="@string/sell_tickets"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/lblRaffle"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="90dp"
-        android:text="@string/raffle"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent">
 
-    <Spinner
-        android:id="@+id/raffles_spinner"
-        android:layout_width="322dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblRaffle"
-        app:layout_constraintStart_toEndOf="@+id/lblRaffle"
-        app:layout_constraintTop_toTopOf="@+id/lblRaffle" />
+        <TextView
+            android:id="@+id/lblSellTickets"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="16dp"
+            android:text="@string/sell_tickets"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:background="@color/fragment_heading"
+            android:textColor="@color/btn_txt"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/lblNumTickets"
-        android:layout_width="44dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="15dp"
-        android:text="@string/num_tickets"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblRaffle"
-        app:layout_constraintTop_toBottomOf="@+id/lblRaffle" />
+        <TextView
+            android:id="@+id/lblRaffle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="75dp"
+            android:text="@string/raffle"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/num_tickets_spinner"
-        android:layout_width="75dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblNumTickets"
-        app:layout_constraintStart_toEndOf="@+id/lblNumTickets"
-        app:layout_constraintTop_toTopOf="@+id/lblNumTickets" />
+        <Spinner
+            android:id="@+id/raffles_spinner"
+            android:layout_width="322dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblRaffle"
+            app:layout_constraintStart_toEndOf="@+id/lblRaffle"
+            app:layout_constraintTop_toTopOf="@+id/lblRaffle" />
 
-    <TextView
-        android:id="@+id/lblTotalPrice"
-        android:layout_width="60dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="215dp"
-        android:layout_marginLeft="215dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/total_price"
-        android:textColor="#F60303"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/num_tickets_spinner" />
+        <TextView
+            android:id="@+id/lblNumTickets"
+            android:layout_width="44dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="15dp"
+            android:text="@string/num_tickets"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblRaffle"
+            app:layout_constraintTop_toBottomOf="@+id/lblRaffle" />
 
-    <TextView
-        android:id="@+id/txtTotalPrice"
-        android:layout_width="111dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/lblTotalPrice"
-        app:layout_constraintStart_toEndOf="@+id/lblTotalPrice"
-        app:layout_constraintTop_toTopOf="@+id/lblTotalPrice" />
+        <Spinner
+            android:id="@+id/num_tickets_spinner"
+            android:layout_width="75dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblNumTickets"
+            app:layout_constraintStart_toEndOf="@+id/lblNumTickets"
+            app:layout_constraintTop_toTopOf="@+id/lblNumTickets" />
 
-    <CheckBox
-        android:id="@+id/cbx_existing_customer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/existing_details"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblNumTickets"
-        app:layout_constraintTop_toBottomOf="@+id/lblTotalPrice" />
+        <TextView
+            android:id="@+id/lblTotalPrice"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="215dp"
+            android:layout_marginLeft="215dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/total_price"
+            android:textColor="#F60303"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/num_tickets_spinner" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/customer"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/cbx_existing_customer"
-        app:layout_constraintTop_toBottomOf="@+id/cbx_existing_customer" />
+        <TextView
+            android:id="@+id/txtTotalPrice"
+            android:layout_width="111dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/lblTotalPrice"
+            app:layout_constraintStart_toEndOf="@+id/lblTotalPrice"
+            app:layout_constraintTop_toTopOf="@+id/lblTotalPrice" />
 
-    <Spinner
-        android:id="@+id/customer_spinner"
-        android:layout_width="300dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.277" />
+        <CheckBox
+            android:id="@+id/cbx_existing_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/existing_details"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblNumTickets"
+            app:layout_constraintTop_toBottomOf="@+id/lblTotalPrice" />
 
-    <include
-        layout="@layout/sell_tickets_customer_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customer_spinner" />
+        <TextView
+            android:id="@+id/lblCustomer_ST"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/customer"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/cbx_existing_customer"
+            app:layout_constraintTop_toBottomOf="@+id/cbx_existing_customer" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Spinner
+            android:id="@+id/customer_spinner"
+            android:layout_width="300dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblCustomer_ST"
+            app:layout_constraintStart_toEndOf="@+id/lblCustomer_ST"
+            app:layout_constraintTop_toTopOf="@+id/lblCustomer_ST"
+            app:layout_constraintVertical_bias="0.277" />
+
+        <include
+            layout="@layout/sell_tickets_customer_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customer_spinner" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -67,6 +67,26 @@ public class RaffleTable {
         return db.insert(TABLE_NAME, null, values);
     }
 
+    public static void update(SQLiteDatabase db, Raffle raffle) {
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, raffle.getName());
+        values.put(KEY_DESCRIPTION, raffle.getDescription());
+        values.put(KEY_TYPE, raffle.getTypeId().id);
+        values.put(KEY_STARTING_DATE, raffle.getStartingDate());
+        values.put(KEY_DRAW_DATE, raffle.getDrawDate());
+        values.put(KEY_IS_ACTIVE, raffle.isActive());
+        values.put(KEY_LOCATION, raffle.getLocation());
+        values.put(KEY_TICKET_PRICE, raffle.getTicketPrice());
+        values.put(KEY_NUM_TICKETS, raffle.getNoOfTickets());
+        values.put(KEY_MAX_TICKETS, raffle.getMaxTickets());
+        values.put(KEY_TICKETS_SOLD, raffle.getTicketsSold());
+        values.put(KEY_RAFFLE_COVER, raffle.getRaffleCover());
+
+        db.update(TABLE_NAME, values, KEY_RAFFLE_ID+"= ?",
+                new String[] { ""+raffle.getRaffleId() });
+    }
+
     public static ArrayList<Raffle> selectAll(SQLiteDatabase db) throws ParseException {
 
         ArrayList<Raffle> raffles = new ArrayList<>();

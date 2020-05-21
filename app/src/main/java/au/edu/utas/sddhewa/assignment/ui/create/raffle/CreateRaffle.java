@@ -45,7 +45,7 @@ import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.ui.CustomAlertDialog;
 import au.edu.utas.sddhewa.assignment.ui.DatePickerFragment;
-import au.edu.utas.sddhewa.assignment.ui.create.FormInteraction;
+import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.RaffleType;
 

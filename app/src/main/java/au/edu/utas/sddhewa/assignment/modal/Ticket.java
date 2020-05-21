@@ -1,17 +1,29 @@
 package au.edu.utas.sddhewa.assignment.modal;
 
-import java.util.Date;
-
 public class Ticket {
 
-    private int ticketId;
+    private String ticketNumber;
 
-    private int raffleId;
+    private long RaffleTicketId;
 
-    private float price;
+    public Ticket(String ticketNumber, long raffleTicketId) {
+        this.ticketNumber = ticketNumber;
+        RaffleTicketId = raffleTicketId;
+    }
 
-    private Date purchasedDate;
+    public String getTicketNumber() {
+        return ticketNumber;
+    }
 
-    private int customerId;
+    public void setTicketNumber(String ticketNumber) {
+        this.ticketNumber = ticketNumber;
+    }
 
+    public long getRaffleTicketId() {
+        return RaffleTicketId;
+    }
+
+    public void setRaffleTicketId(int raffleTicketId) {
+        RaffleTicketId = raffleTicketId;
+    }
 }

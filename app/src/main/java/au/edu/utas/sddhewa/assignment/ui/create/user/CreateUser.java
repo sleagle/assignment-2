@@ -19,7 +19,8 @@ import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.ui.CustomAlertDialog;
-import au.edu.utas.sddhewa.assignment.ui.create.FormInteraction;
+import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
+import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
 
@@ -29,7 +30,7 @@ import au.edu.utas.sddhewa.assignment.util.Utility;
  */
 public class CreateUser extends Fragment implements FormInteraction {
 
-    private final FragmentManager fm;
+    private final FragmentManager fragmentManager;
     private final Context context;
     private final SQLiteDatabase db;
 
@@ -43,10 +44,10 @@ public class CreateUser extends Fragment implements FormInteraction {
     private TextView postCode;
     private Spinner stateSpinner;
 
-    public CreateUser(Context context, SQLiteDatabase db, FragmentManager fm) {
+    public CreateUser(Context context, SQLiteDatabase db, FragmentManager fragmentManager) {
         this.context = context;
         this.db = db;
-        this.fm = fm;
+        this.fragmentManager = fragmentManager;
     }
 
     @Override
@@ -66,7 +67,7 @@ public class CreateUser extends Fragment implements FormInteraction {
 
         titleSpinner = createUser.findViewById(R.id.title_spinner);
         titleSpinner.setAdapter(Utility.getUserTitleAdapter(context,
-                getResources().getStringArray(R.array.states_array)));
+                getResources().getStringArray(R.array.title_array)));
 
         stateSpinner = createUser.findViewById(R.id.state_spinner);
         stateSpinner.setAdapter(Utility.getUserStateAdapter(context,
@@ -88,7 +89,7 @@ public class CreateUser extends Fragment implements FormInteraction {
             @Override
             public void onClick(View v) {
                 CustomAlertDialog fragment = new CustomAlertDialog(createUserObj);
-                fragment.show(fm, "alert");
+                fragment.show(fragmentManager, "alert");
             }
         });
 
@@ -105,6 +106,10 @@ public class CreateUser extends Fragment implements FormInteraction {
         suburb.setText("");
         stateSpinner.setSelection(0);
         postCode.setText("");
+
+        fragmentManager.beginTransaction().
+                replace(R.id.fragment_container,
+                        new Home(db, fragmentManager, context)).commit();
     }
 
     public void createEntity() {
