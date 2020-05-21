@@ -1,331 +1,341 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.create.raffle.CreateRaffle">
 
-    <TextView
-        android:id="@+id/lblCreateRaffle"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="16dp"
-        android:text="@string/create_raffle_form"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/lblName"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/name"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreateRaffle" />
+        <TextView
+            android:id="@+id/lblCreateRaffle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="16dp"
+            android:text="@string/create_raffle_form"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:background="@color/fragment_heading"
+            android:textColor="@color/btn_txt"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        android:autofillHints="@string/name"
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblName"
-        app:layout_constraintStart_toEndOf="@+id/lblName"
-        app:layout_constraintTop_toTopOf="@+id/lblName" />
+        <TextView
+            android:id="@+id/lblName"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/name"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblCreateRaffle" />
 
-    <TextView
-        android:id="@+id/lblDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="5dp"
-        android:text="@string/description"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblName"
-        app:layout_constraintTop_toBottomOf="@+id/lblName" />
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="27dp"
+            android:layout_marginLeft="27dp"
+            android:autofillHints="@string/name"
+            android:ems="10"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblName"
+            app:layout_constraintStart_toEndOf="@+id/lblName"
+            app:layout_constraintTop_toTopOf="@+id/lblName" />
 
-    <EditText
-        android:id="@+id/txtDesc"
-        android:layout_width="283dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:autofillHints="@string/description"
-        android:ems="10"
-        android:hint="@string/description"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblDesc"
-        app:layout_constraintStart_toEndOf="@+id/lblDesc"
-        app:layout_constraintTop_toTopOf="@+id/lblDesc" />
+        <TextView
+            android:id="@+id/lblDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="5dp"
+            android:text="@string/description"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblName"
+            app:layout_constraintTop_toBottomOf="@+id/lblName" />
 
-    <TextView
-        android:id="@+id/lblRaffleType"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="5dp"
-        android:text="@string/type"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblDesc"
-        app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
+        <EditText
+            android:id="@+id/txtDesc"
+            android:layout_width="283dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="21dp"
+            android:layout_marginLeft="21dp"
+            android:autofillHints="@string/description"
+            android:ems="10"
+            android:hint="@string/description"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblDesc"
+            app:layout_constraintStart_toEndOf="@+id/lblDesc"
+            app:layout_constraintTop_toTopOf="@+id/lblDesc" />
 
-    <Spinner
-        android:id="@+id/raffle_type_spinner"
-        android:layout_width="228dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblRaffleType"
-        app:layout_constraintStart_toEndOf="@+id/lblRaffleType"
-        app:layout_constraintTop_toTopOf="@+id/lblRaffleType" />
+        <TextView
+            android:id="@+id/lblRaffleType"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="5dp"
+            android:text="@string/type"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblDesc"
+            app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
 
-    <TextView
-        android:id="@+id/lblStartDate"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="5dp"
-        android:text="@string/start_date"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblRaffleType"
-        app:layout_constraintTop_toBottomOf="@+id/lblRaffleType" />
+        <Spinner
+            android:id="@+id/raffle_type_spinner"
+            android:layout_width="228dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblRaffleType"
+            app:layout_constraintStart_toEndOf="@+id/lblRaffleType"
+            app:layout_constraintTop_toTopOf="@+id/lblRaffleType" />
 
-    <TextView
-        android:id="@+id/txtStartDate"
-        android:layout_width="100dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
-        android:autofillHints="@string/start_date"
-        android:ems="10"
-        android:hint="@string/start_date"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblStartDate"
-        app:layout_constraintStart_toEndOf="@+id/lblStartDate"
-        app:layout_constraintTop_toTopOf="@+id/lblStartDate" />
+        <TextView
+            android:id="@+id/lblStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="5dp"
+            android:text="@string/start_date"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblRaffleType"
+            app:layout_constraintTop_toBottomOf="@+id/lblRaffleType" />
 
-    <Button
-        android:id="@+id/btnCalander"
-        android:layout_width="42dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:background="@drawable/ic_date"
-        app:layout_constraintBottom_toBottomOf="@+id/txtStartDate"
-        app:layout_constraintStart_toEndOf="@+id/txtStartDate"
-        app:layout_constraintTop_toTopOf="@+id/txtStartDate" />
+        <TextView
+            android:id="@+id/txtStartDate"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="31dp"
+            android:layout_marginLeft="31dp"
+            android:autofillHints="@string/start_date"
+            android:ems="10"
+            android:hint="@string/start_date"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblStartDate"
+            app:layout_constraintStart_toEndOf="@+id/lblStartDate"
+            app:layout_constraintTop_toTopOf="@+id/lblStartDate" />
 
-    <TextView
-        android:id="@+id/lblDrawDate"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="5dp"
-        android:text="@string/draw_date"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblStartDate"
-        app:layout_constraintTop_toBottomOf="@+id/lblStartDate" />
+        <Button
+            android:id="@+id/btnCalander"
+            android:layout_width="42dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_date"
+            app:layout_constraintBottom_toBottomOf="@+id/txtStartDate"
+            app:layout_constraintStart_toEndOf="@+id/txtStartDate"
+            app:layout_constraintTop_toTopOf="@+id/txtStartDate" />
 
-    <TextView
-        android:id="@+id/txtCR_DrawDate"
-        android:layout_width="100dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:autofillHints="@string/draw_date"
-        android:ems="10"
-        android:hint="@string/draw_date"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
-        app:layout_constraintStart_toEndOf="@+id/lblDrawDate"
-        app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
+        <TextView
+            android:id="@+id/lblDrawDate"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="5dp"
+            android:text="@string/draw_date"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblStartDate"
+            app:layout_constraintTop_toBottomOf="@+id/lblStartDate" />
 
-    <Button
-        android:id="@+id/btnCalanderD"
-        android:layout_width="42dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:background="@drawable/ic_date"
+        <TextView
+            android:id="@+id/txtCR_DrawDate"
+            android:layout_width="100dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="29dp"
+            android:layout_marginLeft="29dp"
+            android:autofillHints="@string/draw_date"
+            android:ems="10"
+            android:hint="@string/draw_date"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
+            app:layout_constraintStart_toEndOf="@+id/lblDrawDate"
+            app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
 
-        app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
-        app:layout_constraintStart_toEndOf="@+id/txtCR_DrawDate"
-        app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
+        <Button
+            android:id="@+id/btnCalanderD"
+            android:layout_width="42dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_date"
 
-    <TextView
-        android:id="@+id/lblLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="5dp"
-        android:text="@string/location"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblDrawDate"
-        app:layout_constraintTop_toBottomOf="@+id/lblDrawDate" />
+            app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
+            app:layout_constraintStart_toEndOf="@+id/txtCR_DrawDate"
+            app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
 
-    <EditText
-        android:id="@+id/txtLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="38dp"
-        android:layout_marginLeft="38dp"
-        android:autofillHints="@string/location"
-        android:ems="10"
-        android:hint="@string/location"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblLocation"
-        app:layout_constraintStart_toEndOf="@+id/lblLocation"
-        app:layout_constraintTop_toTopOf="@+id/lblLocation" />
+        <TextView
+            android:id="@+id/lblLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="5dp"
+            android:text="@string/location"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblDrawDate"
+            app:layout_constraintTop_toBottomOf="@+id/lblDrawDate" />
 
-    <TextView
-        android:id="@+id/lblTicketPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="5dp"
-        android:text="@string/ticket_price"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblLocation"
-        app:layout_constraintTop_toBottomOf="@+id/lblLocation" />
+        <EditText
+            android:id="@+id/txtLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="38dp"
+            android:layout_marginLeft="38dp"
+            android:autofillHints="@string/location"
+            android:ems="10"
+            android:hint="@string/location"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblLocation"
+            app:layout_constraintStart_toEndOf="@+id/lblLocation"
+            app:layout_constraintTop_toTopOf="@+id/lblLocation" />
 
-    <EditText
-        android:id="@+id/txTicketPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:autofillHints="@string/ticket_price"
-        android:ems="10"
-        android:hint="@string/ticket_price"
-        android:inputType="numberDecimal"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblTicketPrice"
-        app:layout_constraintStart_toEndOf="@+id/lblTicketPrice"
-        app:layout_constraintTop_toTopOf="@+id/lblTicketPrice" />
+        <TextView
+            android:id="@+id/lblTicketPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="5dp"
+            android:text="@string/ticket_price"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblLocation"
+            app:layout_constraintTop_toBottomOf="@+id/lblLocation" />
 
-    <TextView
-        android:id="@+id/lblNumTickets"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="5dp"
-        android:text="@string/num_tickets"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
-        app:layout_constraintTop_toBottomOf="@+id/lblTicketPrice" />
+        <EditText
+            android:id="@+id/txTicketPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="19dp"
+            android:layout_marginLeft="19dp"
+            android:autofillHints="@string/ticket_price"
+            android:ems="10"
+            android:hint="@string/ticket_price"
+            android:inputType="numberDecimal"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblTicketPrice"
+            app:layout_constraintStart_toEndOf="@+id/lblTicketPrice"
+            app:layout_constraintTop_toTopOf="@+id/lblTicketPrice" />
 
-    <Spinner
-        android:id="@+id/no_tickets_spinner"
-        android:layout_width="120dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblNumTickets"
-        app:layout_constraintStart_toEndOf="@+id/lblNumTickets"
-        app:layout_constraintTop_toTopOf="@+id/lblNumTickets" />
+        <TextView
+            android:id="@+id/lblNumTickets"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="5dp"
+            android:text="@string/num_tickets"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
+            app:layout_constraintTop_toBottomOf="@+id/lblTicketPrice" />
 
-    <TextView
-        android:id="@+id/lblMaxTickets"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginTop="5dp"
-        android:text="@string/max_tickets"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblNumTickets"
-        app:layout_constraintTop_toBottomOf="@+id/lblNumTickets" />
+        <Spinner
+            android:id="@+id/no_tickets_spinner"
+            android:layout_width="120dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblNumTickets"
+            app:layout_constraintStart_toEndOf="@+id/lblNumTickets"
+            app:layout_constraintTop_toTopOf="@+id/lblNumTickets" />
 
-    <EditText
-        android:id="@+id/txtMaxTickets"
-        android:layout_width="87dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
-        android:autofillHints="@string/max_tickets"
-        android:ems="10"
-        android:hint="@string/max_tickets"
-        android:inputType="number"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lblMaxTickets"
-        app:layout_constraintStart_toEndOf="@+id/lblMaxTickets"
-        app:layout_constraintTop_toTopOf="@+id/lblMaxTickets" />
+        <TextView
+            android:id="@+id/lblMaxTickets"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="5dp"
+            android:text="@string/max_tickets"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblNumTickets"
+            app:layout_constraintTop_toBottomOf="@+id/lblNumTickets" />
 
-    <CheckBox
-        android:id="@+id/cbxCoverImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/add_cover"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/lblMaxTickets"
-        app:layout_constraintTop_toBottomOf="@+id/lblMaxTickets" />
+        <EditText
+            android:id="@+id/txtMaxTickets"
+            android:layout_width="87dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            android:autofillHints="@string/max_tickets"
+            android:ems="10"
+            android:hint="@string/max_tickets"
+            android:inputType="number"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblMaxTickets"
+            app:layout_constraintStart_toEndOf="@+id/lblMaxTickets"
+            app:layout_constraintTop_toTopOf="@+id/lblMaxTickets" />
 
-    <TextView
-        android:id="@+id/lblCoverImage"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/cover_image"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/cbxCoverImage"
-        app:layout_constraintTop_toBottomOf="@+id/cbxCoverImage" />
+        <CheckBox
+            android:id="@+id/cbxCoverImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/add_cover"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblMaxTickets"
+            app:layout_constraintTop_toBottomOf="@+id/lblMaxTickets" />
 
-    <ImageView
-        android:id="@+id/imgCover"
-        android:layout_width="110dp"
-        android:layout_height="104dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:contentDescription="@string/cover_image"
-        app:layout_constraintBottom_toBottomOf="@+id/lblCoverImage"
-        app:layout_constraintStart_toEndOf="@+id/lblCoverImage"
-        app:layout_constraintTop_toTopOf="@+id/lblCoverImage"
-        app:layout_constraintVertical_bias="0.373" />
+        <TextView
+            android:id="@+id/lblCoverImage"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="48dp"
+            android:text="@string/cover_image"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/cbxCoverImage"
+            app:layout_constraintTop_toBottomOf="@+id/cbxCoverImage" />
 
-    <Button
-        android:id="@+id/btnCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
-        android:background="@color/btn_success"
-        android:text="@string/create"
-        android:textColor="@color/btn_txt"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
+        <ImageView
+            android:id="@+id/imgCover"
+            android:layout_width="110dp"
+            android:layout_height="104dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:contentDescription="@string/cover_image"
+            app:layout_constraintBottom_toBottomOf="@+id/lblCoverImage"
+            app:layout_constraintStart_toEndOf="@+id/lblCoverImage"
+            app:layout_constraintTop_toTopOf="@+id/lblCoverImage"
+            app:layout_constraintVertical_bias="0.373" />
 
-    <Button
-        android:id="@+id/btnDiscard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="76dp"
-        android:background="@color/btn_discard"
-        android:text="@string/discard"
-        android:textColor="@color/btn_txt"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCoverImage" />
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="68dp"
+            android:layout_marginRight="68dp"
+            android:background="@color/btn_success"
+            android:text="@string/create"
+            android:textColor="@color/btn_txt"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
 
-    <Button
-        android:id="@+id/btnTakeImage"
-        android:layout_width="40dp"
-        android:layout_height="@dimen/txt_height"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:background="@drawable/ic_camera"
-        app:layout_constraintBottom_toBottomOf="@+id/imgCover"
-        app:layout_constraintStart_toEndOf="@+id/imgCover"
-        app:layout_constraintTop_toTopOf="@+id/imgCover" />
+        <Button
+            android:id="@+id/btnDiscard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/btn_discard"
+            android:text="@string/discard"
+            android:textColor="@color/btn_txt"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblCoverImage" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnTakeImage"
+            android:layout_width="40dp"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:background="@drawable/ic_camera"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+            app:layout_constraintStart_toEndOf="@+id/imgCover"
+            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

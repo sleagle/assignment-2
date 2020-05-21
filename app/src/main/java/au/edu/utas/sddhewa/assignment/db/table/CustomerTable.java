@@ -3,7 +3,6 @@ package au.edu.utas.sddhewa.assignment.db.table;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.text.ParseException;
 import java.util.ArrayList;

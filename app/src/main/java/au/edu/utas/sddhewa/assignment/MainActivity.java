@@ -45,27 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Database databaseConnection = new Database(this);
         db = databaseConnection.open();
-
-      /*  try {
-            RaffleTable.insert(db, new Raffle("Test Raffle 1", "this is a test raffle",
-                    RaffleType.NORMAL_RAFFLE, "04/05/2020", "04/056/2020",
-                    true, "Hobart", 10.50f, 100, 0, 0));
-            RaffleTable.insert(db, new Raffle("Test Raffle 2", "this is a test raffle",
-                    RaffleType.NORMAL_RAFFLE, "04/05/2020", "04/056/2020",
-                    true, "Hobart", 10.50f, 100, 0, 0));
-            RaffleTable.insert(db, new Raffle("Test Past Raffle 1", "this is a test raffle",
-                    RaffleType.NORMAL_RAFFLE, "04/05/2020", "04/056/2020",
-                    false, "Hobart", 10.50f, 100, 0, 0));
-            RaffleTable.insert(db, new Raffle("Test Past Raffle 2", "this is a test raffle",
-                    RaffleType.NORMAL_RAFFLE, "04/05/2020", "04/056/2020",
-                    false, "Hobart", 10.50f, 100, 0, 0));
-            RaffleTable.insert(db, new Raffle("Test Raffle 3", "this is a test raffle",
-                    RaffleType.NORMAL_RAFFLE, "04/05/2020", "04/056/2020",
-                    true, "Hobart", 10.50f, 100, 0, 0));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-*/
+        
         drawerLayout = findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
@@ -113,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_sell_raffle:
                 getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container,
-                                new SellTicket(getApplicationContext(), db))
+                                new SellTicket(getApplicationContext(), db, getSupportFragmentManager()))
                         .addToBackStack("sellTicket").commit();
                 navigationView.setCheckedItem(R.id.nav_sell_raffle);
                 break;

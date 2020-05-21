@@ -7,6 +7,8 @@ import android.util.Log;
 
 import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
+import au.edu.utas.sddhewa.assignment.db.table.RaffleTicketTable;
+import au.edu.utas.sddhewa.assignment.db.table.TicketTable;
 
 public final class Database {
 
@@ -17,7 +19,7 @@ public final class Database {
     private static final String DATABASE_NAME = "RaffleDatabase";
 
     //The version of the database. Increment this whenever you change the /structure/ of the database
-    private static final int   DATABASE_VERSION   = 2;
+    private static final int   DATABASE_VERSION   = 1;
 
     //The connection to the database itself
     private SQLiteDatabase mDb;
@@ -62,7 +64,9 @@ public final class Database {
             //--- ADD YOUR CREATE TABLE FUNCTIONS HERE ---
             db.execSQL(RaffleTable.CREATE_STATEMENT);
             db.execSQL(CustomerTable.CREATE_STATEMENT);
-            Log.d("RaffleTable", "Created Successfully");
+            db.execSQL(RaffleTicketTable.CREATE_STATEMENT);
+            db.execSQL(TicketTable.CREATE_STATEMENT);
+            Log.d("RaffleDatabase", "Created Successfully");
 
         }
 
@@ -76,6 +80,8 @@ public final class Database {
             //db.execSQL("DROP TABLE IF EXISTS " + PropertyTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + RaffleTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + CustomerTable.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + RaffleTicketTable.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + TicketTable.TABLE_NAME);
             onCreate(db);
         }
     }

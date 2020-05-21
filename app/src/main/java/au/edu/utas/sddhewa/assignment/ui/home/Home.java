@@ -5,13 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.HardwarePropertiesManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,23 +25,23 @@ import au.edu.utas.sddhewa.assignment.R;
  */
 public class Home extends Fragment {
 
-    private final TabPageAdapter adapter;
+    private final HomeTabPageAdapter adapter;
     private final SQLiteDatabase db;
 
     public Home(SQLiteDatabase db, @NonNull FragmentManager fm, Context context) {
         this.db = db;
-        adapter = new TabPageAdapter(fm, context, db);
+        adapter = new HomeTabPageAdapter(fm, context, db);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("????", "???");
+
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final ViewPager viewPager = root.findViewById(R.id.view_pager);
+        View home = inflater.inflate(R.layout.fragment_home, container, false);
+        final ViewPager viewPager = home.findViewById(R.id.view_pager);
         viewPager.setAdapter(adapter);
-        TabLayout tabs = root.findViewById(R.id.home_tabs);
+        TabLayout tabs = home.findViewById(R.id.home_tabs);
         tabs.setupWithViewPager(viewPager);
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -66,7 +63,7 @@ public class Home extends Fragment {
         });
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
-        return root;
 
+        return home;
     }
 }

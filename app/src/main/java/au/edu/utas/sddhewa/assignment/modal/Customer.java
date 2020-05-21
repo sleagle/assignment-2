@@ -2,7 +2,7 @@ package au.edu.utas.sddhewa.assignment.modal;
 
 public class Customer {
 
-    private int customerId;
+    private long customerId;
 
     private String title;
 
@@ -37,11 +37,11 @@ public class Customer {
         this.postCode = postCode;
     }
 
-    public int getCustomerId() {
+    public long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 
@@ -129,7 +129,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return  getFullName(); 
+        return  getFullName();
         /*return new StringBuilder("Customer { customerId: ").append(customerId)
                 .append(" title: ").append(title).append(" firstName: ").append(firstName)
                 .append(" lastName: ").append(lastName).append(" mobileNo: ").append(mobileNo)
