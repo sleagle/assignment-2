@@ -51,6 +51,9 @@
     <string name="tab_tickets">Tickets Sold</string>
     <string name="raffle_details">Raffle Details</string>
     <string name="draw_winner">Draw Winner</string>
+    <string name="purchased_on">Purchased on: </string>
+    <string name="tickets"> Tickets</string>
+    <string name="total">Total: </string>
 
     <!-- strings related to sell tickets fragment -->
     <string name="sell_tickets">Sell Tickets</string>
@@ -59,6 +62,9 @@
     <string name="total_price">Total price:</string>
     <string name="customer">Customer:</string>
     <string name="sell">Sell</string>
+
+    <!-- strings related to ticket info fragment -->
+    <string name="ticket_detail_title">%1$s\'s Ticket Detail(s)</string>
 
     <string-array name="title_array">
         <item>Dr</item>
@@ -100,10 +106,12 @@
     <string name="sell_ticket_success">Sold Ticket(s) Successfully</string>
 
     <string name="alert_dialog_title">Alert!</string>
-    <string name="alert_dialog_msg">Are you sure you want to discard the changes?</string>
+    <string name="alert_dialog_discard_msg">Are you sure you want to discard the changes?</string>
     <string name="alert_dialog_yes">Yes</string>
     <string name="alert_dialog_no">No</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="warning_dialog_title">Warning!</string>
+    <string name="warning_dialog_max_buy_msg">This Customer has already brought max amount</string>
+    <string name="warning_dialog_over_buy_msg">This Customer will exceed the max limit \nCan only purchase %1$d ticket(s)</string>
+    <string name="warning_dialog_dismiss">Dismiss</string>
 </resources>

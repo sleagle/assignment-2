@@ -77,6 +77,25 @@ public class CustomerTable {
         return customers;
     }
 
+    public static Customer selectById (SQLiteDatabase db, long customerId) throws ParseException {
+
+        Customer customer = null;
+        Cursor c = db.query(TABLE_NAME, null, KEY_CUSTOMER_ID+"= ?",
+                new String[] { String.valueOf(customerId) }, null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+
+            while (!c.isAfterLast()) {
+                customer = createFromCursor(c);
+
+                c.moveToNext();
+            }
+        }
+
+        return customer;
+    }
+
     private static Customer createFromCursor(Cursor cursor) throws ParseException {
 
         if (cursor == null || cursor.isAfterLast() || cursor.isBeforeFirst()) {

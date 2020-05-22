@@ -1,6 +1,9 @@
 package au.edu.utas.sddhewa.assignment.modal;
 
-public class Customer {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Customer implements Parcelable {
 
     private long customerId;
 
@@ -36,6 +39,50 @@ public class Customer {
         this.state = state;
         this.postCode = postCode;
     }
+
+    private Customer(Parcel in) {
+        customerId = in.readLong();
+        title = in.readString();
+        firstName = in.readString();
+        lastName = in.readString();
+        mobileNo = in.readInt();
+        email = in.readString();
+        address = in.readString();
+        suburb = in.readString();
+        state = in.readString();
+        postCode = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(customerId);
+        dest.writeString(title);
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+        dest.writeInt(mobileNo);
+        dest.writeString(email);
+        dest.writeString(address);
+        dest.writeString(suburb);
+        dest.writeString(state);
+        dest.writeInt(postCode);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Customer> CREATOR = new Creator<Customer>() {
+        @Override
+        public Customer createFromParcel(Parcel in) {
+            return new Customer(in);
+        }
+
+        @Override
+        public Customer[] newArray(int size) {
+            return new Customer[size];
+        }
+    };
 
     public long getCustomerId() {
         return customerId;

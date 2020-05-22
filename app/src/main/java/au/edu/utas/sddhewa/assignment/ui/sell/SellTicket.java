@@ -32,7 +32,8 @@ import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
 import au.edu.utas.sddhewa.assignment.modal.Ticket;
-import au.edu.utas.sddhewa.assignment.ui.CustomAlertDialog;
+import au.edu.utas.sddhewa.assignment.ui.CustomDismissAlertDialog;
+import au.edu.utas.sddhewa.assignment.ui.CustomWarningDialog;
 import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.Utility;
@@ -51,6 +52,7 @@ public class SellTicket extends Fragment implements FormInteraction {
     private Customer customer;
     private float total;
     private List<Integer> ticketsList;
+    private int difference;
 
     private Spinner rafflesSpinner;
     private Spinner numTicketsSpinner;
@@ -117,7 +119,7 @@ public class SellTicket extends Fragment implements FormInteraction {
             @Override
             public void onClick(View v) {
 
-                CustomAlertDialog fragment = new CustomAlertDialog(ticket);
+                CustomDismissAlertDialog fragment = new CustomDismissAlertDialog(ticket);
                 fragment.show(fragmentManager, "alert");
             }
         });
@@ -126,7 +128,14 @@ public class SellTicket extends Fragment implements FormInteraction {
         sellBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createEntity();
+                String res = validateRequest();
+                if (res.equals(Utility.KEY_VALID)) {
+                    createEntity();
+                }
+                else {
+                    CustomWarningDialog fragment = new CustomWarningDialog(res, difference);
+                    fragment.show(fragmentManager, "alert");
+                }
             }
         });
 
@@ -260,6 +269,37 @@ public class SellTicket extends Fragment implements FormInteraction {
         createNormalTicket(raffleTicket);
     }
 
+    private String validateRequest() {
+
+        if (existingUserCbx.isChecked()) {
+            try {
+                List<RaffleTicket> tickets =
+                        RaffleTicketTable.selectAllByCustomerId(db, customer.getCustomerId());
+                if (tickets.size() == 0) {
+                    return Utility.KEY_VALID;
+                } else {
+                    int selected = Integer.parseInt(numTicketsSpinner.getSelectedItem().toString());
+                    int count = 0;
+                    for (RaffleTicket rt : tickets) {
+                        count += rt.getNumTickets();
+                    }
+
+                    if (count == raffle.getMaxTickets()){
+                        return Utility.KEY_MAX_BUY_ALERT;
+                    }
+
+                    else if ((count + selected) > raffle.getMaxTickets()) {
+                        difference = raffle.getMaxTickets() - count;
+                        return Utility.KEY_OVER_BUY_ALERT;
+                    }
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        return Utility.KEY_VALID;
+    }
+
     private void createNormalTicket(RaffleTicket raffleTicket) {
 
         int number = raffle.getTicketsSold();
@@ -271,7 +311,6 @@ public class SellTicket extends Fragment implements FormInteraction {
 
             TicketTable.insert(db, new Ticket(ticketNum, raffleTicket.getRaffleTicketId()));
         }
-
         Log.d("###### Create ticket","insert successful");
 
         raffle.setTicketsSold(number);

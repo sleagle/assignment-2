@@ -18,7 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.modal.Customer;
-import au.edu.utas.sddhewa.assignment.ui.CustomAlertDialog;
+import au.edu.utas.sddhewa.assignment.ui.CustomDismissAlertDialog;
 import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.Utility;
@@ -88,7 +88,7 @@ public class CreateUser extends Fragment implements FormInteraction {
         discardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomAlertDialog fragment = new CustomAlertDialog(createUserObj);
+                CustomDismissAlertDialog fragment = new CustomDismissAlertDialog(createUserObj);
                 fragment.show(fragmentManager, "alert");
             }
         });

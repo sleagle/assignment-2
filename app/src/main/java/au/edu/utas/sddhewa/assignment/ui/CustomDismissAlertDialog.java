@@ -10,11 +10,11 @@ import androidx.fragment.app.DialogFragment;
 
 import au.edu.utas.sddhewa.assignment.R;
 
-public class CustomAlertDialog extends DialogFragment {
+public class CustomDismissAlertDialog extends DialogFragment {
 
     private FormInteraction createObj;
 
-    public CustomAlertDialog(FormInteraction obj) {
+    public CustomDismissAlertDialog(FormInteraction obj) {
         this.createObj = obj;
     }
 
@@ -23,7 +23,7 @@ public class CustomAlertDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         builder.setTitle(R.string.alert_dialog_title);
-        builder.setMessage(R.string.alert_dialog_msg);
+        builder.setMessage(R.string.alert_dialog_discard_msg);
 
         builder.setPositiveButton(R.string.alert_dialog_no, new DialogInterface.OnClickListener() {
             @Override
