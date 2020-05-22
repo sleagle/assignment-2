@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
-import au.edu.utas.sddhewa.assignment.ui.view.RaffleDetail;
 import au.edu.utas.sddhewa.assignment.ui.view.ViewRaffle;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
@@ -48,6 +47,14 @@ public class PlaceholderFragment extends Fragment {
         this.context = context;
         this.db = db;
         this.selectedTab = i;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null) {
+            selectedTab = savedInstanceState.getInt("selectedTab");
+        }
     }
 
     @Override
@@ -124,5 +131,11 @@ public class PlaceholderFragment extends Fragment {
         });
 
         return root;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("selectedTab", selectedTab);
     }
 }

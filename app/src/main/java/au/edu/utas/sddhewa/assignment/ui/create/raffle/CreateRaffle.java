@@ -43,7 +43,7 @@ import java.util.Date;
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
-import au.edu.utas.sddhewa.assignment.ui.CustomAlertDialog;
+import au.edu.utas.sddhewa.assignment.ui.CustomDismissAlertDialog;
 import au.edu.utas.sddhewa.assignment.ui.DatePickerFragment;
 import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
@@ -171,7 +171,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         discard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomAlertDialog fragment = new CustomAlertDialog(createRaffleObj);
+                CustomDismissAlertDialog fragment = new CustomDismissAlertDialog(createRaffleObj);
                 fragment.show(fragmentManager, "alert");
             }
         });

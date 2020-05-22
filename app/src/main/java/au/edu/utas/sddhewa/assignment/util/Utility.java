@@ -15,6 +15,12 @@ public final class Utility {
 
     public static final String KEY_SELECTED_RAFFLE = "SELECTED_RAFFLE";
 
+    public static final String KEY_VALID= "valid";
+
+    public static final String KEY_MAX_BUY_ALERT = "max-buy";
+
+    public static final String KEY_OVER_BUY_ALERT = "over-buy";
+
     public static String getFormattedPrice(float price) {
         return String.format("$ %.2f", price);
     }
