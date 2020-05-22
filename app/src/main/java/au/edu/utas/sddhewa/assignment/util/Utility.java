@@ -15,6 +15,8 @@ public final class Utility {
 
     public static final String KEY_SELECTED_RAFFLE = "SELECTED_RAFFLE";
 
+    public static final String KEY_SELECTED_RAFFLE_TICKET = "SELECTED_RAFFLE_TICKET";
+
     public static final String KEY_VALID= "valid";
 
     public static final String KEY_MAX_BUY_ALERT = "max-buy";

@@ -16,7 +16,8 @@
         android:layout_marginRight="45dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="false"/>
 
     <TextView
         android:id="@+id/txtPurchasedOn"
@@ -24,7 +25,8 @@
         android:layout_height="30dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="@+id/txtCustomerName"
-        app:layout_constraintTop_toBottomOf="@+id/txtCustomerName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCustomerName"
+        android:focusable="false"/>
 
     <TextView
         android:id="@+id/txtTotTickets"
@@ -32,7 +34,8 @@
         android:layout_height="32dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="@+id/txtPurchasedOn"
-        app:layout_constraintTop_toBottomOf="@+id/txtPurchasedOn" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPurchasedOn"
+        android:focusable="false"/>
 
     <TextView
         android:id="@+id/txtTotPrice"
@@ -40,5 +43,6 @@
         android:layout_height="40dp"
         android:textColor="#891A1A"
         app:layout_constraintBottom_toBottomOf="@+id/txtTotTickets"
-        app:layout_constraintEnd_toEndOf="@+id/txtCustomerName" />
+        app:layout_constraintEnd_toEndOf="@+id/txtCustomerName"
+        android:focusable="false"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

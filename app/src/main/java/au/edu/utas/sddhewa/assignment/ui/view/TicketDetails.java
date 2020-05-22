@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -20,23 +22,28 @@ import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTicketTable;
 import au.edu.utas.sddhewa.assignment.dto.TicketsSoldDTO;
 import au.edu.utas.sddhewa.assignment.modal.Customer;
+import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
+import au.edu.utas.sddhewa.assignment.util.Utility;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class RaffleSoldTicket extends Fragment {
+public class TicketDetails extends Fragment {
 
-    private final long raffleId;
+    private final FragmentManager fragmentManager;
     private final SQLiteDatabase db;
     private final Context context;
+    private final Bundle bundle;
 
-    public RaffleSoldTicket(long raffleId, SQLiteDatabase db, Context context) {
-        this.raffleId = raffleId;
+    public TicketDetails(FragmentManager fragmentManager, SQLiteDatabase db, Context context,
+                         Bundle bundle) {
+        this.fragmentManager = fragmentManager;
         this.db = db;
         this.context = context;
+        this.bundle = bundle;
     }
 
     @Override
@@ -44,29 +51,13 @@ public class RaffleSoldTicket extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View soldTickets =
-                inflater.inflate(R.layout.fragment_raffle_sold_ticket, container, false);
+                inflater.inflate(R.layout.fragment_ticket_details, container, false);
 
-        ListView ticketsList = soldTickets.findViewById(R.id.ticketsList);
+        Raffle raffle = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
+        TicketsSoldDTO ticketsSold = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE_TICKET);
 
-        try {
-            List<RaffleTicket> raffleTickets = RaffleTicketTable.selectAllByRaffleId(db, raffleId);
-
-            List<TicketsSoldDTO> ticketsSold = new ArrayList<>();
-            for (RaffleTicket rt: raffleTickets) {
-                Customer customer = CustomerTable.selectById(db, rt.getCustomerId());
-
-                ticketsSold.add(new TicketsSoldDTO(rt, customer));
-            }
-
-            final SoldTicketsAdapter soldTicketsAdapter = new SoldTicketsAdapter(
-                    context, R.layout.list_sold_tickets, ticketsSold);
-
-            ticketsList.setAdapter(soldTicketsAdapter);
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        TextView header = soldTickets.findViewById(R.id.lblTicketDetailsHead);
+        header.setText(getResources().getString(R.string.ticket_detail_title, ticketsSold.getCustomer().getFullName()));
         return soldTickets;
     }
 }

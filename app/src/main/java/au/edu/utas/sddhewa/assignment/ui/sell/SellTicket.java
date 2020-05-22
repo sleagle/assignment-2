@@ -133,7 +133,7 @@ public class SellTicket extends Fragment implements FormInteraction {
                     createEntity();
                 }
                 else {
-                    CustomWarningDialog fragment = new CustomWarningDialog(ticket, res, difference);
+                    CustomWarningDialog fragment = new CustomWarningDialog(res, difference);
                     fragment.show(fragmentManager, "alert");
                 }
             }

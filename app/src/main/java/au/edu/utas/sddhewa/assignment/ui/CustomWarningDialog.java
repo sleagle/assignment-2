@@ -13,12 +13,10 @@ import au.edu.utas.sddhewa.assignment.util.Utility;
 
 public class CustomWarningDialog extends DialogFragment {
 
-    private FormInteraction createObj;
     private String type;
     private int difference;
 
-    public CustomWarningDialog(FormInteraction obj, String type, int difference) {
-        this.createObj = obj;
+    public CustomWarningDialog(String type, int difference) {
         this.type = type;
         this.difference = difference;
     }

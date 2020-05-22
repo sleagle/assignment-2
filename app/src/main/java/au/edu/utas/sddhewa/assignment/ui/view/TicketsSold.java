@@ -6,9 +6,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.text.ParseException;
@@ -35,6 +37,7 @@ public class TicketsSold extends Fragment {
     private final Context context;
     private final SQLiteDatabase db;
     private final Bundle bundle;
+    private Raffle raffle;
 
     public TicketsSold(Context context, SQLiteDatabase db, Bundle bundle) {
         this.context = context;
@@ -48,17 +51,16 @@ public class TicketsSold extends Fragment {
         // Inflate the layout for this fragment
         View ticketsSoldTab = inflater.inflate(R.layout.fragment_tickets_sold, container, false);
 
-        Raffle raffle = (Raffle) bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
+        raffle = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
 
         ListView ticketsList = ticketsSoldTab.findViewById(R.id.ticketsList);
 
         try {
-            List<RaffleTicket> raffleTickets = RaffleTicketTable.selectAllByRaffleId(db, raffle.getRaffleId());
+            final List<RaffleTicket> raffleTickets = RaffleTicketTable.selectAllByRaffleId(db, raffle.getRaffleId());
 
-            List<TicketsSoldDTO> ticketsSold = new ArrayList<>();
+            final List<TicketsSoldDTO> ticketsSold = new ArrayList<>();
             for (RaffleTicket rt: raffleTickets) {
                 Customer customer = CustomerTable.selectById(db, rt.getCustomerId());
-
                 ticketsSold.add(new TicketsSoldDTO(rt, customer));
             }
 
@@ -66,6 +68,23 @@ public class TicketsSold extends Fragment {
                     context, R.layout.list_sold_tickets, ticketsSold);
 
             ticketsList.setAdapter(soldTicketsAdapter);
+
+            ticketsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    bundle.putParcelable(Utility.KEY_SELECTED_RAFFLE_TICKET,
+                            ticketsSold.get(position));
+
+                    bundle.putParcelable(Utility.KEY_SELECTED_RAFFLE, raffle);
+
+                    getActivity().getSupportFragmentManager().beginTransaction().
+                            replace(R.id.fragment_container,
+                                    new TicketDetails(getActivity().getSupportFragmentManager(), db,
+                                            context, bundle))
+                            .addToBackStack(null).commit();
+                }
+            });
 
         } catch (ParseException e) {
             e.printStackTrace();
