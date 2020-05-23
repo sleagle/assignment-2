@@ -27,7 +27,7 @@ public class RaffleTicketTable {
             .append(KEY_RAFFLE_ID).append(FieldKey.INT.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_NUM_TICKETS).append(FieldKey.INT.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_CUSTOMER_ID).append(FieldKey.INT.value).append(FieldKey.NOT_NULL.value)
-            .append(KEY_PURCHASED_DATE).append(FieldKey.DATE_TIME.value).append(FieldKey.NOT_NULL.value)
+            .append(KEY_PURCHASED_DATE).append(FieldKey.STRING.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_TOTAL_PRICE).append(FieldKey.FLOAT.value).append(FieldKey.NOT_NULL.value)
             .append(FieldKey.FOREIGN_KEY.value).append(KEY_RAFFLE_ID)
             .append(FieldKey.REFERENCES.value).append(RaffleTable.TABLE_NAME)

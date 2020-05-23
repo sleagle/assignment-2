@@ -9,6 +9,8 @@ public class Ticket implements Parcelable {
 
     private long RaffleTicketId;
 
+    public Ticket () { }
+
     public Ticket(String ticketNumber, long raffleTicketId) {
         this.ticketNumber = ticketNumber;
         RaffleTicketId = raffleTicketId;

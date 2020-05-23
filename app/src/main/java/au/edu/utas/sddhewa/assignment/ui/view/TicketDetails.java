@@ -18,12 +18,15 @@ import java.util.List;
 
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.adapter.SoldTicketsAdapter;
+import au.edu.utas.sddhewa.assignment.adapter.TicketsListAdapter;
 import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTicketTable;
+import au.edu.utas.sddhewa.assignment.db.table.TicketTable;
 import au.edu.utas.sddhewa.assignment.dto.TicketsSoldDTO;
 import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
+import au.edu.utas.sddhewa.assignment.modal.Ticket;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
 
@@ -53,11 +56,25 @@ public class TicketDetails extends Fragment {
         View soldTickets =
                 inflater.inflate(R.layout.fragment_ticket_details, container, false);
 
+        ListView ticketsList = soldTickets.findViewById(R.id.ticketDetailsList);
+
         Raffle raffle = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
         TicketsSoldDTO ticketsSold = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE_TICKET);
 
         TextView header = soldTickets.findViewById(R.id.lblTicketDetailsHead);
         header.setText(getResources().getString(R.string.ticket_detail_title, ticketsSold.getCustomer().getFullName()));
+
+        try {
+            List<Ticket> tickets = TicketTable.ticketsByRaffleTicket(db, ticketsSold.getRaffleTicket().getRaffleTicketId());
+
+            TicketsListAdapter ticketsListAdapter = new TicketsListAdapter(getContext(),
+                    R.layout.list_ticket_details, tickets, raffle, ticketsSold);
+
+            ticketsList.setAdapter(ticketsListAdapter);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return soldTickets;
     }
 }

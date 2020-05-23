@@ -48,6 +48,10 @@ public class PageViewModel extends ViewModel {
         currentRaffles = new CurrentRaffleAdapter(context, resource, objects, tabId);
     }
 
+    public CurrentRaffleAdapter getCurrentRafflesAdapter() {
+        return currentRaffles;
+    }
+
     public void setPastRaffles (Context context, int resource, List<Raffle> objects, int tabId) {
         pastRaffles = new PastRaffleAdapter(context, resource, objects);
     }

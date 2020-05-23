@@ -43,7 +43,7 @@ import java.util.Date;
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
-import au.edu.utas.sddhewa.assignment.ui.CustomDismissAlertDialog;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomDismissAlertDialog;
 import au.edu.utas.sddhewa.assignment.ui.DatePickerFragment;
 import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;

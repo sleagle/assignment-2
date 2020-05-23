@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import au.edu.utas.sddhewa.assignment.R;
@@ -24,11 +25,18 @@ public class CurrentRaffleAdapter extends ArrayAdapter<Raffle> {
 
     private int tabId;
 
+    private final List<Raffle> RAFFLE_LIST;
+
     public CurrentRaffleAdapter(@NonNull Context context, int resource, @NonNull List<Raffle> objects, int tabId) {
 
         super(context, resource, objects);
         layoutResourceId = resource;
         this.tabId = tabId;
+        RAFFLE_LIST = new ArrayList<>();
+    }
+
+    public List<Raffle> getAddedRaffles() {
+        return this.RAFFLE_LIST;
     }
 
     @NonNull
@@ -63,11 +71,16 @@ public class CurrentRaffleAdapter extends ArrayAdapter<Raffle> {
         TextView lblDrawDate = row.findViewById(R.id.lblDrawDate);
         lblDrawDate.setText(raffle.getDrawDate());
 
-        CheckBox checkBox = row.findViewById(R.id.checkBox);
+        final CheckBox checkBox = row.findViewById(R.id.checkBox);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("#### rafflelist onclick", raffle.toString());
+                if (checkBox.isChecked()) {
+                    RAFFLE_LIST.add(raffle);
+                } else {
+                    RAFFLE_LIST.remove(raffle);
+                }
             }
         });
     }

@@ -54,7 +54,7 @@ public class RaffleTable {
         values.put(KEY_NAME, raffle.getName());
         values.put(KEY_DESCRIPTION, raffle.getDescription());
         values.put(KEY_TYPE, raffle.getTypeId().id);
-        values.put(KEY_STARTING_DATE, raffle.getStartingDate());
+        values.put(KEY_STARTING_DATE, raffle.getStartingDateString());
         values.put(KEY_DRAW_DATE, raffle.getDrawDate());
         values.put(KEY_IS_ACTIVE, raffle.isActive());
         values.put(KEY_LOCATION, raffle.getLocation());
@@ -73,7 +73,7 @@ public class RaffleTable {
         values.put(KEY_NAME, raffle.getName());
         values.put(KEY_DESCRIPTION, raffle.getDescription());
         values.put(KEY_TYPE, raffle.getTypeId().id);
-        values.put(KEY_STARTING_DATE, raffle.getStartingDate());
+        values.put(KEY_STARTING_DATE, raffle.getStartingDateString());
         values.put(KEY_DRAW_DATE, raffle.getDrawDate());
         values.put(KEY_IS_ACTIVE, raffle.isActive());
         values.put(KEY_LOCATION, raffle.getLocation());
@@ -145,6 +145,11 @@ public class RaffleTable {
         }
 
         return raffles;
+    }
+
+    public static void deleteRaffle(SQLiteDatabase db, Raffle raffle) {
+        db.delete(TABLE_NAME, KEY_RAFFLE_ID+"=?", new String[] {
+                String.valueOf(raffle.getRaffleId()) });
     }
 
     private static Raffle createFromCursor(Cursor cursor) throws ParseException {

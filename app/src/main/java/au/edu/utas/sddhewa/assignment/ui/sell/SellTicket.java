@@ -32,11 +32,12 @@ import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
 import au.edu.utas.sddhewa.assignment.modal.Ticket;
-import au.edu.utas.sddhewa.assignment.ui.CustomDismissAlertDialog;
-import au.edu.utas.sddhewa.assignment.ui.CustomWarningDialog;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomDismissAlertDialog;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomWarningDialog;
 import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.Utility;
+import au.edu.utas.sddhewa.assignment.util.AlertType;
 
 
 /**
@@ -128,8 +129,8 @@ public class SellTicket extends Fragment implements FormInteraction {
         sellBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String res = validateRequest();
-                if (res.equals(Utility.KEY_VALID)) {
+                AlertType res = validateRequest();
+                if (res.equals(AlertType.VALID)) {
                     createEntity();
                 }
                 else {
@@ -269,14 +270,14 @@ public class SellTicket extends Fragment implements FormInteraction {
         createNormalTicket(raffleTicket);
     }
 
-    private String validateRequest() {
+    private AlertType validateRequest() {
 
         if (existingUserCbx.isChecked()) {
             try {
                 List<RaffleTicket> tickets =
                         RaffleTicketTable.selectAllByCustomerId(db, customer.getCustomerId());
                 if (tickets.size() == 0) {
-                    return Utility.KEY_VALID;
+                    return AlertType.VALID;
                 } else {
                     int selected = Integer.parseInt(numTicketsSpinner.getSelectedItem().toString());
                     int count = 0;
@@ -285,19 +286,19 @@ public class SellTicket extends Fragment implements FormInteraction {
                     }
 
                     if (count == raffle.getMaxTickets()){
-                        return Utility.KEY_MAX_BUY_ALERT;
+                        return AlertType.MAX_BUY_ALERT;
                     }
 
                     else if ((count + selected) > raffle.getMaxTickets()) {
                         difference = raffle.getMaxTickets() - count;
-                        return Utility.KEY_OVER_BUY_ALERT;
+                        return AlertType.OVER_BUY_ALERT;
                     }
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
-        return Utility.KEY_VALID;
+        return AlertType.VALID;
     }
 
     private void createNormalTicket(RaffleTicket raffleTicket) {
