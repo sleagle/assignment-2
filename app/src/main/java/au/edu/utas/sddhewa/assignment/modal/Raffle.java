@@ -202,12 +202,15 @@ public class Raffle implements Parcelable {
         }
     }
 
+    public Date getStartingDate () {
+        return startingDate;
+    }
     /**
      * get the starting date of the raffle
      *
      * @return - starting date in string format
      */
-    public String getStartingDate() {
+    public String getStartingDateString() {
         return Utility.DATE_FORMAT.format(startingDate);
     }
 
@@ -367,7 +370,7 @@ public class Raffle implements Parcelable {
     @Override
     public String toString() {
 
-        return getName() + " - Starts: " + getStartingDate();
+        return getName() + " - Starts: " + getStartingDateString();
         /*return new StringBuilder("Raffle { raffleId: ").append(raffleId)
                 .append(", name: ").append(name).append(", description: ").append(description)
                 .append(", typeId: ").append(typeId.toString()).append(", startingDate: ").append(startingDate)

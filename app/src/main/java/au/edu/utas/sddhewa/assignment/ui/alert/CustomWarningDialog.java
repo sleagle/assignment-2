@@ -1,4 +1,4 @@
-package au.edu.utas.sddhewa.assignment.ui;
+package au.edu.utas.sddhewa.assignment.ui.alert;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,17 +8,30 @@ import android.widget.Button;
 
 import androidx.fragment.app.DialogFragment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import au.edu.utas.sddhewa.assignment.R;
-import au.edu.utas.sddhewa.assignment.util.Utility;
+import au.edu.utas.sddhewa.assignment.util.AlertType;
 
 public class CustomWarningDialog extends DialogFragment {
 
-    private String type;
+    private AlertType type;
     private int difference;
+    private List<String> notDeletedList;
 
-    public CustomWarningDialog(String type, int difference) {
+    public CustomWarningDialog(AlertType type, int difference) {
         this.type = type;
         this.difference = difference;
+    }
+
+    public CustomWarningDialog(AlertType type) {
+        this.type = type;
+    }
+
+    public void setNotDeletedList(List<String> list) {
+        this.notDeletedList = list;
     }
 
     @Override
@@ -26,14 +39,18 @@ public class CustomWarningDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         builder.setTitle(R.string.warning_dialog_title);
+        builder.setIcon(R.drawable.ic_warning);
 
         switch (type) {
-            case Utility.KEY_MAX_BUY_ALERT:
+            case MAX_BUY_ALERT:
                 builder.setMessage(R.string.warning_dialog_max_buy_msg);
                 break;
-            case Utility.KEY_OVER_BUY_ALERT:
+            case OVER_BUY_ALERT:
                 builder.setMessage(getResources().getString(R.string.warning_dialog_over_buy_msg, difference));
                 break;
+            case NOT_DELETED:
+                builder.setMessage(getResources().getString(R.string.error_not_deleted_msg,
+                        Arrays.toString(notDeletedList.toArray())));
         }
 
 

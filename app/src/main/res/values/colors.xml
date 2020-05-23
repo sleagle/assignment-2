@@ -13,4 +13,5 @@
     <color name="edit_btn">#2B78E4</color>
     <color name="delete_btn">#CF2A27</color>
     <color name="separator_line">#A0A0A0</color>
+    <color name="transparent" />
 </resources>

@@ -32,7 +32,7 @@ public class HomeTabPageAdapter extends FragmentStatePagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
         Log.d("***************", String.valueOf(position));
-        return PlaceholderFragment.newInstance(position, context, db);
+        return PlaceholderFragment.newInstance(position, db);
     }
 
     @Nullable

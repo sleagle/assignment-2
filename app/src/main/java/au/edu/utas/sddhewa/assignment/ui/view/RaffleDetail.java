@@ -49,7 +49,7 @@ public class RaffleDetail extends Fragment {
         raffleType.setText(raffle.getTypeId().name);
 
         TextView startDate = viewRaffle.findViewById(R.id.txtStartDate_RD);
-        startDate.setText(raffle.getStartingDate());
+        startDate.setText(raffle.getStartingDateString());
 
         TextView drawDate = viewRaffle.findViewById(R.id.txtDrawDate_RD);
         drawDate.setText(raffle.getDrawDate());
