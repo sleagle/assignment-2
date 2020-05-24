@@ -2,6 +2,7 @@ package au.edu.utas.sddhewa.assignment.adapter;
 
 import android.app.Service;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,7 @@ public class TicketsListAdapter extends ArrayAdapter<Ticket> {
         return row;
     }
 
-    private void setTicketDetails(Ticket ticket, View row) {
+    private void setTicketDetails(final Ticket ticket, View row) {
 
         TextView raffleName = row.findViewById(R.id.txtRaffleName);
         raffleName.setText(raffle.getName());
@@ -64,6 +65,26 @@ public class TicketsListAdapter extends ArrayAdapter<Ticket> {
         txtPrice.setText("Price: " + raffle.getTicketPriceString());
 
         Button shareButton = row.findViewById(R.id.btnShare);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = new StringBuilder(ticketsSoldDTO.getCustomer()
+                        .getFullName()).append(" Purchased a ticket for the Raffle: ")
+                        .append(raffle.getName()).append("\n").append("On: ")
+                        .append(ticketsSoldDTO.getRaffleTicket().getPurchasedDate())
+                        .append(" Ticket Number: ").append(ticket.getTicketNumber())
+                        .append(" price of the ticket is: ")
+                        .append(raffle.getTicketPriceString()).toString();
+
+                /* Week 7 lectures */
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, str);
+                sendIntent.setType("text/plain");
+
+                getContext().startActivity(Intent.createChooser(sendIntent, "Share via..."));
+            }
+        });
     }
 
 }
