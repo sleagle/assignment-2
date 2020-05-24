@@ -129,4 +129,5 @@
     <string name="error_dialog_edit_multi_msg">Can only edit one raffle at a time!</string>
     <string name="error_not_deleted_msg_multi">The following Raffle(s): %1$s Not deleted\nReason: Raffles have already started.</string>
     <string name="error_not_deleted_msg_single">Raffle not deleted %1$s Not deleted\nReason: The Raffle have started.</string>
+    <string name="edit_raffle">Edit</string>
 </resources>
