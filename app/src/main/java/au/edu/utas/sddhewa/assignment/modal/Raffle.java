@@ -3,9 +3,13 @@ package au.edu.utas.sddhewa.assignment.modal;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.ParseException;
 import java.util.Date;
 
+import au.edu.utas.sddhewa.assignment.dto.WinningDetailsDTO;
 import au.edu.utas.sddhewa.assignment.util.RaffleType;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
@@ -59,6 +63,8 @@ public class Raffle implements Parcelable {
 
     private byte[] raffleCover;
 
+    private WinningDetailsDTO winningDetails;
+
     public Raffle() {}
 
     public Raffle(String name, String description, RaffleType typeId, String startingDate,
@@ -76,6 +82,7 @@ public class Raffle implements Parcelable {
         this.noOfTickets = noOfTickets;
         this.ticketsSold = ticketsSold;
         this.maxTickets = maxTickets;
+        this.winningDetails = new WinningDetailsDTO();
     }
 
     protected Raffle(Parcel in) {
@@ -382,6 +389,39 @@ public class Raffle implements Parcelable {
     public String getTicketsSoldStringForList() {
         return  getTicketsSold() + "/" + getNoOfTickets();
     }
+
+    public String getRaffleNameForTicket() {
+        return getName().substring(0, 3).toUpperCase();
+    }
+
+    public void setWinningDetails(WinningDetailsDTO winningDetails) {
+        this.winningDetails = winningDetails;
+    }
+
+    public void setWinningDetails(String winningDetailsString) {
+
+        try {
+            JSONObject object = new JSONObject(winningDetailsString);
+            this.winningDetails = new WinningDetailsDTO(object.getString(
+                    Utility.KEY_TICKET_NUMBER), object.getString(Utility.KEY_TICKET_OWNER));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getWinningDetails() throws JSONException {
+
+        if (winningDetails != null) {
+            JSONObject object = new JSONObject();
+            object.put(Utility.KEY_TICKET_NUMBER, winningDetails.getTicketNumber());
+            object.put(Utility.KEY_TICKET_OWNER, winningDetails.getTicketOwner());
+
+            return object.toString();
+        }
+
+        return "";
+    }
+
     /**
      * gets a string representation of the object
      *

@@ -39,6 +39,26 @@ public class TicketTable {
         return db.insert(TABLE_NAME, null, values);
     }
 
+    public static Ticket getTicketByTicketNumber(SQLiteDatabase db, String ticketNumber) throws ParseException {
+
+        Ticket ticket = new Ticket();
+
+        Cursor c = db.query(TABLE_NAME, null, KEY_TICKET_NUMBER+"=?",
+                new String[] { ticketNumber }, null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+
+            while (!c.isAfterLast()) {
+                ticket = createFromCursor(c);
+
+                c.moveToNext();
+            }
+        }
+
+        return ticket;
+    }
+
     public static ArrayList<Ticket> getTicketsByRaffleTicket(SQLiteDatabase db, long raffleTicketId) throws ParseException {
         ArrayList<Ticket> tickets = new ArrayList<>();
 
@@ -58,7 +78,7 @@ public class TicketTable {
         return tickets;
     }
 
-    public static ArrayList<String> getTicketIdsByRaffleTicket(SQLiteDatabase db, Long[] raffleTicketIds) throws ParseException {
+    public static ArrayList<String> getTicketIdsByRaffleTicketList(SQLiteDatabase db, Long[] raffleTicketIds) throws ParseException {
         ArrayList<String> tickets = new ArrayList<>();
         String inList = Arrays.toString(raffleTicketIds);
         inList = inList.replace("[", "(");

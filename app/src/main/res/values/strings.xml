@@ -118,6 +118,8 @@
     <string name="warning_dialog_dismiss">Dismiss</string>
     <string name="warning_no_existing_customers">There are no existing customers.</string>
 
+    <string name="winner_dialog_title">Congratulations!</string>
+    <string name="winner_dialog_msg">Winning ticket number is: %1$s \nBelongs to: %2$s</string>
 
     <string name="error_dialog_create_title">Create Error!</string>
     <string name="error_dialog_create_msg">All fields are required!</string>

@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import org.json.JSONException;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -31,6 +33,7 @@ public class RaffleTable {
     private static final String KEY_MAX_TICKETS = "max_tickets";
     private static final String KEY_TICKETS_SOLD = "tickets_sold";
     private static final String KEY_RAFFLE_COVER = "raffle_cover";
+    private static final String KEY_WINNING_DETAILS = "winning_details";
 
     public static final String CREATE_STATEMENT = new StringBuilder(FieldKey.CREATE_TABLE.value)
             .append(TABLE_NAME).append(FieldKey.CREATE_TABLE_OPEN.value)
@@ -47,7 +50,8 @@ public class RaffleTable {
             .append(KEY_NUM_TICKETS).append(FieldKey.INT.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_MAX_TICKETS).append(FieldKey.INT.value).append(FieldKey.COMMA.value)
             .append(KEY_TICKETS_SOLD).append(FieldKey.INT.value).append(FieldKey.COMMA.value)
-            .append(KEY_RAFFLE_COVER).append(FieldKey.BLOB.value)
+            .append(KEY_RAFFLE_COVER).append(FieldKey.BLOB.value).append(FieldKey.COMMA.value)
+            .append(KEY_WINNING_DETAILS).append(FieldKey.STRING.value)
             .append(FieldKey.CREATE_TABLE_CLOSE.value).toString();
 
     public static long insert(SQLiteDatabase db, Raffle raffle) {
@@ -66,6 +70,11 @@ public class RaffleTable {
         values.put(KEY_MAX_TICKETS, raffle.getMaxTickets());
         values.put(KEY_TICKETS_SOLD, raffle.getTicketsSold());
         values.put(KEY_RAFFLE_COVER, raffle.getRaffleCover());
+        try {
+            values.put(KEY_WINNING_DETAILS, raffle.getWinningDetails());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return db.insert(TABLE_NAME, null, values);
     }
@@ -86,6 +95,11 @@ public class RaffleTable {
         values.put(KEY_MAX_TICKETS, raffle.getMaxTickets());
         values.put(KEY_TICKETS_SOLD, raffle.getTicketsSold());
         values.put(KEY_RAFFLE_COVER, raffle.getRaffleCover());
+        try {
+            values.put(KEY_WINNING_DETAILS, raffle.getWinningDetails());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         db.update(TABLE_NAME, values, KEY_RAFFLE_ID+"= ?",
                 new String[] { ""+raffle.getRaffleId() });
@@ -178,6 +192,7 @@ public class RaffleTable {
             raffle.setTicketsSold(cursor.getInt(cursor.getColumnIndex(KEY_TICKETS_SOLD)));
             raffle.setMaxTickets(cursor.getInt(cursor.getColumnIndex(KEY_MAX_TICKETS)));
             raffle.setRaffleCover(cursor.getBlob(cursor.getColumnIndex(KEY_RAFFLE_COVER)));
+            raffle.setWinningDetails(cursor.getString(cursor.getColumnIndex(KEY_WINNING_DETAILS)));
             return raffle;
         }
     }

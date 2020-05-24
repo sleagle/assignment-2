@@ -20,8 +20,6 @@ import androidx.fragment.app.FragmentManager;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -33,6 +31,7 @@ import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTicketTable;
 import au.edu.utas.sddhewa.assignment.db.table.TicketTable;
+import au.edu.utas.sddhewa.assignment.dto.WinningDetailsDTO;
 import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
@@ -325,7 +324,7 @@ public class SellTicket extends Fragment implements FormInteraction {
         for (int i = 1 ; i <= raffleTicket.getNumTickets();  i++) {
 
             number++;
-            String ticketNum = raffle.getName().substring(0, 3).toUpperCase() + number;
+            String ticketNum = raffle.getRaffleNameForTicket() + number;
 
             TicketTable.insert(db, new Ticket(ticketNum, raffleTicket.getRaffleTicketId()));
         }
@@ -346,30 +345,21 @@ public class SellTicket extends Fragment implements FormInteraction {
         int number = raffle.getTicketsSold();
 
         try{
-
             List<Long> raffleTickets = RaffleTicketTable.selectAllRaffleTicketIdsByRaffleId(db, raffle.getRaffleId());
-
-            Log.d("### raffleTickets", Arrays.toString(raffleTickets.toArray()));
-
             Long[] array = raffleTickets.toArray(new Long[0]);
-
-            Set<String> tickets = new HashSet<>(TicketTable.getTicketIdsByRaffleTicket(db, array));
-            Log.d("### set", Arrays.toString(tickets.toArray()));
+            Set<String> tickets = new HashSet<>(TicketTable.getTicketIdsByRaffleTicketList(db, array));
 
             for (int i = 1 ; i <= raffleTicket.getNumTickets();  i++) {
                 number++;
                 String ticketNum;
                 do {
                     ticketNum = getRandomTicketId();
-                } while (tickets.add(ticketNum));
-
-                Log.d("###, exit", "EXIT from while LOOP");
-                Log.d("###, New Ticket", ticketNum);
+                } while (!tickets.add(ticketNum));
 
                 TicketTable.insert(db, new Ticket(ticketNum, raffleTicket.getRaffleTicketId()));
+                Log.d("###, insertedTicket", "ticketNum");
             }
-
-            Log.d("###### Create ticket","insert successful");
+            Log.d("###### Create ticket(s)","insert successful");
 
             raffle.setTicketsSold(number);
 
@@ -428,7 +418,7 @@ public class SellTicket extends Fragment implements FormInteraction {
         int generatedNumber;
         String ticketNum = "";
         generatedNumber = random.nextInt(raffle.getMaxTickets()) + 1;
-        ticketNum = raffle.getName().substring(0, 3).toUpperCase() + generatedNumber;
+        ticketNum = raffle.getRaffleNameForTicket() + generatedNumber;
 
         return ticketNum;
     }

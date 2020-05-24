@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import androidx.lifecycle.LifecycleOwner;
+
 import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTicketTable;
@@ -19,7 +21,7 @@ public final class Database {
     private static final String DATABASE_NAME = "RaffleDatabase";
 
     //The version of the database. Increment this whenever you change the /structure/ of the database
-    private static final int   DATABASE_VERSION   = 2;
+    private static final int   DATABASE_VERSION   = 1;
 
     //The connection to the database itself
     private SQLiteDatabase mDb;
