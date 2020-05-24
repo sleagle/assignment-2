@@ -1,5 +1,6 @@
 package au.edu.utas.sddhewa.assignment.ui.view;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -16,15 +17,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import au.edu.utas.sddhewa.assignment.R;
+import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomWarningDialog;
+import au.edu.utas.sddhewa.assignment.ui.home.Home;
+import au.edu.utas.sddhewa.assignment.util.AlertType;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
 public class RaffleDetail extends Fragment {
 
     private final Bundle bundle;
+    private final SQLiteDatabase db;
 
-    public RaffleDetail(Bundle bundle) {
+    public RaffleDetail(Bundle bundle, SQLiteDatabase db) {
         this.bundle = bundle;
+        this.db = db;
     }
 
     @Nullable
@@ -36,7 +43,7 @@ public class RaffleDetail extends Fragment {
 
         View viewRaffle = inflater.inflate(R.layout.fragment_view_raffle, container, false);
 
-        Raffle raffle = (Raffle) bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
+        final Raffle raffle = (Raffle) bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
         Log.d("#### rafflelist onclick", raffle.toString());
 
         TextView name = viewRaffle.findViewById(R.id.txtName_RD);
@@ -73,6 +80,14 @@ public class RaffleDetail extends Fragment {
             imageView.setImageBitmap(bitmap);
         }
 
+        Button drawButton = viewRaffle.findViewById(R.id.btnDraw);
+        drawButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         Button editButton = viewRaffle.findViewById(R.id.btnEdit_RD);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +101,20 @@ public class RaffleDetail extends Fragment {
             @Override
             public void onClick(View v) {
 
+                if (raffle.getTicketsSold() > 0) {
+                    CustomWarningDialog customWarningDialog = new CustomWarningDialog(AlertType.NOT_DELETED_SINGLE);
+                    customWarningDialog.setNotDeletedRaffleName(raffle.getName());
+                    customWarningDialog.show(getActivity().getSupportFragmentManager(), "warning");
+                }
+                else {
+                    RaffleTable.deleteRaffle(db, raffle);
+
+                    getActivity().getSupportFragmentManager().beginTransaction().
+                            replace(R.id.fragment_container,
+                                    new Home(db, getActivity().getSupportFragmentManager(),
+                                            getContext()))
+                            .commit();
+                }
             }
         });
 

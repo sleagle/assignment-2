@@ -34,7 +34,7 @@ public class ViewTabPageAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new RaffleDetail(bundle);
+                return new RaffleDetail(bundle, db);
             case 1:
                 return new TicketsSold(context, db, bundle);
             default:

@@ -2,7 +2,6 @@ package au.edu.utas.sddhewa.assignment.ui.home;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +19,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import au.edu.utas.sddhewa.assignment.R;
@@ -130,12 +127,9 @@ public class PlaceholderFragment extends Fragment {
                 AlertType type = validateClick(rafflesAdded, false);
 
                 if (type.equals(AlertType.VALID)) {
-                    Date toDay = new Date();
-                    for (Raffle raffle : rafflesAdded) {
-                        Log.d("#### Start date:" , raffle.getStartingDateString());
-                        Log.d("#### today: ", Utility.DATE_FORMAT.format(toDay));
 
-                        if ((raffle.getStartingDate().compareTo(toDay) < 0) && raffle.getTicketsSold() > 0) {
+                    for (Raffle raffle : rafflesAdded) {
+                        if (raffle.getTicketsSold() > 0) {
                             notDeleted.add(raffle.getName());
                         } else {
                             raffles.remove(raffle);
@@ -143,21 +137,22 @@ public class PlaceholderFragment extends Fragment {
                         }
                     }
 
-                    if (notDeleted.size() > 0) {
-                        displayCustomWarningDialog(notDeleted);
-                    }
                     if (notDeleted.size() > 0 && notDeleted.size() != rafflesAdded.size()) {
                         displayCustomWarningDialog(notDeleted);
-                        createDeleteSuccessToast();
+                        Utility.createDeleteSuccessToast(getContext());
+                    }
+                    else if (notDeleted.size() > 0) {
+                        displayCustomWarningDialog(notDeleted);
                     }
                     else {
-                        createDeleteSuccessToast();
+                        Utility.createDeleteSuccessToast(getContext());
                     }
                 }
                 else {
                     CustomErrorDialog customErrorDialog = new CustomErrorDialog(type);
                     customErrorDialog.show(getActivity().getSupportFragmentManager(), "error");
                 }
+                pageViewModel.getCurrentRafflesAdapter().clearAddedList(rafflesAdded);
             }
         });
 
@@ -207,14 +202,9 @@ public class PlaceholderFragment extends Fragment {
         return AlertType.VALID;
     }
 
-    private void createDeleteSuccessToast() {
-        Toast toast = Toast.makeText(getContext(), R.string.delete_raffle_success, Toast.LENGTH_LONG);
-        toast.show();
-    }
-
     private void displayCustomWarningDialog(List<String> list) {
         pageViewModel.getCurrentRafflesAdapter().notifyDataSetChanged();
-        CustomWarningDialog customWarningDialog = new CustomWarningDialog(AlertType.NOT_DELETED);
+        CustomWarningDialog customWarningDialog = new CustomWarningDialog(AlertType.NOT_DELETED_MULTI);
         customWarningDialog.setNotDeletedList(list);
         customWarningDialog.show(getActivity().getSupportFragmentManager(), "warning");
     }

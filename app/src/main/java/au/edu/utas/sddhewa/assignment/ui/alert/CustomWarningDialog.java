@@ -4,11 +4,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.fragment.app.DialogFragment;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +20,7 @@ public class CustomWarningDialog extends DialogFragment {
     private AlertType type;
     private int difference;
     private List<String> notDeletedList;
+    private String notDeletedRaffleName;
 
     public CustomWarningDialog(AlertType type, int difference) {
         this.type = type;
@@ -32,6 +33,10 @@ public class CustomWarningDialog extends DialogFragment {
 
     public void setNotDeletedList(List<String> list) {
         this.notDeletedList = list;
+    }
+
+    public void setNotDeletedRaffleName(String raffleName) {
+        this.notDeletedRaffleName = raffleName;
     }
 
     @Override
@@ -48,9 +53,15 @@ public class CustomWarningDialog extends DialogFragment {
             case OVER_BUY_ALERT:
                 builder.setMessage(getResources().getString(R.string.warning_dialog_over_buy_msg, difference));
                 break;
-            case NOT_DELETED:
-                builder.setMessage(getResources().getString(R.string.error_not_deleted_msg,
+            case NOT_DELETED_MULTI:
+                builder.setMessage(getResources().getString(
+                        R.string.error_not_deleted_msg_multi,
                         Arrays.toString(notDeletedList.toArray())));
+                break;
+            case NOT_DELETED_SINGLE:
+                builder.setMessage(getResources().getString(
+                        R.string.error_not_deleted_msg_single, notDeletedRaffleName));
+                break;
         }
 
 

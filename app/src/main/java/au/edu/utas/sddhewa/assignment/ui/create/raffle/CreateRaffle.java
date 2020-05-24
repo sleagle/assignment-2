@@ -46,7 +46,9 @@ import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.ui.alert.CustomDismissAlertDialog;
 import au.edu.utas.sddhewa.assignment.ui.DatePickerFragment;
 import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomErrorDialog;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
+import au.edu.utas.sddhewa.assignment.util.AlertType;
 import au.edu.utas.sddhewa.assignment.util.RaffleType;
 
 
@@ -72,6 +74,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
     private Spinner raffleType;
     private TextView startDate;
     private TextView drawDate;
+    private TextView prize;
     private TextView location;
     private TextView ticketPrice;
     private Spinner numTickets;
@@ -102,6 +105,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         raffleType = createRaffle.findViewById(R.id.raffle_type_spinner);
         startDate = createRaffle.findViewById(R.id.txtStartDate);
         drawDate = createRaffle.findViewById(R.id.txtCR_DrawDate);
+        prize = createRaffle.findViewById(R.id.txtPrize);
         location = createRaffle.findViewById(R.id.txtLocation);
         ticketPrice = createRaffle.findViewById(R.id.txTicketPrice);
         numTickets = createRaffle.findViewById(R.id.no_tickets_spinner);
@@ -179,7 +183,14 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createEntity();
+
+                if (!validateForm()) {
+                    createEntity();
+                }
+                else {
+                    CustomErrorDialog errorDialog = new CustomErrorDialog(AlertType.CREATE_ERROR_RAFFLE);
+                    errorDialog.show(fragmentManager, "error");
+                }
             }
         });
 
@@ -199,6 +210,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         raffleType.setSelection(0);
         startDate.setText("");
         drawDate.setText("");
+        prize.setText("");
         location.setText("");
         ticketPrice.setText("");
         numTickets.setSelection(0);
@@ -217,7 +229,8 @@ public class CreateRaffle extends Fragment implements FormInteraction {
 
         try {
             Raffle raffle = new Raffle(name.getText().toString(), description.getText().toString(), type,
-                    startDate.getText().toString(), drawDate.getText().toString(), true,
+                    startDate.getText().toString(), drawDate.getText().toString(),
+                    Float.parseFloat(prize.getText().toString()),true,
                     location.getText().toString(), Float.parseFloat(ticketPrice.getText().toString()),
                     Integer.parseInt(numTickets.getSelectedItem().toString()), 0,
                     Integer.parseInt(maxTickets.getText().toString()));
@@ -368,5 +381,14 @@ public class CreateRaffle extends Fragment implements FormInteraction {
 
         Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
         imageView.setImageBitmap(bitmap);
+    }
+    
+    private boolean validateForm() {
+
+        Log.d("### name", name.getText().toString());
+        return name.getText().toString().equals("") && description.getText().toString().equals("") &&
+                startDate.getText().toString().equals("") && drawDate.getText().toString().equals("")
+                && prize.getText().toString().equals("") && location.getText().toString().equals("")
+                && ticketPrice.getText().toString().equals("") && maxTickets.getText().toString().equals("");
     }
 }

@@ -39,6 +39,10 @@ public class CurrentRaffleAdapter extends ArrayAdapter<Raffle> {
         return this.RAFFLE_LIST;
     }
 
+    public void clearAddedList(List<Raffle> raffles) {
+        this.RAFFLE_LIST.removeAll(raffles);
+    }
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

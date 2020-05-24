@@ -30,6 +30,10 @@ public class CustomErrorDialog extends DialogFragment {
                 builder.setTitle(R.string.error_dialog_create_title);
                 builder.setMessage(R.string.error_dialog_create_msg);
                 break;
+            case CREATE_ERROR_RAFFLE:
+                builder.setTitle(R.string.error_dialog_create_title);
+                builder.setMessage(R.string.error_dialog_create_raffle_msg);
+                break;
             case MULTI_SELECT_ERROR:
                 builder.setTitle(R.string.error_dialog_select_title);
                 builder.setMessage(R.string.error_dialog_edit_multi_msg);

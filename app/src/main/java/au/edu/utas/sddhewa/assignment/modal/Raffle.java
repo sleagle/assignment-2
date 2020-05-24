@@ -37,6 +37,8 @@ public class Raffle implements Parcelable {
     /** draw date of the raffle */
     private Date drawDate;
 
+    private float prize;
+
     /** if the raffle is current or past */
     private boolean isActive;
 
@@ -60,13 +62,14 @@ public class Raffle implements Parcelable {
     public Raffle() {}
 
     public Raffle(String name, String description, RaffleType typeId, String startingDate,
-                  String drawDate, boolean isActive, String location, float ticketPrice,
+                  String drawDate, float prize, boolean isActive, String location, float ticketPrice,
                   int noOfTickets, int ticketsSold, int maxTickets) throws ParseException {
         this.name = name;
         this.description = description;
         this.typeId = typeId;
         this.startingDate = Utility.DATE_FORMAT.parse(startingDate);
         this.drawDate = Utility.DATE_FORMAT.parse(drawDate);
+        this.prize = prize;
         this.isActive = isActive;
         this.location = location;
         this.ticketPrice = ticketPrice;
@@ -82,6 +85,7 @@ public class Raffle implements Parcelable {
         isActive = in.readByte() != 0;
         location = in.readString();
         ticketPrice = in.readFloat();
+        prize = in.readFloat();
         noOfTickets = in.readInt();
         ticketsSold = in.readInt();
         maxTickets = in.readInt();
@@ -96,6 +100,7 @@ public class Raffle implements Parcelable {
         dest.writeByte((byte) (isActive ? 1 : 0));
         dest.writeString(location);
         dest.writeFloat(ticketPrice);
+        dest.writeFloat(prize);
         dest.writeInt(noOfTickets);
         dest.writeInt(ticketsSold);
         dest.writeInt(maxTickets);
@@ -239,6 +244,14 @@ public class Raffle implements Parcelable {
      */
     public void setDrawDate(String drawDate) throws ParseException {
         this.drawDate = Utility.DATE_FORMAT.parse(drawDate);
+    }
+
+    public float getPrize() {
+        return prize;
+    }
+
+    public void setPrize(float prize) {
+        this.prize = prize;
     }
 
     /**

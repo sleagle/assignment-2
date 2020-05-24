@@ -2,10 +2,13 @@ package au.edu.utas.sddhewa.assignment.util;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import au.edu.utas.sddhewa.assignment.R;
 
 public final class Utility {
 
@@ -77,5 +80,10 @@ public final class Utility {
             default:
                 return -1;
         }
+    }
+
+    public static void createDeleteSuccessToast(Context context) {
+        Toast toast = Toast.makeText(context, R.string.delete_raffle_success, Toast.LENGTH_LONG);
+        toast.show();
     }
 }

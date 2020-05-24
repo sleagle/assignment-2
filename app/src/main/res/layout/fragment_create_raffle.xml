@@ -15,12 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/txt_height"
             android:layout_marginTop="16dp"
+            android:background="@color/fragment_heading"
+            android:gravity="center"
             android:text="@string/create_raffle_form"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:background="@color/fragment_heading"
             android:textColor="@color/btn_txt"
             android:textStyle="bold"
-            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,7 @@
             android:layout_height="@dimen/txt_height"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:text="@string/name"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,14 +64,15 @@
 
         <EditText
             android:id="@+id/txtDesc"
-            android:layout_width="283dp"
+            android:layout_width="275dp"
             android:layout_height="@dimen/txt_height"
             android:layout_marginStart="21dp"
             android:layout_marginLeft="21dp"
             android:autofillHints="@string/description"
             android:ems="10"
+            android:gravity="start|top"
             android:hint="@string/description"
-            android:inputType="textPersonName"
+            android:inputType="textMultiLine"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblDesc"
             app:layout_constraintStart_toEndOf="@+id/lblDesc"
@@ -146,14 +147,13 @@
             android:id="@+id/txtCR_DrawDate"
             android:layout_width="100dp"
             android:layout_height="@dimen/txt_height"
-            android:layout_marginStart="29dp"
-            android:layout_marginLeft="29dp"
             android:autofillHints="@string/draw_date"
             android:ems="10"
             android:hint="@string/draw_date"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
             app:layout_constraintStart_toEndOf="@+id/lblDrawDate"
+            app:layout_constraintStart_toStartOf="@+id/txtStartDate"
             app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
 
         <Button
@@ -169,6 +169,32 @@
             app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
 
         <TextView
+            android:id="@+id/lblPrize"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginTop="5dp"
+            android:text="@string/prize"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblDrawDate"
+            app:layout_constraintTop_toBottomOf="@+id/lblDrawDate" />
+
+        <EditText
+            android:id="@+id/txtPrize"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/txt_height"
+            android:layout_marginStart="63dp"
+            android:layout_marginLeft="63dp"
+            android:autofillHints="@string/prize"
+            android:ems="10"
+            android:hint="@string/prize"
+            android:inputType="numberDecimal"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lblPrize"
+            app:layout_constraintStart_toEndOf="@+id/lblPrize"
+            app:layout_constraintTop_toTopOf="@+id/lblPrize"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
             android:id="@+id/lblLocation"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/txt_height"
@@ -176,14 +202,14 @@
             android:text="@string/location"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/lblDrawDate"
-            app:layout_constraintTop_toBottomOf="@+id/lblDrawDate" />
+            app:layout_constraintTop_toBottomOf="@+id/lblPrize" />
 
         <EditText
             android:id="@+id/txtLocation"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/txt_height"
-            android:layout_marginStart="38dp"
-            android:layout_marginLeft="38dp"
+            android:layout_marginStart="41dp"
+            android:layout_marginLeft="41dp"
             android:autofillHints="@string/location"
             android:ems="10"
             android:hint="@string/location"
@@ -191,7 +217,8 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblLocation"
             app:layout_constraintStart_toEndOf="@+id/lblLocation"
-            app:layout_constraintTop_toTopOf="@+id/lblLocation" />
+            app:layout_constraintTop_toTopOf="@+id/lblLocation"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/lblTicketPrice"
@@ -336,6 +363,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/imgCover"
             app:layout_constraintStart_toEndOf="@+id/imgCover"
             app:layout_constraintTop_toTopOf="@+id/imgCover" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

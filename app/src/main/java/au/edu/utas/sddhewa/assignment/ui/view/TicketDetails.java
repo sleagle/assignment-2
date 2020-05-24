@@ -13,19 +13,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 import au.edu.utas.sddhewa.assignment.R;
-import au.edu.utas.sddhewa.assignment.adapter.SoldTicketsAdapter;
 import au.edu.utas.sddhewa.assignment.adapter.TicketsListAdapter;
-import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
-import au.edu.utas.sddhewa.assignment.db.table.RaffleTicketTable;
 import au.edu.utas.sddhewa.assignment.db.table.TicketTable;
 import au.edu.utas.sddhewa.assignment.dto.TicketsSoldDTO;
-import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
-import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
 import au.edu.utas.sddhewa.assignment.modal.Ticket;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
@@ -65,7 +59,7 @@ public class TicketDetails extends Fragment {
         header.setText(getResources().getString(R.string.ticket_detail_title, ticketsSold.getCustomer().getFullName()));
 
         try {
-            List<Ticket> tickets = TicketTable.ticketsByRaffleTicket(db, ticketsSold.getRaffleTicket().getRaffleTicketId());
+            List<Ticket> tickets = TicketTable.getTicketsByRaffleTicket(db, ticketsSold.getRaffleTicket().getRaffleTicketId());
 
             TicketsListAdapter ticketsListAdapter = new TicketsListAdapter(getContext(),
                     R.layout.list_ticket_details, tickets, raffle, ticketsSold);

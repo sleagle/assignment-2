@@ -89,12 +89,54 @@ public class RaffleTicketTable {
         return raffleTickets;
     }
 
+    public static ArrayList<Long> selectAllRaffleTicketIdsByRaffleId(SQLiteDatabase db, long raffleId) throws ParseException {
+
+        ArrayList<Long> raffleTickets = new ArrayList<>();
+
+        Cursor c = db.query(TABLE_NAME, null, KEY_RAFFLE_ID+"=?",
+                new String[] { String.valueOf(raffleId) }, null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+
+            while (!c.isAfterLast()) {
+                raffleTickets.add(createFromCursor(c).getCustomerId());
+
+                c.moveToNext();
+            }
+        }
+
+        return raffleTickets;
+    }
+
     public static ArrayList<RaffleTicket> selectAllByCustomerId(SQLiteDatabase db, long customerId) throws ParseException {
 
         ArrayList<RaffleTicket> raffleTickets = new ArrayList<>();
 
         Cursor c = db.query(TABLE_NAME, null, KEY_CUSTOMER_ID+"=?",
                 new String[] { String.valueOf(customerId) }, null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+
+            while (!c.isAfterLast()) {
+                raffleTickets.add(createFromCursor(c));
+
+                c.moveToNext();
+            }
+        }
+
+        return raffleTickets;
+    }
+
+    public static ArrayList<RaffleTicket> selectAllByRaffleAndCustomerId(
+            SQLiteDatabase db, long raffleId, long customerId) throws ParseException {
+
+        ArrayList<RaffleTicket> raffleTickets = new ArrayList<>();
+
+        Cursor c = db.query(TABLE_NAME, null,  KEY_RAFFLE_ID+"=? and " +KEY_CUSTOMER_ID+"=?",
+                new String[] { String.valueOf(raffleId) , String.valueOf(customerId) },
+                null, null, null);
 
         if (c != null) {
             c.moveToFirst();

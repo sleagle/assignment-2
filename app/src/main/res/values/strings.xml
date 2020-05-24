@@ -33,6 +33,7 @@
     <string name="num_tickets">No of Tickets:</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="prize">Prize:</string>
 
     <!-- strings related to create customer fragment -->
     <string name="create_customer_form">Create Customer</string>
@@ -118,8 +119,10 @@
 
     <string name="error_dialog_create_title">Create Error!</string>
     <string name="error_dialog_create_msg">All fields are required!</string>
+    <string name="error_dialog_create_raffle_msg">Except for cover image all fields are required!</string>
     <string name="error_dialog_select_title">Create Error!</string>
     <string name="error_dialog_no_select_msg">To edit need to select one Raffle! \nTo delete need to select at least one Raffle!</string>
     <string name="error_dialog_edit_multi_msg">Can only edit one raffle at a time!</string>
-    <string name="error_not_deleted_msg">The following Raffle(s): %1$s Not deleted\nReason: The Raffles have started.</string>
+    <string name="error_not_deleted_msg_multi">The following Raffle(s): %1$s Not deleted\nReason: Raffles have already started.</string>
+    <string name="error_not_deleted_msg_single">Raffle not deleted %1$s Not deleted\nReason: The Raffle have started.</string>
 </resources>

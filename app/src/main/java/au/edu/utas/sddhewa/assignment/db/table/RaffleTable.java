@@ -23,6 +23,7 @@ public class RaffleTable {
     private static final String KEY_TYPE = "type_id";
     private static final String KEY_STARTING_DATE = "starting_date";
     private static final String KEY_DRAW_DATE = "draw_date";
+    private static final String KEY_PRIZE = "prize";
     private static final String KEY_IS_ACTIVE = "is_active";
     private static final String KEY_LOCATION = "location";
     private static final String KEY_TICKET_PRICE = "ticket_price";
@@ -39,6 +40,7 @@ public class RaffleTable {
             .append(KEY_TYPE).append(FieldKey.INT.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_STARTING_DATE).append(FieldKey.DATE.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_DRAW_DATE).append(FieldKey.DATE.value).append(FieldKey.NOT_NULL.value)
+            .append(KEY_PRIZE).append(FieldKey.FLOAT.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_IS_ACTIVE).append(FieldKey.BOOLEAN.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_LOCATION).append(FieldKey.STRING.value).append(FieldKey.NOT_NULL.value)
             .append(KEY_TICKET_PRICE).append(FieldKey.FLOAT.value).append(FieldKey.NOT_NULL.value)
@@ -56,6 +58,7 @@ public class RaffleTable {
         values.put(KEY_TYPE, raffle.getTypeId().id);
         values.put(KEY_STARTING_DATE, raffle.getStartingDateString());
         values.put(KEY_DRAW_DATE, raffle.getDrawDate());
+        values.put(KEY_PRIZE, raffle.getPrize());
         values.put(KEY_IS_ACTIVE, raffle.isActive());
         values.put(KEY_LOCATION, raffle.getLocation());
         values.put(KEY_TICKET_PRICE, raffle.getTicketPrice());
@@ -75,6 +78,7 @@ public class RaffleTable {
         values.put(KEY_TYPE, raffle.getTypeId().id);
         values.put(KEY_STARTING_DATE, raffle.getStartingDateString());
         values.put(KEY_DRAW_DATE, raffle.getDrawDate());
+        values.put(KEY_PRIZE, raffle.getPrize());
         values.put(KEY_IS_ACTIVE, raffle.isActive());
         values.put(KEY_LOCATION, raffle.getLocation());
         values.put(KEY_TICKET_PRICE, raffle.getTicketPrice());
@@ -166,6 +170,7 @@ public class RaffleTable {
             raffle.setTypeId(cursor.getInt(cursor.getColumnIndex(KEY_TYPE)));
             raffle.setStartingDate(cursor.getString(cursor.getColumnIndex(KEY_STARTING_DATE)));
             raffle.setDrawDate(cursor.getString(cursor.getColumnIndex(KEY_DRAW_DATE)));
+            raffle.setPrize(cursor.getFloat(cursor.getColumnIndex(KEY_PRIZE)));
             raffle.setActive(cursor.getInt(cursor.getColumnIndex(KEY_IS_ACTIVE)));
             raffle.setLocation(cursor.getString(cursor.getColumnIndex(KEY_LOCATION)));
             raffle.setTicketPrice(cursor.getFloat(cursor.getColumnIndex(KEY_TICKET_PRICE)));

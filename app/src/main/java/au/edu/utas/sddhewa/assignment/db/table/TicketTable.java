@@ -3,9 +3,12 @@ package au.edu.utas.sddhewa.assignment.db.table;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
 import au.edu.utas.sddhewa.assignment.modal.Ticket;
@@ -36,7 +39,7 @@ public class TicketTable {
         return db.insert(TABLE_NAME, null, values);
     }
 
-    public static ArrayList<Ticket> ticketsByRaffleTicket(SQLiteDatabase db, long raffleTicketId) throws ParseException {
+    public static ArrayList<Ticket> getTicketsByRaffleTicket(SQLiteDatabase db, long raffleTicketId) throws ParseException {
         ArrayList<Ticket> tickets = new ArrayList<>();
 
         Cursor c = db.query(TABLE_NAME, null, KEY_RAFFLE_TICKET_ID+"=?",
@@ -47,6 +50,28 @@ public class TicketTable {
 
             while (!c.isAfterLast()) {
                 tickets.add(createFromCursor(c));
+
+                c.moveToNext();
+            }
+        }
+
+        return tickets;
+    }
+
+    public static ArrayList<String> getTicketIdsByRaffleTicket(SQLiteDatabase db, Long[] raffleTicketIds) throws ParseException {
+        ArrayList<String> tickets = new ArrayList<>();
+        String inList = Arrays.toString(raffleTicketIds);
+        inList = inList.replace("[", "(");
+        inList = inList.replace("]", ")");
+        Log.d("#### array", inList);
+        Cursor c = db.query(TABLE_NAME,null, KEY_RAFFLE_TICKET_ID+" IN "+inList,
+                null, null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+
+            while (!c.isAfterLast()) {
+                tickets.add(createFromCursor(c).getTicketNumber());
 
                 c.moveToNext();
             }
