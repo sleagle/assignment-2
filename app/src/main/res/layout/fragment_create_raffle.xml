@@ -374,12 +374,13 @@
             android:id="@+id/btnCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="68dp"
-            android:layout_marginRight="68dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
             android:background="@color/btn_success"
             android:text="@string/create"
             android:textColor="@color/btn_txt"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDiscard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
 
