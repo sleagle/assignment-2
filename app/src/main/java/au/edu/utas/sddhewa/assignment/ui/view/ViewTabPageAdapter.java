@@ -16,7 +16,7 @@ import au.edu.utas.sddhewa.assignment.R;
 public class ViewTabPageAdapter extends FragmentStatePagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_current, R.string.tab_tickets};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_details, R.string.tab_tickets};
     private final Context context;
     private final SQLiteDatabase db;
     private final Bundle bundle;

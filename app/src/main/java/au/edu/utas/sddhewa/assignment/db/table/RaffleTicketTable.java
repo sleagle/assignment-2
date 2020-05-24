@@ -3,6 +3,7 @@ package au.edu.utas.sddhewa.assignment.db.table;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class RaffleTicketTable {
 
     public static long insert(SQLiteDatabase db, RaffleTicket raffleTicket) {
 
+        Log.d("### purch Date:", raffleTicket.getPurchasedDate());
         ContentValues values = new ContentValues();
         values.put(KEY_RAFFLE_ID, raffleTicket.getRaffleId());
         values.put(KEY_NUM_TICKETS, raffleTicket.getNumTickets());
@@ -100,7 +102,7 @@ public class RaffleTicketTable {
             c.moveToFirst();
 
             while (!c.isAfterLast()) {
-                raffleTickets.add(createFromCursor(c).getCustomerId());
+                raffleTickets.add(createFromCursor(c).getRaffleTicketId());
 
                 c.moveToNext();
             }
@@ -149,6 +151,26 @@ public class RaffleTicketTable {
         }
 
         return raffleTickets;
+    }
+
+    public static RaffleTicket selectByRaffleTicketId(SQLiteDatabase db, long raffleTicketId) throws ParseException {
+
+        RaffleTicket raffleTicket = new RaffleTicket();
+
+        Cursor c = db.query(TABLE_NAME, null,  KEY_RAFFLE_TICKET_ID+"=?",
+                new String[] { String.valueOf(raffleTicketId) },
+                null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+
+            while (!c.isAfterLast()) {
+                raffleTicket = createFromCursor(c);
+
+                c.moveToNext();
+            }
+        }
+        return raffleTicket;
     }
 
     private static RaffleTicket createFromCursor(Cursor cursor) throws ParseException {

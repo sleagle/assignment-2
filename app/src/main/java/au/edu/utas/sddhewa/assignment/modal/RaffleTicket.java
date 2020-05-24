@@ -120,4 +120,16 @@ public class RaffleTicket implements Parcelable {
         dest.writeFloat(totalPrice);
         dest.writeLong(customerId);
     }
+
+    @Override
+    public String toString() {
+        return "RaffleTicket{" +
+                "RaffleTicketId=" + RaffleTicketId +
+                ", raffleId=" + raffleId +
+                ", numTickets=" + numTickets +
+                ", totalPrice=" + totalPrice +
+                ", purchasedDate=" + purchasedDate +
+                ", customerId=" + customerId +
+                '}';
+    }
 }

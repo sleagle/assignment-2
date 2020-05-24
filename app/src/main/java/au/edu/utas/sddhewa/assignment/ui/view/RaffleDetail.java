@@ -16,22 +16,35 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import org.json.JSONException;
+
+import java.text.ParseException;
+import java.util.Random;
+
 import au.edu.utas.sddhewa.assignment.R;
+import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
+import au.edu.utas.sddhewa.assignment.db.table.RaffleTicketTable;
+import au.edu.utas.sddhewa.assignment.db.table.TicketTable;
+import au.edu.utas.sddhewa.assignment.dto.WinningDetailsDTO;
+import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
+import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
+import au.edu.utas.sddhewa.assignment.modal.Ticket;
 import au.edu.utas.sddhewa.assignment.ui.alert.CustomWarningDialog;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomWinnerDialog;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.AlertType;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
 public class RaffleDetail extends Fragment {
 
-    private final Bundle bundle;
     private final SQLiteDatabase db;
+    private final Raffle raffle;
 
     public RaffleDetail(Bundle bundle, SQLiteDatabase db) {
-        this.bundle = bundle;
         this.db = db;
+        this.raffle = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
     }
 
     @Nullable
@@ -43,7 +56,6 @@ public class RaffleDetail extends Fragment {
 
         View viewRaffle = inflater.inflate(R.layout.fragment_view_raffle, container, false);
 
-        final Raffle raffle = (Raffle) bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
         Log.d("#### rafflelist onclick", raffle.toString());
 
         TextView name = viewRaffle.findViewById(R.id.txtName_RD);
@@ -83,11 +95,41 @@ public class RaffleDetail extends Fragment {
             imageView.setImageBitmap(bitmap);
         }
 
+        final RaffleDetail detail = this;
+
         Button drawButton = viewRaffle.findViewById(R.id.btnDraw);
         drawButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String ticketNum = getWinningTicketNumber();
+                try {
+                    Log.d("#### ticketNum", ticketNum);
 
+                    Ticket winningTicket = TicketTable.getTicketByTicketNumber(db, ticketNum);
+                    Log.d("#### winTick", String.valueOf(winningTicket.getRaffleTicketId()));
+
+                    RaffleTicket winningRaffleTicket =
+                            RaffleTicketTable.selectByRaffleTicketId(db, winningTicket.getRaffleTicketId());
+                    Log.d("#### cusId", String.valueOf(winningRaffleTicket.getCustomerId()));
+                    Log.d("#### raffle", String.valueOf(winningRaffleTicket.getRaffleTicketId()));
+
+                    Customer customer = CustomerTable.selectById(db, winningRaffleTicket.getCustomerId());
+
+                    Log.d("####", customer == null ? "customer is null" : "moemdkedoemnde");
+                    WinningDetailsDTO winningDetails = new WinningDetailsDTO(ticketNum, customer.getFullName());
+                    raffle.setWinningDetails(winningDetails);
+                    raffle.setActive(0);
+
+                    RaffleTable.update(db, raffle);
+
+                    CustomWinnerDialog customWinnerDialog = new CustomWinnerDialog(
+                            detail, ticketNum, customer.getFullName());
+                    customWinnerDialog.show(getActivity().getSupportFragmentManager(), "winner");
+
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -112,15 +154,27 @@ public class RaffleDetail extends Fragment {
                 else {
                     RaffleTable.deleteRaffle(db, raffle);
 
-                    getActivity().getSupportFragmentManager().beginTransaction().
-                            replace(R.id.fragment_container,
-                                    new Home(db, getActivity().getSupportFragmentManager(),
-                                            getContext()))
-                            .commit();
+                    goBackToHomePage();
                 }
             }
         });
 
         return viewRaffle;
     }
+
+    public void goBackToHomePage() {
+        getActivity().getSupportFragmentManager().beginTransaction().
+                replace(R.id.fragment_container,
+                        new Home(db, getActivity().getSupportFragmentManager(),
+                                getContext()))
+                .commit();
+    }
+
+    private String getWinningTicketNumber() {
+        Random random = new Random();
+        int winner = random.nextInt(raffle.getTicketsSold()) + 1;
+
+        return raffle.getRaffleNameForTicket() + winner;
+    }
+
 }

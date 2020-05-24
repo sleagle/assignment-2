@@ -21,6 +21,9 @@ public final class Utility {
 
     public static final String KEY_SELECTED_RAFFLE_TICKET = "SELECTED_RAFFLE_TICKET";
 
+    public static final String KEY_TICKET_NUMBER = "ticketNumber";
+
+    public static final String KEY_TICKET_OWNER = "ticketOwner";
     public static String getFormattedPrice(float price) {
         return String.format("$ %.2f", price);
     }
