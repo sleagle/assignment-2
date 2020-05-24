@@ -15,11 +15,11 @@
             android:id="@+id/lblCreateRaffle"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:background="@color/background"
             android:gravity="center"
             android:text="@string/create_raffle_form"
@@ -33,10 +33,10 @@
 
         <TextView
             android:id="@+id/lblName"
-            android:layout_width="@dimen/title_width"
+            android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:text="@string/name"
             android:textColor="@color/textTitle"
@@ -48,7 +48,7 @@
 
         <EditText
             android:id="@+id/txtName"
-            android:layout_width="@dimen/txt_width"
+            android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
@@ -64,7 +64,7 @@
 
         <TextView
             android:id="@+id/lblDesc"
-            android:layout_width="105dp"
+            android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/description"
@@ -77,7 +77,7 @@
 
         <EditText
             android:id="@+id/txtDesc"
-            android:layout_width="195dp"
+            android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
@@ -96,7 +96,7 @@
 
         <TextView
             android:id="@+id/lblRaffleType"
-            android:layout_width="@dimen/title_width"
+            android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/type"
@@ -109,7 +109,7 @@
 
         <Spinner
             android:id="@+id/raffle_type_spinner"
-            android:layout_width="@dimen/txt_width"
+            android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
@@ -120,7 +120,7 @@
 
         <TextView
             android:id="@+id/lblStartDate"
-            android:layout_width="@dimen/title_width"
+            android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/start_date"
@@ -160,7 +160,7 @@
 
         <TextView
             android:id="@+id/lblDrawDate"
-            android:layout_width="@dimen/title_width"
+            android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/draw_date"
@@ -201,7 +201,7 @@
 
         <TextView
             android:id="@+id/lblPrize"
-            android:layout_width="@dimen/title_width"
+            android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/prize"
@@ -214,7 +214,7 @@
 
         <EditText
             android:id="@+id/txtPrize"
-            android:layout_width="@dimen/txt_width"
+            android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
@@ -231,7 +231,7 @@
 
         <TextView
             android:id="@+id/lblLocation"
-            android:layout_width="@dimen/title_width"
+            android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/location"
@@ -244,7 +244,7 @@
 
         <EditText
             android:id="@+id/txtLocation"
-            android:layout_width="@dimen/txt_width"
+            android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
@@ -274,7 +274,7 @@
 
         <EditText
             android:id="@+id/txTicketPrice"
-            android:layout_width="180dp"
+            android:layout_width="195dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
@@ -304,7 +304,7 @@
 
         <EditText
             android:id="@+id/txtNumTickets"
-            android:layout_width="180dp"
+            android:layout_width="195dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
@@ -334,7 +334,7 @@
 
         <EditText
             android:id="@+id/txtMaxTickets"
-            android:layout_width="@dimen/title_width"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
@@ -361,29 +361,14 @@
             app:layout_constraintStart_toStartOf="@+id/lblMaxTickets"
             app:layout_constraintTop_toBottomOf="@+id/lblMaxTickets" />
 
-        <TextView
-            android:id="@+id/lblCoverImage"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/txt_height"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/cover_image"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/cbxCoverImage"
-            app:layout_constraintTop_toBottomOf="@+id/cbxCoverImage" />
-
         <ImageView
             android:id="@+id/imgCover"
-            android:layout_width="110dp"
-            android:layout_height="104dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
             android:contentDescription="@string/cover_image"
-            app:layout_constraintBottom_toBottomOf="@+id/lblCoverImage"
-            app:layout_constraintStart_toEndOf="@+id/lblCoverImage"
-            app:layout_constraintTop_toTopOf="@+id/lblCoverImage"
-            app:layout_constraintVertical_bias="0.373" />
+            app:layout_constraintStart_toStartOf="@+id/cbxCoverImage"
+            app:layout_constraintTop_toBottomOf="@+id/cbxCoverImage" />
 
         <Button
             android:id="@+id/btnCreate"
@@ -404,7 +389,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:background="@color/btn_discard"
             android:text="@string/discard"
@@ -412,14 +397,14 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblCoverImage" />
+            app:layout_constraintTop_toBottomOf="@+id/imgCover" />
 
         <Button
             android:id="@+id/btnTakeImage"
             android:layout_width="40dp"
             android:layout_height="@dimen/txt_height"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/ic_camera"
             app:layout_constraintBottom_toBottomOf="@+id/imgCover"
             app:layout_constraintStart_toEndOf="@+id/imgCover"
