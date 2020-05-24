@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
@@ -9,73 +9,70 @@
     <TextView
         android:id="@+id/lblRaffle"
         android:layout_width="187dp"
-        android:layout_height="27dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="4dp"
         android:layout_weight="5"
+        android:focusable="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="15sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/lblPrize"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="24dp"
-        android:focusable="false"/>
-
-    <TextView
-        android:id="@+id/lblDesc"
-        android:layout_width="376dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="2dp"
-        android:layout_weight="1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/lblRaffle"
-        app:layout_constraintTop_toBottomOf="@+id/lblRaffle"
-        android:focusable="false"/>
+        app:layout_constraintTop_toTopOf="@+id/lblPrize" />
 
     <TextView
         android:id="@+id/lblRaffleType"
         android:layout_width="140dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        app:layout_constraintStart_toEndOf="@+id/lblRaffle"
-        app:layout_constraintTop_toTopOf="@+id/lblRaffle"
-        android:focusable="false"/>
-
-    <TextView
-        android:id="@+id/txtDrawDate"
-        android:layout_width="70dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/draw_date"
-        android:textColor="#7F0606"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/lblDesc"
-        app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:focusable="false"
+        app:layout_constraintStart_toStartOf="@+id/lblRaffle"
+        app:layout_constraintTop_toBottomOf="@+id/lblRaffle" />
 
     <TextView
         android:id="@+id/lblDrawDate"
         android:layout_width="113dp"
         android:layout_height="17dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/txtDrawDate"
-        app:layout_constraintTop_toBottomOf="@+id/lblDesc"
-        android:focusable="false"/>
+        android:layout_marginTop="5dp"
+        android:focusable="false"
+        app:layout_constraintStart_toStartOf="@+id/lblRaffleType"
+        app:layout_constraintTop_toBottomOf="@+id/lblRaffleType" />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="25dp"
         android:layout_height="28dp"
         android:layout_marginTop="28dp"
+        android:focusable="false"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:focusable="false"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblPrize"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginLeft="53dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintStart_toEndOf="@+id/lblRaffle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblTicketPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/lblRaffleType"
+        app:layout_constraintStart_toStartOf="@+id/lblPrize"
+        app:layout_constraintTop_toTopOf="@+id/lblRaffleType" />
+
+    <TextView
+        android:id="@+id/lblNumTicketsSold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
+        app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
+        app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

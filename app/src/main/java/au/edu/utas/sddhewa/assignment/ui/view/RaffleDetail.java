@@ -49,6 +49,9 @@ public class RaffleDetail extends Fragment {
         TextView name = viewRaffle.findViewById(R.id.txtName_RD);
         name.setText(raffle.getName());
 
+        TextView prize = viewRaffle.findViewById(R.id.txtPrize);
+        prize.setText(raffle.getRafflePrizeString());
+
         TextView description = viewRaffle.findViewById(R.id.txtDesc_RD);
         description.setText(raffle.getDescription());
 

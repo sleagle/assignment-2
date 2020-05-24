@@ -66,14 +66,20 @@ public class CurrentRaffleAdapter extends ArrayAdapter<Raffle> {
         TextView lblRaffle = row.findViewById(R.id.lblRaffle);
         lblRaffle.setText(raffle.getName());
 
-        TextView lblDesc = row.findViewById(R.id.lblDesc);
-        lblDesc.setText(raffle.getDescription());
-
         TextView lblRaffleType = row.findViewById(R.id.lblRaffleType);
         lblRaffleType.setText(raffle.getTypeId().name);
 
         TextView lblDrawDate = row.findViewById(R.id.lblDrawDate);
         lblDrawDate.setText(raffle.getDrawDate());
+
+        TextView lblPrize = row.findViewById(R.id.lblPrize);
+        lblPrize.setText(raffle.getRafflePrizeString());
+
+        TextView lblTicketPrice = row.findViewById(R.id.lblTicketPrice);
+        lblTicketPrice.setText(raffle.getTicketPriceString());
+
+        TextView lblNumTicketsSold = row.findViewById(R.id.lblNumTicketsSold);
+        lblNumTicketsSold.setText(raffle.getTicketsSoldStringForList());
 
         final CheckBox checkBox = row.findViewById(R.id.checkBox);
         checkBox.setOnClickListener(new View.OnClickListener() {

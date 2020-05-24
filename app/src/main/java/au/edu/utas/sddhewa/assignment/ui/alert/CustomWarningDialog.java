@@ -62,6 +62,9 @@ public class CustomWarningDialog extends DialogFragment {
                 builder.setMessage(getResources().getString(
                         R.string.error_not_deleted_msg_single, notDeletedRaffleName));
                 break;
+            case NO_EXISTING_CUSTOMERS:
+                builder.setMessage(R.string.warning_no_existing_customers);
+                break;
         }
 
 

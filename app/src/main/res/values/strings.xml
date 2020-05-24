@@ -116,6 +116,8 @@
     <string name="warning_dialog_max_buy_msg">This Customer has already brought max amount</string>
     <string name="warning_dialog_over_buy_msg">This Customer will exceed the max limit \nCan only purchase %1$d ticket(s)</string>
     <string name="warning_dialog_dismiss">Dismiss</string>
+    <string name="warning_no_existing_customers">There are no existing customers.</string>
+
 
     <string name="error_dialog_create_title">Create Error!</string>
     <string name="error_dialog_create_msg">All fields are required!</string>

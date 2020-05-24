@@ -215,6 +215,9 @@ public class SellTicket extends Fragment implements FormInteraction {
                         lblCustomer.setVisibility(View.VISIBLE);
                         if (customersList.size() > 0) {
                             populateCustomerFields();
+                        } else {
+                            CustomWarningDialog customWarningDialog = new CustomWarningDialog(AlertType.NO_EXISTING_CUSTOMERS);
+                            customWarningDialog.show(getActivity().getSupportFragmentManager(), "warning");
                         }
                     }
                     else {
