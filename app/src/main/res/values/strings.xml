@@ -24,7 +24,7 @@
     <string name="ticket_price">Ticket Price:</string>
     <string name="max_tickets">Max tickets per person:</string>
     <string name="add_cover">Add a cover image for the raffle</string>
-    <string name="cover_image">Cover Image:</string>
+    <string name="cover_image">Cover Image</string>
 
     <!-- common string resources -->
     <string name="create">Create</string>
