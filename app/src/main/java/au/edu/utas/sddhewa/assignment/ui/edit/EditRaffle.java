@@ -1,4 +1,4 @@
-package au.edu.utas.sddhewa.assignment.ui.create.raffle;
+package au.edu.utas.sddhewa.assignment.ui.edit;
 
 import android.Manifest;
 import android.app.Activity;
@@ -17,11 +17,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,42 +34,35 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
-import au.edu.utas.sddhewa.assignment.ui.alert.CustomDismissAlertDialog;
 import au.edu.utas.sddhewa.assignment.ui.DatePickerFragment;
 import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomDismissAlertDialog;
 import au.edu.utas.sddhewa.assignment.ui.alert.CustomErrorDialog;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.AlertType;
 import au.edu.utas.sddhewa.assignment.util.RaffleType;
+import au.edu.utas.sddhewa.assignment.util.Utility;
 
+public class EditRaffle extends Fragment implements FormInteraction {
 
-/**
- * A simple {@link Fragment} subclass.
- * create an instance of this fragment.
- */
-public class CreateRaffle extends Fragment implements FormInteraction {
-
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
-
-    private View createRaffle;
+    private View editRaffle;
 
     private Context context;
     private SQLiteDatabase db;
     private FragmentManager fragmentManager;
     private PackageManager packageManager;
+    private final Raffle raffle;
 
     private String currentPhotoPath;
 
     private TextView name;
     private TextView description;
-    private Spinner raffleType;
+    private TextView raffleType;
     private TextView startDate;
     private TextView drawDate;
     private TextView prize;
@@ -83,61 +74,92 @@ public class CreateRaffle extends Fragment implements FormInteraction {
     private ImageView coverImage;
 
 
-    public CreateRaffle(Context context, SQLiteDatabase db, FragmentManager fragmentManager,
-                        PackageManager packageManager) {
+    public EditRaffle(Context context, SQLiteDatabase db, FragmentManager fragmentManager,
+                        PackageManager packageManager, Bundle bundle) {
         // Required empty public constructor
         this.context = context;
         this.db = db;
         this.fragmentManager = fragmentManager;
         this.packageManager = packageManager;
+        this.raffle = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        createRaffle = inflater.inflate(R.layout.fragment_create_raffle, container, false);
+        editRaffle = inflater.inflate(R.layout.fragment_edit_raffle, container, false);
 
-        final CreateRaffle createRaffleObj = this;
+        final EditRaffle editRaffle = this;
 
-        name = createRaffle.findViewById(R.id.txtName);
-        description = createRaffle.findViewById(R.id.txtDesc);
-        raffleType = createRaffle.findViewById(R.id.raffle_type_spinner);
-        startDate = createRaffle.findViewById(R.id.txtStartDate);
-        drawDate = createRaffle.findViewById(R.id.txtCR_DrawDate);
-        prize = createRaffle.findViewById(R.id.txtPrize);
-        location = createRaffle.findViewById(R.id.txtLocation);
-        ticketPrice = createRaffle.findViewById(R.id.txTicketPrice);
-        numTickets = createRaffle.findViewById(R.id.txtNumTickets);
-        maxTickets = createRaffle.findViewById(R.id.txtMaxTickets);
-        addCoverImage = createRaffle.findViewById(R.id.cbxCoverImage);
+        name = this.editRaffle.findViewById(R.id.txtName_edit);
+        name.setText(raffle.getName());
+        name.setEnabled(false);
 
-        Button startDateSelect = createRaffle.findViewById(R.id.btnCalander);
-        Button drawDateSelect = createRaffle.findViewById(R.id.btnCalanderD);
-        Button discard = createRaffle.findViewById(R.id.btnDiscard);
-        Button create = createRaffle.findViewById(R.id.btnCreate);
-        final Button camera = createRaffle.findViewById(R.id.btnTakeImage);
+        description = this.editRaffle.findViewById(R.id.txtDesc_edit);
+        description.setText(raffle.getDescription());
+
+        raffleType = this.editRaffle.findViewById(R.id.txtRaffleType_edit);
+        raffleType.setText(raffle.getTypeId().name);
+        raffleType.setEnabled(false);
+
+        prize = this.editRaffle.findViewById(R.id.txtPrize_edit);
+        prize.setText(String.valueOf(raffle.getPrize()));
+
+        startDate = this.editRaffle.findViewById(R.id.txtStartDate_edit);
+        startDate.setText(raffle.getStartingDateString());
+
+        ticketPrice = this.editRaffle.findViewById(R.id.txTicketPrice_edit);
+        ticketPrice.setText(String.valueOf(raffle.getTicketPrice()));
+
+        if (raffle.getTicketsSold() > 0) {
+            prize.setEnabled(false);
+            startDate.setEnabled(false);
+            ticketPrice.setEnabled(false);
+        }
+
+        drawDate = this.editRaffle.findViewById(R.id.txtCR_DrawDate_edit);
+        drawDate.setText(raffle.getDrawDate());
+
+        location = this.editRaffle.findViewById(R.id.txtLocation_edit);
+        location.setText(raffle.getLocation());
+
+        numTickets = this.editRaffle.findViewById(R.id.txtNumTickets_edit);
+        numTickets.setText(String.valueOf(raffle.getNoOfTickets()));
+
+        maxTickets = this.editRaffle.findViewById(R.id.txtMaxTickets_edit);
+        maxTickets.setText(String.valueOf(raffle.getMaxTickets()));
+
+        addCoverImage = this.editRaffle.findViewById(R.id.cbxCoverImage_edit);
+        addCoverImage.setChecked(false);
+
+        coverImage = this.editRaffle.findViewById(R.id.imgCover_edit);
+        byte[] coverImageData = raffle.getRaffleCover();
+        if (coverImageData != null) {
+            addCoverImage.setChecked(true);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(coverImageData, 0, coverImageData.length);
+            coverImage.setImageBitmap(bitmap);
+        }
 
 
-        coverImage = createRaffle.findViewById(R.id.imgCover);
+        Button startDateSelect = this.editRaffle.findViewById(R.id.btnCalander_edit);
+        Button drawDateSelect = this.editRaffle.findViewById(R.id.btnCalanderD_edit);
+        Button discard = this.editRaffle.findViewById(R.id.btnDiscard_edit);
+        Button create = this.editRaffle.findViewById(R.id.btnCreate_edit);
+        final Button camera = this.editRaffle.findViewById(R.id.btnTakeImage_edit);
 
         coverImage.setVisibility(View.INVISIBLE);
         camera.setVisibility(View.INVISIBLE);
 
-
-        final ArrayList<String> raffleTypes = new ArrayList<>(Arrays.asList(
-                getResources().getStringArray(R.array.raffle_types_array)));
-
-        final ArrayAdapter<String> raffleTypesAdapter = new ArrayAdapter<>(
-                context, android.R.layout.simple_spinner_dropdown_item, raffleTypes);
-
-        raffleType.setAdapter(raffleTypesAdapter);
+        if (addCoverImage.isChecked()) {
+            coverImage.setVisibility(View.VISIBLE);
+            camera.setVisibility(View.VISIBLE);
+        }
 
         addCoverImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (addCoverImage.isChecked()) {
-
                     coverImage.setVisibility(View.VISIBLE);
                     camera.setVisibility(View.VISIBLE);
                 } else {
@@ -151,7 +173,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         startDateSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment newFragment = new DatePickerFragment(startDate, createRaffle);
+                DialogFragment newFragment = new DatePickerFragment(startDate, EditRaffle.this.editRaffle);
                 newFragment.show(fragmentManager, "datePicker");
             }
         });
@@ -159,7 +181,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         drawDateSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment newFragment = new DatePickerFragment(drawDate, createRaffle);
+                DialogFragment newFragment = new DatePickerFragment(drawDate, EditRaffle.this.editRaffle);
                 newFragment.show(fragmentManager, "datePicker");
             }
         });
@@ -167,7 +189,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         discard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomDismissAlertDialog fragment = new CustomDismissAlertDialog(createRaffleObj);
+                CustomDismissAlertDialog fragment = new CustomDismissAlertDialog(editRaffle);
                 fragment.show(fragmentManager, "alert");
             }
         });
@@ -193,13 +215,13 @@ public class CreateRaffle extends Fragment implements FormInteraction {
             }
         });
 
-        return createRaffle;
+        return this.editRaffle;
     }
 
     public void resetForm() {
         name.setText("");
         description.setText("");
-        raffleType.setSelection(0);
+        raffleType.setText("");
         startDate.setText("");
         drawDate.setText("");
         prize.setText("");
@@ -216,16 +238,16 @@ public class CreateRaffle extends Fragment implements FormInteraction {
 
     public void createOrUpdateEntity() {
 
-        RaffleType type =
-                raffleType.getSelectedItemId() == 0 ? RaffleType.NORMAL_RAFFLE : RaffleType.MARGIN_RAFFLE;
-
         try {
-            Raffle raffle = new Raffle(name.getText().toString(), description.getText().toString(), type,
-                    startDate.getText().toString(), drawDate.getText().toString(),
-                    Float.parseFloat(prize.getText().toString()),true,
-                    location.getText().toString(), Float.parseFloat(ticketPrice.getText().toString()),
-                    Integer.parseInt(numTickets.getText().toString()), 0,
-                    Integer.parseInt(maxTickets.getText().toString()));
+
+            raffle.setDescription(description.getText().toString());
+            raffle.setStartingDate(startDate.getText().toString());
+            raffle.setDrawDate(drawDate.getText().toString());
+            raffle.setPrize(Float.parseFloat(prize.getText().toString()));
+            raffle.setLocation(location.getText().toString());
+            raffle.setTicketPrice(Float.parseFloat(ticketPrice.getText().toString()));
+            raffle.setNoOfTickets(Integer.parseInt(numTickets.getText().toString()));
+            raffle.setMaxTickets(Integer.parseInt(maxTickets.getText().toString()));
 
             if (addCoverImage.isChecked()) {
                 Bitmap bitmap = ((BitmapDrawable) coverImage.getDrawable()).getBitmap();
@@ -237,13 +259,13 @@ public class CreateRaffle extends Fragment implements FormInteraction {
                 raffle.setRaffleCover(imageInByte);
             }
 
-            if (RaffleTable.insert(db, raffle) != -1) {
-                Log.d("###### Create Raffle", "insert successful");
-                Toast toast = Toast.makeText(context, R.string.create_raffle_success, Toast.LENGTH_LONG);
+            if (RaffleTable.update(db, raffle) != -1) {
+                Log.d("###### Update Raffle", "insert successful");
+                Toast toast = Toast.makeText(context, R.string.update_raffle_success, Toast.LENGTH_LONG);
                 resetForm();
                 toast.show();
             } else {
-                Log.d("###### Create Raffle", "insert error");
+                Log.d("###### Update Raffle", "update error");
             }
 
         } catch (ParseException e) {
@@ -261,7 +283,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+        if (requestCode == Utility.REQUEST_IMAGE_CAPTURE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // permission was granted, yay!
                 Log.d("######", "gave permission");
@@ -282,8 +304,8 @@ public class CreateRaffle extends Fragment implements FormInteraction {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            ImageView myImageView = createRaffle.findViewById(R.id.imgCover);
+        if (requestCode == Utility.REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
+            ImageView myImageView = editRaffle.findViewById(R.id.imgCover_edit);
             setPic(myImageView);
         }
     }
@@ -310,7 +332,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
                         "au.edu.utas.sddhewa.assignment",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                startActivityForResult(takePictureIntent, Utility.REQUEST_IMAGE_CAPTURE);
             }
         } else {
             Log.d("######", "takePictureIntent.resolveActivity(packageManager is null");
@@ -322,7 +344,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
      * https://developer.android.com/guide/topics/media/camera
      */
     private void requestToTakeAPicture(){
-        requestPermissions(new String[] { Manifest.permission.CAMERA }, REQUEST_IMAGE_CAPTURE);
+        requestPermissions(new String[] { Manifest.permission.CAMERA }, Utility.REQUEST_IMAGE_CAPTURE);
     }
 
     /*
@@ -374,7 +396,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
         imageView.setImageBitmap(bitmap);
     }
-    
+
     private boolean validateForm() {
 
         Log.d("### name", name.getText().toString());

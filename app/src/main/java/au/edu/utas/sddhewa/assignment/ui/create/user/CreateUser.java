@@ -80,7 +80,7 @@ public class CreateUser extends Fragment implements FormInteraction {
             @Override
             public void onClick(View v) {
                 if (!validate()) {
-                    createEntity();
+                    createOrUpdateEntity();
                 }
                 else {
                     CustomErrorDialog errorDialog = new CustomErrorDialog(AlertType.CREATE_ERROR);
@@ -120,7 +120,7 @@ public class CreateUser extends Fragment implements FormInteraction {
                         new Home(db, fragmentManager, context)).commit();
     }
 
-    public void createEntity() {
+    public void createOrUpdateEntity() {
 
         Customer customer = new Customer(
                 titleSpinner.getSelectedItem().toString(), fName.getText().toString(),

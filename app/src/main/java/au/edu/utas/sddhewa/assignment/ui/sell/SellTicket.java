@@ -31,7 +31,6 @@ import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTicketTable;
 import au.edu.utas.sddhewa.assignment.db.table.TicketTable;
-import au.edu.utas.sddhewa.assignment.dto.WinningDetailsDTO;
 import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
@@ -136,7 +135,7 @@ public class SellTicket extends Fragment implements FormInteraction {
             public void onClick(View v) {
                 AlertType res = validateRequest();
                 if (res.equals(AlertType.VALID)) {
-                    createEntity();
+                    createOrUpdateEntity();
                 }
                 else {
                     CustomWarningDialog fragment = new CustomWarningDialog(res, difference);
@@ -264,7 +263,7 @@ public class SellTicket extends Fragment implements FormInteraction {
     }
 
     @Override
-    public void createEntity() {
+    public void createOrUpdateEntity() {
 
         RaffleTicket raffleTicket = new RaffleTicket(raffle.getRaffleId(),
                 Integer.parseInt(numTicketsSpinner.getSelectedItem().toString()), total, new Date());

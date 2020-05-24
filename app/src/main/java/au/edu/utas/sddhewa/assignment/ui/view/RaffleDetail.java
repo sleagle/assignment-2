@@ -33,6 +33,7 @@ import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
 import au.edu.utas.sddhewa.assignment.modal.Ticket;
 import au.edu.utas.sddhewa.assignment.ui.alert.CustomWarningDialog;
 import au.edu.utas.sddhewa.assignment.ui.alert.CustomWinnerDialog;
+import au.edu.utas.sddhewa.assignment.ui.edit.EditRaffle;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.AlertType;
 import au.edu.utas.sddhewa.assignment.util.Utility;
@@ -103,19 +104,13 @@ public class RaffleDetail extends Fragment {
             public void onClick(View v) {
                 String ticketNum = getWinningTicketNumber();
                 try {
-                    Log.d("#### ticketNum", ticketNum);
-
                     Ticket winningTicket = TicketTable.getTicketByTicketNumber(db, ticketNum);
-                    Log.d("#### winTick", String.valueOf(winningTicket.getRaffleTicketId()));
 
                     RaffleTicket winningRaffleTicket =
                             RaffleTicketTable.selectByRaffleTicketId(db, winningTicket.getRaffleTicketId());
-                    Log.d("#### cusId", String.valueOf(winningRaffleTicket.getCustomerId()));
-                    Log.d("#### raffle", String.valueOf(winningRaffleTicket.getRaffleTicketId()));
 
                     Customer customer = CustomerTable.selectById(db, winningRaffleTicket.getCustomerId());
 
-                    Log.d("####", customer == null ? "customer is null" : "moemdkedoemnde");
                     WinningDetailsDTO winningDetails = new WinningDetailsDTO(ticketNum, customer.getFullName());
                     raffle.setWinningDetails(winningDetails);
                     raffle.setActive(0);
@@ -137,7 +132,14 @@ public class RaffleDetail extends Fragment {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(Utility.KEY_SELECTED_RAFFLE, raffle);
 
+                getActivity().getSupportFragmentManager().beginTransaction().
+                        replace(R.id.fragment_container,
+                                new EditRaffle(getContext(), db, getActivity().getSupportFragmentManager(),
+                                       getActivity().getPackageManager(), bundle))
+                        .addToBackStack(null).commit();
             }
         });
 

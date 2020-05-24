@@ -79,7 +79,7 @@ public class RaffleTable {
         return db.insert(TABLE_NAME, null, values);
     }
 
-    public static void update(SQLiteDatabase db, Raffle raffle) {
+    public static int update(SQLiteDatabase db, Raffle raffle) {
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, raffle.getName());
@@ -101,7 +101,7 @@ public class RaffleTable {
             e.printStackTrace();
         }
 
-        db.update(TABLE_NAME, values, KEY_RAFFLE_ID+"= ?",
+        return db.update(TABLE_NAME, values, KEY_RAFFLE_ID+"= ?",
                 new String[] { ""+raffle.getRaffleId() });
     }
 

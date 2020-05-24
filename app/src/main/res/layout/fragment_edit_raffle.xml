@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eff5f5"
-    tools:context=".ui.create.raffle.CreateRaffle">
+    tools:context=".ui.edit.EditRaffle">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:layout_marginRight="40dp"
             android:background="@color/background"
             android:gravity="center"
-            android:text="@string/create_raffle_form"
+            android:text="@string/edit_raffle"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/drawBtn"
             android:textStyle="bold"
@@ -47,7 +47,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblCreateRaffle" />
 
         <EditText
-            android:id="@+id/txtName"
+            android:id="@+id/txtName_edit"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
             android:autofillHints="@string/name"
@@ -75,7 +75,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblName" />
 
         <EditText
-            android:id="@+id/txtDesc"
+            android:id="@+id/txtDesc_edit"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
             android:autofillHints="@string/description"
@@ -104,10 +104,14 @@
             app:layout_constraintStart_toStartOf="@+id/lblDesc"
             app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
 
-        <Spinner
-            android:id="@+id/raffle_type_spinner"
+        <EditText
+            android:id="@+id/txtRaffleType_edit"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
+            android:autofillHints="@string/description"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Description"
             android:textColor="@color/textTitle"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblRaffleType"
@@ -128,7 +132,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblRaffleType" />
 
         <TextView
-            android:id="@+id/txtStartDate"
+            android:id="@+id/txtStartDate_edit"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:autofillHints="@string/start_date"
@@ -142,15 +146,15 @@
             app:layout_constraintTop_toTopOf="@+id/lblStartDate" />
 
         <Button
-            android:id="@+id/btnCalander"
+            android:id="@+id/btnCalander_edit"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/ic_date"
-            app:layout_constraintBottom_toBottomOf="@+id/txtStartDate"
-            app:layout_constraintStart_toEndOf="@+id/txtStartDate"
-            app:layout_constraintTop_toTopOf="@+id/txtStartDate" />
+            app:layout_constraintBottom_toBottomOf="@+id/txtStartDate_edit"
+            app:layout_constraintStart_toEndOf="@+id/txtStartDate_edit"
+            app:layout_constraintTop_toTopOf="@+id/txtStartDate_edit" />
 
         <TextView
             android:id="@+id/lblDrawDate"
@@ -166,7 +170,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblStartDate" />
 
         <TextView
-            android:id="@+id/txtCR_DrawDate"
+            android:id="@+id/txtCR_DrawDate_edit"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:autofillHints="@string/draw_date"
@@ -180,7 +184,7 @@
             app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
 
         <Button
-            android:id="@+id/btnCalanderD"
+            android:id="@+id/btnCalanderD_edit"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
@@ -188,7 +192,7 @@
             android:background="@drawable/ic_date"
 
             app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
-            app:layout_constraintStart_toEndOf="@+id/txtCR_DrawDate"
+            app:layout_constraintStart_toEndOf="@+id/txtCR_DrawDate_edit"
             app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
 
         <TextView
@@ -205,7 +209,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblDrawDate" />
 
         <EditText
-            android:id="@+id/txtPrize"
+            android:id="@+id/txtPrize_edit"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
             android:autofillHints="@string/prize"
@@ -233,7 +237,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblPrize" />
 
         <EditText
-            android:id="@+id/txtLocation"
+            android:id="@+id/txtLocation_edit"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
             android:autofillHints="@string/location"
@@ -261,7 +265,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblLocation" />
 
         <EditText
-            android:id="@+id/txTicketPrice"
+            android:id="@+id/txTicketPrice_edit"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:autofillHints="@string/ticket_price"
@@ -289,7 +293,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblTicketPrice" />
 
         <EditText
-            android:id="@+id/txtNumTickets"
+            android:id="@+id/txtNumTickets_edit"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:autofillHints="@string/num_tickets"
@@ -317,7 +321,7 @@
             app:layout_constraintTop_toBottomOf="@+id/lblNumTickets" />
 
         <EditText
-            android:id="@+id/txtMaxTickets"
+            android:id="@+id/txtMaxTickets_edit"
             android:layout_width="95dp"
             android:layout_height="wrap_content"
             android:autofillHints="@string/max_tickets"
@@ -332,7 +336,7 @@
             app:layout_constraintTop_toTopOf="@+id/lblMaxTickets" />
 
         <CheckBox
-            android:id="@+id/cbxCoverImage"
+            android:id="@+id/cbxCoverImage_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -344,30 +348,30 @@
             app:layout_constraintTop_toBottomOf="@+id/lblMaxTickets" />
 
         <ImageView
-            android:id="@+id/imgCover"
+            android:id="@+id/imgCover_edit"
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:layout_marginTop="15dp"
             android:contentDescription="@string/cover_image"
-            app:layout_constraintStart_toStartOf="@+id/cbxCoverImage"
-            app:layout_constraintTop_toBottomOf="@+id/cbxCoverImage" />
+            app:layout_constraintStart_toStartOf="@+id/cbxCoverImage_edit"
+            app:layout_constraintTop_toBottomOf="@+id/cbxCoverImage_edit" />
 
         <Button
-            android:id="@+id/btnCreate"
+            android:id="@+id/btnCreate_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="60dp"
             android:layout_marginRight="60dp"
             android:background="@drawable/rounded_btn"
-            android:text="@string/create"
+            android:text="@string/update"
             android:textColor="@color/btn_txt"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/btnDiscard"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDiscard_edit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
+            app:layout_constraintTop_toTopOf="@+id/btnDiscard_edit" />
 
         <Button
-            android:id="@+id/btnDiscard"
+            android:id="@+id/btnDiscard_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
@@ -380,18 +384,18 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgCover" />
+            app:layout_constraintTop_toBottomOf="@+id/imgCover_edit" />
 
         <Button
-            android:id="@+id/btnTakeImage"
+            android:id="@+id/btnTakeImage_edit"
             android:layout_width="40dp"
             android:layout_height="@dimen/txt_height"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/ic_camera"
-            app:layout_constraintBottom_toBottomOf="@+id/imgCover"
-            app:layout_constraintStart_toEndOf="@+id/imgCover"
-            app:layout_constraintTop_toTopOf="@+id/imgCover" />
+            app:layout_constraintBottom_toBottomOf="@+id/imgCover_edit"
+            app:layout_constraintStart_toEndOf="@+id/imgCover_edit"
+            app:layout_constraintTop_toTopOf="@+id/imgCover_edit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
