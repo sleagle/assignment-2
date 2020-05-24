@@ -111,7 +111,7 @@ public class RaffleDetail extends Fragment {
 
                     Customer customer = CustomerTable.selectById(db, winningRaffleTicket.getCustomerId());
 
-                    WinningDetailsDTO winningDetails = new WinningDetailsDTO(ticketNum, customer.getFullName());
+                    WinningDetailsDTO winningDetails = new WinningDetailsDTO(ticketNum, customer.getCustomerId());
                     raffle.setWinningDetails(winningDetails);
                     raffle.setActive(0);
 

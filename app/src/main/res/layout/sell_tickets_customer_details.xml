@@ -14,46 +14,78 @@
         <EditText
             android:id="@+id/txtLastName_ST"
             android:layout_width="@dimen/txt_width"
-            android:layout_height="@dimen/txt_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:autofillHints="@string/last_name"
             android:ems="10"
             android:hint="@string/last_name"
             android:inputType="textPersonName"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintBottom_toBottomOf="@+id/lblLastName"
             app:layout_constraintStart_toStartOf="@+id/txtFirstName_ST"
-            app:layout_constraintTop_toBottomOf="@+id/txtFirstName_ST" />
+            app:layout_constraintTop_toTopOf="@+id/lblLastName" />
+
+        <TextView
+            android:id="@+id/lblLastName"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/last_name"
+            android:textColor="@color/textTitle"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintStart_toStartOf="@+id/lblFirstName"
+            app:layout_constraintTop_toBottomOf="@+id/lblFirstName" />
 
         <EditText
             android:id="@+id/txtMobile_ST"
-            android:layout_width="216dp"
-            android:layout_height="@dimen/txt_height"
+            android:layout_width="@dimen/txt_width"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:autofillHints="@string/mobile"
             android:ems="10"
             android:hint="@string/mobile"
             android:inputType="phone"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintBottom_toBottomOf="@+id/lblPhone"
             app:layout_constraintStart_toStartOf="@+id/txtLastName_ST"
-            app:layout_constraintTop_toBottomOf="@+id/txtLastName_ST" />
+            app:layout_constraintTop_toTopOf="@+id/lblPhone"
+            app:layout_constraintVertical_bias="0.192" />
+
+        <TextView
+            android:id="@+id/lblPhone"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/mobile"
+            android:textColor="@color/textTitle"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintStart_toStartOf="@+id/lblLastName"
+            app:layout_constraintTop_toBottomOf="@+id/lblLastName" />
 
         <EditText
             android:id="@+id/txtFirstName_ST"
             android:layout_width="@dimen/txt_width"
-            android:layout_height="@dimen/txt_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:autofillHints="@string/first_name"
             android:ems="10"
             android:hint="@string/first_name"
             android:inputType="textPersonName"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/title_spinner_ST"
             app:layout_constraintTop_toBottomOf="@+id/title_spinner_ST" />
 
         <EditText
             android:id="@+id/txtSuburb_ST"
             android:layout_width="@dimen/txt_width"
-            android:layout_height="@dimen/txt_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:autofillHints="@string/suburb"
             android:ems="10"
@@ -65,43 +97,31 @@
 
         <TextView
             android:id="@+id/lblState"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/txt_height"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@string/state"
+            android:textColor="@color/textTitle"
+            android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintBottom_toBottomOf="@+id/state_spinner_ST"
             app:layout_constraintStart_toStartOf="@+id/lblSuburb"
-            app:layout_constraintTop_toBottomOf="@+id/lblSuburb" />
-
-        <TextView
-            android:id="@+id/lblPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/txt_height"
-            android:layout_marginTop="5dp"
-            android:text="@string/mobile"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/lblLastName"
-            app:layout_constraintTop_toBottomOf="@+id/lblLastName" />
-
-        <TextView
-            android:id="@+id/lblEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/txt_height"
-            android:layout_marginTop="5dp"
-            android:text="@string/email"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/lblPhone"
-            app:layout_constraintTop_toBottomOf="@+id/lblPhone" />
+            app:layout_constraintTop_toTopOf="@+id/state_spinner_ST" />
 
         <TextView
             android:id="@+id/lblFirstName"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/txt_height"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@string/first_name"
+            android:textColor="@color/textTitle"
+            android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintBottom_toBottomOf="@+id/txtFirstName_ST"
             app:layout_constraintStart_toStartOf="@+id/lblTitle"
-            app:layout_constraintTop_toBottomOf="@+id/lblTitle" />
+            app:layout_constraintTop_toTopOf="@+id/txtFirstName_ST" />
 
         <Spinner
             android:id="@+id/state_spinner_ST"
@@ -113,80 +133,99 @@
 
         <TextView
             android:id="@+id/lblTitle"
-            android:layout_width="57dp"
-            android:layout_height="@dimen/txt_height"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
             android:layout_marginLeft="44dp"
             android:layout_marginTop="5dp"
             android:text="@string/title"
+            android:textColor="@color/textTitle"
+            android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/lblAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/txt_height"
-            android:layout_marginTop="5dp"
-            android:text="@string/address"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/lblEmail"
-            app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
 
         <Spinner
             android:id="@+id/title_spinner_ST"
             android:layout_width="102dp"
-            android:layout_height="@dimen/txt_height"
-            android:layout_marginStart="48dp"
-            android:layout_marginLeft="48dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             app:layout_constraintStart_toEndOf="@+id/lblTitle"
             app:layout_constraintTop_toTopOf="@+id/lblTitle" />
-
-        <TextView
-            android:id="@+id/lblLastName"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/txt_height"
-            android:layout_marginTop="5dp"
-            android:text="@string/last_name"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/lblFirstName"
-            app:layout_constraintTop_toBottomOf="@+id/lblFirstName" />
 
         <EditText
             android:id="@+id/txtAddress_ST"
             android:layout_width="@dimen/txt_width"
-            android:layout_height="@dimen/txt_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:autofillHints="@string/address"
             android:ems="10"
             android:hint="@string/address"
             android:inputType="textPersonName"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintBottom_toBottomOf="@+id/lblAddress"
             app:layout_constraintStart_toStartOf="@+id/txtEmail_ST"
-            app:layout_constraintTop_toBottomOf="@+id/txtEmail_ST" />
+            app:layout_constraintTop_toTopOf="@+id/lblAddress"
+            app:layout_constraintVertical_bias="0.423" />
+
+        <TextView
+            android:id="@+id/lblAddress"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/address"
+            android:textColor="@color/textTitle"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintStart_toStartOf="@+id/lblEmail"
+            app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
 
         <TextView
             android:id="@+id/lblSuburb"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/txt_height"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@string/suburb"
+            android:textColor="@color/textTitle"
+            android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintBottom_toBottomOf="@+id/txtSuburb_ST"
             app:layout_constraintStart_toStartOf="@+id/lblAddress"
-            app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
+            app:layout_constraintTop_toTopOf="@+id/txtSuburb_ST" />
 
         <EditText
             android:id="@+id/txtEmail_ST"
             android:layout_width="@dimen/txt_width"
-            android:layout_height="@dimen/txt_height"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:autofillHints="@string/email"
             android:ems="10"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintBottom_toBottomOf="@+id/lblEmail"
             app:layout_constraintStart_toStartOf="@+id/txtMobile_ST"
-            app:layout_constraintTop_toBottomOf="@+id/txtMobile_ST" />
+            app:layout_constraintTop_toTopOf="@+id/lblEmail"
+            app:layout_constraintVertical_bias="0.384" />
+
+        <TextView
+            android:id="@+id/lblEmail"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/email"
+            android:textColor="@color/textTitle"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintStart_toStartOf="@+id/lblPhone"
+            app:layout_constraintTop_toBottomOf="@+id/lblPhone" />
 
         <EditText
             android:id="@+id/txtPostCode_ST"
@@ -196,38 +235,42 @@
             android:autofillHints="@string/post_code"
             android:ems="10"
             android:hint="@string/post_code"
-            android:inputType="textPostalAddress"
+            android:inputType=""
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/state_spinner_ST"
             app:layout_constraintTop_toBottomOf="@+id/state_spinner_ST" />
 
         <TextView
             android:id="@+id/lblPostCode"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/txt_height"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:text="@string/post_code"
+            android:textColor="@color/textTitle"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPostCode_ST"
             app:layout_constraintStart_toStartOf="@+id/lblState"
-            app:layout_constraintTop_toBottomOf="@+id/lblState"
+            app:layout_constraintTop_toTopOf="@+id/txtPostCode_ST"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/btnSell"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="80dp"
             android:layout_marginRight="80dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/btn_success"
+            android:background="@drawable/rounded_btn"
             android:text="@string/sell"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/btn_txt"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btnDiscard_ST" />
+            app:layout_constraintTop_toBottomOf="@+id/txtPostCode_ST" />
 
         <Button
             android:id="@+id/btnDiscard_ST"
@@ -237,13 +280,13 @@
             android:layout_marginLeft="80dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@color/btn_discard"
+            android:background="@drawable/rounded_delete_btn"
             android:text="@string/discard"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/btn_txt"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSell"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPostCode_ST" />
+            app:layout_constraintTop_toTopOf="@+id/btnSell" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

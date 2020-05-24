@@ -23,7 +23,7 @@ public final class Utility {
 
     public static final String KEY_TICKET_NUMBER = "ticketNumber";
 
-    public static final String KEY_TICKET_OWNER = "ticketOwner";
+    public static final String TICKET_OWNER_ID = "ticketOwnerId";
 
     public static final int REQUEST_IMAGE_CAPTURE = 1;
 

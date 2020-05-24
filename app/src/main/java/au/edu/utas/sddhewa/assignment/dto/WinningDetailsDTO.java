@@ -4,14 +4,14 @@ public class WinningDetailsDTO {
 
     private String ticketNumber;
 
-    private String ticketOwner;
+    private long ticketOwnerId;
 
     public WinningDetailsDTO() {
     }
 
-    public WinningDetailsDTO(String ticketNumber, String ticketOwner) {
+    public WinningDetailsDTO(String ticketNumber, long ticketOwnerId) {
         this.ticketNumber = ticketNumber;
-        this.ticketOwner = ticketOwner;
+        this.ticketOwnerId = ticketOwnerId;
     }
 
     public String getTicketNumber() {
@@ -22,11 +22,11 @@ public class WinningDetailsDTO {
         this.ticketNumber = ticketNumber;
     }
 
-    public String getTicketOwner() {
-        return ticketOwner;
+    public long getTicketOwnerId() {
+        return ticketOwnerId;
     }
 
-    public void setTicketOwner(String ticketOwner) {
-        this.ticketOwner = ticketOwner;
+    public void setTicketOwnerId(long ticketOwnerId) {
+        this.ticketOwnerId = ticketOwnerId;
     }
 }

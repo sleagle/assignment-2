@@ -403,7 +403,7 @@ public class Raffle implements Parcelable {
         try {
             JSONObject object = new JSONObject(winningDetailsString);
             this.winningDetails = new WinningDetailsDTO(object.getString(
-                    Utility.KEY_TICKET_NUMBER), object.getString(Utility.KEY_TICKET_OWNER));
+                    Utility.KEY_TICKET_NUMBER), object.getLong(Utility.TICKET_OWNER_ID));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -414,12 +414,17 @@ public class Raffle implements Parcelable {
         if (winningDetails != null) {
             JSONObject object = new JSONObject();
             object.put(Utility.KEY_TICKET_NUMBER, winningDetails.getTicketNumber());
-            object.put(Utility.KEY_TICKET_OWNER, winningDetails.getTicketOwner());
+            object.put(Utility.TICKET_OWNER_ID, winningDetails.getTicketOwnerId());
 
             return object.toString();
         }
 
         return "";
+    }
+
+    public WinningDetailsDTO getWinningDetailsDTO() {
+
+        return winningDetails;
     }
 
     /**

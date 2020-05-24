@@ -20,13 +20,15 @@ public class ViewTabPageAdapter extends FragmentStatePagerAdapter {
     private final Context context;
     private final SQLiteDatabase db;
     private final Bundle bundle;
+    private final boolean isCurrent;
 
     public ViewTabPageAdapter(@NonNull FragmentManager fm, Context context,
-                              SQLiteDatabase db, Bundle bundle) {
+                              SQLiteDatabase db, Bundle bundle, boolean isCurrent) {
         super(fm);
         this.context = context;
         this.db = db;
         this.bundle = bundle;
+        this.isCurrent = isCurrent;
     }
 
     @NonNull
@@ -34,7 +36,11 @@ public class ViewTabPageAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new RaffleDetail(bundle, db);
+                if (isCurrent) {
+                    return new RaffleDetail(bundle, db);
+                } else  {
+                    return new PastRaffleDetail(bundle, db);
+                }
             case 1:
                 return new TicketsSold(context, db, bundle);
             default:

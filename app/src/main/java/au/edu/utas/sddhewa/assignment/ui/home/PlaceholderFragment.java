@@ -170,14 +170,15 @@ public class PlaceholderFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Log.d("#### rafflelist onclick", raffles.get(position).toString());
+                Log.d("#### selectedTab: ", ""+selectedTab);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(Utility.KEY_SELECTED_RAFFLE, raffles.get(position));
+                boolean isCurrent = selectedTab == 0;
 
                 getActivity().getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container,
                                 new ViewRaffle(db, getActivity().getSupportFragmentManager(),
-                                        getContext(), bundle))
+                                        getContext(), bundle, isCurrent))
                         .addToBackStack(null).commit();
             }
         });

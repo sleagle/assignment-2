@@ -23,10 +23,11 @@ public class ViewRaffle extends Fragment {
     private final SQLiteDatabase db;
     private final Bundle bundle;
 
-    public ViewRaffle(SQLiteDatabase db, @NonNull FragmentManager fm, Context context, Bundle bundle) {
+    public ViewRaffle(SQLiteDatabase db, @NonNull FragmentManager fm, Context context, Bundle bundle,
+                      boolean isCurrent) {
         this.db = db;
         this.bundle = bundle;
-        viewTabPageAdapter = new ViewTabPageAdapter(fm, context, db, bundle);
+        viewTabPageAdapter = new ViewTabPageAdapter(fm, context, db, bundle, isCurrent);
     }
 
     @Override
