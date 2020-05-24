@@ -118,12 +118,12 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         Button create = createRaffle.findViewById(R.id.btnCreate);
         final Button camera = createRaffle.findViewById(R.id.btnTakeImage);
 
-        final TextView lblCoverImage = createRaffle.findViewById(R.id.lblCoverImage);
+
         coverImage = createRaffle.findViewById(R.id.imgCover);
 
         coverImage.setVisibility(View.INVISIBLE);
         camera.setVisibility(View.INVISIBLE);
-        lblCoverImage.setVisibility(View.INVISIBLE);
+
 
         final ArrayList<String> raffleTypes = new ArrayList<>(Arrays.asList(
                 getResources().getStringArray(R.array.raffle_types_array)));
@@ -137,11 +137,11 @@ public class CreateRaffle extends Fragment implements FormInteraction {
             @Override
             public void onClick(View v) {
                 if (addCoverImage.isChecked()) {
-                    lblCoverImage.setVisibility(View.VISIBLE);
+
                     coverImage.setVisibility(View.VISIBLE);
                     camera.setVisibility(View.VISIBLE);
                 } else {
-                    lblCoverImage.setVisibility(View.INVISIBLE);
+
                     coverImage.setVisibility(View.INVISIBLE);
                     camera.setVisibility(View.INVISIBLE);
                 }
