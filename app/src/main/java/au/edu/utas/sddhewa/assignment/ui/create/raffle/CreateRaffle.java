@@ -77,7 +77,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
     private TextView prize;
     private TextView location;
     private TextView ticketPrice;
-    private Spinner numTickets;
+    private TextView numTickets;
     private TextView maxTickets;
     private CheckBox addCoverImage;
     private ImageView coverImage;
@@ -108,7 +108,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         prize = createRaffle.findViewById(R.id.txtPrize);
         location = createRaffle.findViewById(R.id.txtLocation);
         ticketPrice = createRaffle.findViewById(R.id.txTicketPrice);
-        numTickets = createRaffle.findViewById(R.id.no_tickets_spinner);
+        numTickets = createRaffle.findViewById(R.id.txtNumTickets);
         maxTickets = createRaffle.findViewById(R.id.txtMaxTickets);
         addCoverImage = createRaffle.findViewById(R.id.cbxCoverImage);
 
@@ -132,14 +132,6 @@ public class CreateRaffle extends Fragment implements FormInteraction {
                 context, android.R.layout.simple_spinner_dropdown_item, raffleTypes);
 
         raffleType.setAdapter(raffleTypesAdapter);
-
-        final ArrayList<String> numTickets = new ArrayList<>(Arrays.asList(
-                getResources().getStringArray(R.array.raffle_tickets_array)));
-
-        final ArrayAdapter<String> numTicketsAdapter = new ArrayAdapter<>(
-                context, android.R.layout.simple_spinner_dropdown_item, numTickets);
-
-        this.numTickets.setAdapter(numTicketsAdapter);
 
         addCoverImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,7 +205,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
         prize.setText("");
         location.setText("");
         ticketPrice.setText("");
-        numTickets.setSelection(0);
+        numTickets.setText("");
         maxTickets.setText("");
         addCoverImage.setChecked(false);
 
@@ -232,7 +224,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
                     startDate.getText().toString(), drawDate.getText().toString(),
                     Float.parseFloat(prize.getText().toString()),true,
                     location.getText().toString(), Float.parseFloat(ticketPrice.getText().toString()),
-                    Integer.parseInt(numTickets.getSelectedItem().toString()), 0,
+                    Integer.parseInt(numTickets.getText().toString()), 0,
                     Integer.parseInt(maxTickets.getText().toString()));
 
             if (addCoverImage.isChecked()) {
@@ -386,9 +378,10 @@ public class CreateRaffle extends Fragment implements FormInteraction {
     private boolean validateForm() {
 
         Log.d("### name", name.getText().toString());
-        return name.getText().toString().equals("") && description.getText().toString().equals("") &&
-                startDate.getText().toString().equals("") && drawDate.getText().toString().equals("")
-                && prize.getText().toString().equals("") && location.getText().toString().equals("")
-                && ticketPrice.getText().toString().equals("") && maxTickets.getText().toString().equals("");
+        return name.getText().toString().equals("") || description.getText().toString().equals("") ||
+                startDate.getText().toString().equals("") || drawDate.getText().toString().equals("")
+                || prize.getText().toString().equals("") || location.getText().toString().equals("")
+                || ticketPrice.getText().toString().equals("") || numTickets.getText().toString().equals("")
+                || maxTickets.getText().toString().equals("");
     }
 }

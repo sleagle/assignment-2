@@ -145,9 +145,9 @@ public class CreateUser extends Fragment implements FormInteraction {
 
     private boolean validate() {
 
-        return fName.getText().toString().equals("") && lName.getText().toString().equals("") &&
-                mobile.getText().toString().equals("") && email.getText().toString().equals("") &&
-                address.getText().toString().equals("") && suburb.getText().toString().equals("") &&
+        return fName.getText().toString().equals("") || lName.getText().toString().equals("") ||
+                mobile.getText().toString().equals("") || email.getText().toString().equals("") ||
+                address.getText().toString().equals("") || suburb.getText().toString().equals("") ||
                 postCode.getText().toString().equals("");
     }
 }

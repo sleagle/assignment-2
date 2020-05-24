@@ -139,13 +139,13 @@ public class PlaceholderFragment extends Fragment {
 
                     if (notDeleted.size() > 0 && notDeleted.size() != rafflesAdded.size()) {
                         displayCustomWarningDialog(notDeleted);
-                        Utility.createDeleteSuccessToast(getContext());
+                        Utility.createDeleteSuccessToast(getContext(), pageViewModel);
                     }
                     else if (notDeleted.size() > 0) {
                         displayCustomWarningDialog(notDeleted);
                     }
                     else {
-                        Utility.createDeleteSuccessToast(getContext());
+                        Utility.createDeleteSuccessToast(getContext(), pageViewModel);
                     }
                 }
                 else {
@@ -203,7 +203,6 @@ public class PlaceholderFragment extends Fragment {
     }
 
     private void displayCustomWarningDialog(List<String> list) {
-        pageViewModel.getCurrentRafflesAdapter().notifyDataSetChanged();
         CustomWarningDialog customWarningDialog = new CustomWarningDialog(AlertType.NOT_DELETED_MULTI);
         customWarningDialog.setNotDeletedList(list);
         customWarningDialog.show(getActivity().getSupportFragmentManager(), "warning");

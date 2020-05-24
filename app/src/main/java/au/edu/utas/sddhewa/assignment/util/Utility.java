@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import au.edu.utas.sddhewa.assignment.R;
+import au.edu.utas.sddhewa.assignment.ui.home.PageViewModel;
 
 public final class Utility {
 
@@ -82,7 +83,8 @@ public final class Utility {
         }
     }
 
-    public static void createDeleteSuccessToast(Context context) {
+    public static void createDeleteSuccessToast(Context context, PageViewModel pageViewModel) {
+        pageViewModel.getCurrentRafflesAdapter().notifyDataSetChanged();
         Toast toast = Toast.makeText(context, R.string.delete_raffle_success, Toast.LENGTH_LONG);
         toast.show();
     }
