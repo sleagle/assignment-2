@@ -1,10 +1,14 @@
 package au.edu.utas.sddhewa.assignment.modal;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.text.ParseException;
 import java.util.Date;
 
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
-public class RaffleTicket {
+public class RaffleTicket implements Parcelable {
 
     private long RaffleTicketId;
 
@@ -17,6 +21,8 @@ public class RaffleTicket {
     private Date purchasedDate;
 
     private long customerId;
+
+    public RaffleTicket() {}
 
     public RaffleTicket(long raffleId, int numTickets, float totalPrice, Date purchasedDate) {
         this.raffleId = raffleId;
@@ -32,6 +38,26 @@ public class RaffleTicket {
         this.purchasedDate = purchasedDate;
         this.customerId = customerId;
     }
+
+    private RaffleTicket(Parcel in) {
+        RaffleTicketId = in.readLong();
+        raffleId = in.readLong();
+        numTickets = in.readInt();
+        totalPrice = in.readFloat();
+        customerId = in.readLong();
+    }
+
+    public static final Creator<RaffleTicket> CREATOR = new Creator<RaffleTicket>() {
+        @Override
+        public RaffleTicket createFromParcel(Parcel in) {
+            return new RaffleTicket(in);
+        }
+
+        @Override
+        public RaffleTicket[] newArray(int size) {
+            return new RaffleTicket[size];
+        }
+    };
 
     public long getRaffleTicketId() {
         return RaffleTicketId;
@@ -69,8 +95,8 @@ public class RaffleTicket {
         return Utility.DATE_TIME_FORMAT.format(purchasedDate);
     }
 
-    public void setPurchasedDate(Date purchasedDate) {
-        this.purchasedDate = purchasedDate;
+    public void setPurchasedDate(String purchasedDate) throws ParseException {
+        this.purchasedDate = Utility.DATE_FORMAT.parse(purchasedDate);
     }
 
     public long getCustomerId() {
@@ -81,4 +107,17 @@ public class RaffleTicket {
         this.customerId = customerId;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(RaffleTicketId);
+        dest.writeLong(raffleId);
+        dest.writeInt(numTickets);
+        dest.writeFloat(totalPrice);
+        dest.writeLong(customerId);
+    }
 }

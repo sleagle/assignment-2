@@ -1,6 +1,5 @@
 package au.edu.utas.sddhewa.assignment.ui.home;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -12,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,33 +21,45 @@ import androidx.lifecycle.ViewModelProviders;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
-import au.edu.utas.sddhewa.assignment.ui.view.RaffleDetail;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomErrorDialog;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomWarningDialog;
 import au.edu.utas.sddhewa.assignment.ui.view.ViewRaffle;
+import au.edu.utas.sddhewa.assignment.util.AlertType;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
 public class PlaceholderFragment extends Fragment {
 
-    private final Context context;
+    //private final Context context;
     private final SQLiteDatabase db;
     private int selectedTab;
     private PageViewModel pageViewModel;
 
-    private ArrayList<Raffle> rafflesCopy;
+    //private ArrayList<Raffle> rafflesCopy;
+    private ArrayList<Raffle> raffles;
 
-    static Fragment newInstance(int i, Context context, SQLiteDatabase db) {
+    static Fragment newInstance(int i, SQLiteDatabase db) {
 
-        PlaceholderFragment p = new PlaceholderFragment(context, db, i);
-        return p;
+        return new PlaceholderFragment(db, i);
     }
 
-    private PlaceholderFragment(Context context, SQLiteDatabase db, int i) {
-        this.context = context;
+    private PlaceholderFragment(SQLiteDatabase db, int i) {
+        //this.context = context;
         this.db = db;
         this.selectedTab = i;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null) {
+            selectedTab = savedInstanceState.getInt("selectedTab");
+        }
     }
 
     @Override
@@ -72,13 +84,13 @@ public class PlaceholderFragment extends Fragment {
 
         try {
             if (selectedTab == 0) {
-                ArrayList<Raffle> raffles = RaffleTable.selectCurrentRaffles(db);
-                pageViewModel.setCurrentRaffles(context, R.layout.list_current_raffles, raffles, selectedTab);
+                raffles = RaffleTable.selectCurrentRaffles(db);
+                pageViewModel.setCurrentRaffles(getContext(), R.layout.list_current_raffles, raffles, selectedTab);
                 Log.d("***************", "set the current raffles adapter");
-                rafflesCopy = raffles;
+
             }
             else if (selectedTab == 1) {
-                ArrayList<Raffle> raffles= RaffleTable.selectPastRaffles(db);
+                raffles= RaffleTable.selectPastRaffles(db);
                 editButton.setEnabled(false);
                 editButton.setAlpha(0.5f);
                 editButton.setClickable(false);
@@ -86,12 +98,68 @@ public class PlaceholderFragment extends Fragment {
                 deleteButton.setEnabled(false);
                 deleteButton.setAlpha(0.5f);
                 deleteButton.setClickable(false);
-                pageViewModel.setPastRaffles(context, R.layout.list_past_raffles, raffles, selectedTab);
+                pageViewModel.setPastRaffles(getContext(), R.layout.list_past_raffles, raffles, selectedTab);
                 Log.d("***************", "set the past raffles adapter");
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Raffle> rafflesAdded = pageViewModel.getCurrentRafflesAdapter().getAddedRaffles();
+
+                AlertType type = validateClick(rafflesAdded, true);
+                if (type.equals(AlertType.VALID)) {
+
+                }
+                else {
+                    CustomErrorDialog customErrorDialog = new CustomErrorDialog(type);
+                    customErrorDialog.show(getActivity().getSupportFragmentManager(), "error");
+                }
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Raffle> rafflesAdded = pageViewModel.getCurrentRafflesAdapter().getAddedRaffles();
+                List<String> notDeleted = new ArrayList<>();
+
+                AlertType type = validateClick(rafflesAdded, false);
+
+                if (type.equals(AlertType.VALID)) {
+                    Date toDay = new Date();
+                    for (Raffle raffle : rafflesAdded) {
+                        Log.d("#### Start date:" , raffle.getStartingDateString());
+                        Log.d("#### today: ", Utility.DATE_FORMAT.format(toDay));
+
+                        if ((raffle.getStartingDate().compareTo(toDay) < 0) && raffle.getTicketsSold() > 0) {
+                            notDeleted.add(raffle.getName());
+                        } else {
+                            raffles.remove(raffle);
+                            RaffleTable.deleteRaffle(db, raffle);
+                        }
+                    }
+
+                    if (notDeleted.size() > 0) {
+                        displayCustomWarningDialog(notDeleted);
+                    }
+                    if (notDeleted.size() > 0 && notDeleted.size() != rafflesAdded.size()) {
+                        displayCustomWarningDialog(notDeleted);
+                        createDeleteSuccessToast();
+                    }
+                    else {
+                        createDeleteSuccessToast();
+                    }
+                }
+                else {
+                    CustomErrorDialog customErrorDialog = new CustomErrorDialog(type);
+                    customErrorDialog.show(getActivity().getSupportFragmentManager(), "error");
+                }
+            }
+        });
 
         pageViewModel.getRaffleList().observe(getViewLifecycleOwner(), new Observer<ArrayAdapter<Raffle>>() {
             @Override
@@ -102,27 +170,52 @@ public class PlaceholderFragment extends Fragment {
             }
         });
 
+
         tabListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Log.d("#### rafflelist onclick", rafflesCopy.get(position).toString());
+                Log.d("#### rafflelist onclick", raffles.get(position).toString());
                 Bundle bundle = new Bundle();
-                bundle.putParcelable(Utility.KEY_SELECTED_RAFFLE, (Parcelable) rafflesCopy.get(position));
-
-                /*getActivity().getSupportFragmentManager().beginTransaction().
-                        replace(R.id.fragment_container,
-                                new RaffleDetail(bundle))
-                        .addToBackStack(null).commit();*/
+                bundle.putParcelable(Utility.KEY_SELECTED_RAFFLE, raffles.get(position));
 
                 getActivity().getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container,
                                 new ViewRaffle(db, getActivity().getSupportFragmentManager(),
-                                        context, bundle))
+                                        getContext(), bundle))
                         .addToBackStack(null).commit();
             }
         });
 
         return root;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("selectedTab", selectedTab);
+    }
+
+    private AlertType validateClick(List<Raffle> selectedRafflesList, boolean isEdit) {
+
+       if (selectedRafflesList.size() == 0) {
+           return AlertType.NON_SELECT;
+        }
+       else if (isEdit && selectedRafflesList.size() > 1) {
+            return AlertType.MULTI_SELECT_ERROR;
+        }
+        return AlertType.VALID;
+    }
+
+    private void createDeleteSuccessToast() {
+        Toast toast = Toast.makeText(getContext(), R.string.delete_raffle_success, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    private void displayCustomWarningDialog(List<String> list) {
+        pageViewModel.getCurrentRafflesAdapter().notifyDataSetChanged();
+        CustomWarningDialog customWarningDialog = new CustomWarningDialog(AlertType.NOT_DELETED);
+        customWarningDialog.setNotDeletedList(list);
+        customWarningDialog.show(getActivity().getSupportFragmentManager(), "warning");
     }
 }

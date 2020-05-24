@@ -7,6 +7,7 @@
     <color name="fragment_heading">#6C16E8</color>
     <color name="pased_raffles">#F5CC99</color>
     <color name="btn_success">#195A24</color>
+    <color name="btn_dismiss">#0407A2</color>
     <color name="btn_discard">#66201B</color>
     <color name="btn_txt">#FFFFFF</color>
     <color name="edit_btn">#2B78E4</color>
@@ -15,4 +16,5 @@
     <color name="drawBtn">#730ee8</color>
     <color name="textTitle">#274F73</color>
     <color name="raffle_type">#730ee8</color>
+    <color name="transparent" />
 </resources>

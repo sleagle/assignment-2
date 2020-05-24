@@ -36,7 +36,7 @@ public class ViewTabPageAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new RaffleDetail(bundle);
             case 1:
-                return new TicketsSold();
+                return new TicketsSold(context, db, bundle);
             default:
                 return null;
         }

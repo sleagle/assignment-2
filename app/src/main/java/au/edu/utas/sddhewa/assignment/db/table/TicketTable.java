@@ -1,8 +1,13 @@
 package au.edu.utas.sddhewa.assignment.db.table;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+
+import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
 import au.edu.utas.sddhewa.assignment.modal.Ticket;
 import au.edu.utas.sddhewa.assignment.util.FieldKey;
 
@@ -29,5 +34,40 @@ public class TicketTable {
         values.put(KEY_RAFFLE_TICKET_ID, ticket.getRaffleTicketId());
 
         return db.insert(TABLE_NAME, null, values);
+    }
+
+    public static ArrayList<Ticket> ticketsByRaffleTicket(SQLiteDatabase db, long raffleTicketId) throws ParseException {
+        ArrayList<Ticket> tickets = new ArrayList<>();
+
+        Cursor c = db.query(TABLE_NAME, null, KEY_RAFFLE_TICKET_ID+"=?",
+                new String[] { String.valueOf(raffleTicketId) }, null, null, null);
+
+        if (c != null) {
+            c.moveToFirst();
+
+            while (!c.isAfterLast()) {
+                tickets.add(createFromCursor(c));
+
+                c.moveToNext();
+            }
+        }
+
+        return tickets;
+    }
+
+    private static Ticket createFromCursor(Cursor cursor) throws ParseException {
+
+        if (cursor == null || cursor.isAfterLast() || cursor.isBeforeFirst()) {
+            return null;
+        }
+
+        else {
+            Ticket ticket = new Ticket();
+
+            ticket.setTicketNumber(cursor.getString(cursor.getColumnIndex(KEY_TICKET_NUMBER)));
+            ticket.setRaffleTicketId(cursor.getInt(cursor.getColumnIndex(KEY_RAFFLE_TICKET_ID)));
+
+            return ticket;
+        }
     }
 }

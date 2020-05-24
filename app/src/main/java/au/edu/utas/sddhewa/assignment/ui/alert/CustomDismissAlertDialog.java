@@ -1,4 +1,4 @@
-package au.edu.utas.sddhewa.assignment.ui;
+package au.edu.utas.sddhewa.assignment.ui.alert;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,12 +9,13 @@ import android.widget.Button;
 import androidx.fragment.app.DialogFragment;
 
 import au.edu.utas.sddhewa.assignment.R;
+import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
 
-public class CustomAlertDialog extends DialogFragment {
+public class CustomDismissAlertDialog extends DialogFragment {
 
     private FormInteraction createObj;
 
-    public CustomAlertDialog(FormInteraction obj) {
+    public CustomDismissAlertDialog(FormInteraction obj) {
         this.createObj = obj;
     }
 
@@ -23,7 +24,8 @@ public class CustomAlertDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         builder.setTitle(R.string.alert_dialog_title);
-        builder.setMessage(R.string.alert_dialog_msg);
+        builder.setIcon(R.drawable.ic_warning);
+        builder.setMessage(R.string.alert_dialog_discard_msg);
 
         builder.setPositiveButton(R.string.alert_dialog_no, new DialogInterface.OnClickListener() {
             @Override

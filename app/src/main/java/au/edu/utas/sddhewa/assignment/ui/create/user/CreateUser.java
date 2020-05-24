@@ -18,9 +18,11 @@ import androidx.fragment.app.FragmentManager;
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
 import au.edu.utas.sddhewa.assignment.modal.Customer;
-import au.edu.utas.sddhewa.assignment.ui.CustomAlertDialog;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomErrorDialog;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomDismissAlertDialog;
 import au.edu.utas.sddhewa.assignment.ui.FormInteraction;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
+import au.edu.utas.sddhewa.assignment.util.AlertType;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
 
@@ -77,7 +79,13 @@ public class CreateUser extends Fragment implements FormInteraction {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createEntity();
+                if (validate()) {
+                    createEntity();
+                }
+                else {
+                    CustomErrorDialog errorDialog = new CustomErrorDialog(AlertType.CREATE_ERROR);
+                    errorDialog.show(fragmentManager, "error");
+                }
             }
         });
 
@@ -88,7 +96,7 @@ public class CreateUser extends Fragment implements FormInteraction {
         discardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomAlertDialog fragment = new CustomAlertDialog(createUserObj);
+                CustomDismissAlertDialog fragment = new CustomDismissAlertDialog(createUserObj);
                 fragment.show(fragmentManager, "alert");
             }
         });
@@ -133,5 +141,12 @@ public class CreateUser extends Fragment implements FormInteraction {
             Log.d("###### Create Customer","insert error");
         }
         resetForm();
+    }
+
+    private boolean validate() {
+
+        return fName.getText() == "" && lName.getText() == "" && mobile.getText() == "" &&
+                email.getText() == "" && address.getText() == "" && suburb.getText() == "" &&
+                postCode.getText() == "";
     }
 }
