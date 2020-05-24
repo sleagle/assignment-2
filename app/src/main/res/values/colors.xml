@@ -16,5 +16,6 @@
     <color name="drawBtn">#730ee8</color>
     <color name="textTitle">#274F73</color>
     <color name="raffle_type">#730ee8</color>
+    <color name="background">#eff5f5</color>
     <color name="transparent" />
 </resources>
