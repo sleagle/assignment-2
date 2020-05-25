@@ -8,23 +8,24 @@
 
     <TextView
         android:id="@+id/lblRaffle"
-        android:layout_width="187dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="5"
         android:focusable="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="15sp"
+        android:textColor="@color/drawBtn"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/lblPrize"
+        app:fontFamily="@font/adamina"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lblPrize" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblRaffleType"
-        android:layout_width="140dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:focusable="false"
@@ -33,8 +34,8 @@
 
     <TextView
         android:id="@+id/lblDrawDate"
-        android:layout_width="113dp"
-        android:layout_height="17dp"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:focusable="false"
         app:layout_constraintStart_toStartOf="@+id/lblRaffleType"
@@ -42,37 +43,44 @@
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="25dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:focusable="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/lblPrize"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginLeft="53dp"
-        android:layout_marginTop="3dp"
-        app:layout_constraintStart_toEndOf="@+id/lblRaffle"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/lblTicketPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/lblRaffleType"
-        app:layout_constraintStart_toStartOf="@+id/lblPrize"
+        app:layout_constraintEnd_toStartOf="@+id/lblRaffleType"
         app:layout_constraintTop_toTopOf="@+id/lblRaffleType" />
 
     <TextView
-        android:id="@+id/lblNumTicketsSold"
-        android:layout_width="wrap_content"
+        android:id="@+id/lblPrize"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
-        app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
-        app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/delete_btn"
+        android:textSize="16sp"
+        app:fontFamily="@font/adamina"
+        app:layout_constraintBottom_toBottomOf="@+id/lblRaffle"
+        app:layout_constraintStart_toEndOf="@+id/lblRaffle"
+        app:layout_constraintTop_toTopOf="@+id/lblRaffle" />
 
+    <TextView
+        android:id="@+id/lblTicketPrice"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/lblPrize"
+        app:layout_constraintStart_toStartOf="@+id/lblPrize"
+        app:layout_constraintTop_toBottomOf="@+id/lblPrize" />
+
+    <TextView
+        android:id="@+id/lblNumTicketsSold"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/lblTicketPrice"
+        app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
+        app:layout_constraintTop_toBottomOf="@+id/lblTicketPrice" />
+    
 </androidx.constraintlayout.widget.ConstraintLayout>

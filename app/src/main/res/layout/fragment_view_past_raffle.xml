@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECC7C0"
+    android:background="@color/background"
     tools:context=".ui.view.PastRaffleDetail">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,37 +13,35 @@
 
         <TextView
             android:id="@+id/txtMobile"
-            android:layout_width="220dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:layout_marginLeft="22dp"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblMobile"
+            app:layout_constraintEnd_toEndOf="@+id/txtEmail"
             app:layout_constraintStart_toEndOf="@+id/lblMobile"
             app:layout_constraintTop_toTopOf="@+id/lblMobile" />
 
         <TextView
             android:id="@+id/txtEmail"
-            android:layout_width="220dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginLeft="25dp"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblEmail"
+            app:layout_constraintEnd_toEndOf="@+id/txtAddress"
             app:layout_constraintStart_toEndOf="@+id/lblEmail"
             app:layout_constraintTop_toTopOf="@+id/lblEmail" />
 
         <TextView
             android:id="@+id/txtName_RD"
-            android:layout_width="366dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
+            android:layout_width="294dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
             android:ems="10"
             android:gravity="center"
             android:textColor="@color/textTitle"
@@ -59,50 +57,42 @@
             android:id="@+id/lblPrize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:text="@string/prize"
-            android:textColor="@color/textTitle"
-            android:textSize="16sp"
+            android:textColor="@color/delete_btn"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txtRaffleType_RD"
             app:layout_constraintTop_toBottomOf="@+id/txtRaffleType_RD" />
 
         <TextView
             android:id="@+id/lblTicketPrice"
-            android:layout_width="107dp"
+            android:layout_width="105dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
             android:layout_marginTop="10dp"
             android:text="@string/ticket_price"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/lblLocation"
             app:layout_constraintTop_toBottomOf="@+id/lblLocation" />
 
         <TextView
             android:id="@+id/lblLocation"
-            android:layout_width="85dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
             android:layout_marginTop="10dp"
             android:text="@string/location"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/lblDrawDate"
             app:layout_constraintTop_toBottomOf="@+id/lblDrawDate" />
 
         <TextView
             android:id="@+id/txtMaxTickets_RD"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblMaxTickets"
@@ -112,24 +102,20 @@
 
         <TextView
             android:id="@+id/lblStartDate"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
             android:layout_marginTop="10dp"
             android:text="@string/start_date"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblPrize" />
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/txtNumTickets_RD"
             android:layout_width="78dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblNumTickets"
             app:layout_constraintStart_toEndOf="@+id/lblNumTickets"
@@ -140,22 +126,18 @@
             android:id="@+id/lblMaxTickets"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
             android:layout_marginTop="10dp"
             android:text="@string/max_tickets"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/lblNumTickets"
             app:layout_constraintTop_toBottomOf="@+id/lblNumTickets" />
 
         <TextView
             android:id="@+id/txtDrawDate_RD"
-            android:layout_width="130dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
@@ -165,27 +147,26 @@
 
         <TextView
             android:id="@+id/lblDrawDate"
-            android:layout_width="101dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
             android:layout_marginTop="10dp"
             android:text="@string/draw_date"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/lblStartDate"
             app:layout_constraintTop_toBottomOf="@+id/lblStartDate" />
 
         <TextView
             android:id="@+id/txtLocation_RD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="210dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblLocation"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblLocation"
             app:layout_constraintTop_toTopOf="@+id/lblLocation"
             app:layout_constraintVertical_bias="0.0" />
@@ -194,14 +175,12 @@
             android:id="@+id/lblNumTickets"
             android:layout_width="124dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
             android:layout_marginTop="10dp"
             android:text="@string/num_tickets"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
             app:layout_constraintTop_toBottomOf="@+id/lblTicketPrice" />
 
         <ImageView
@@ -221,58 +200,51 @@
 
         <TextView
             android:id="@+id/txtRaffleType_RD"
-            android:layout_width="282dp"
-            android:layout_height="24dp"
+            android:layout_width="290dp"
+            android:layout_height="28dp"
             android:layout_marginStart="60dp"
             android:layout_marginLeft="60dp"
-            android:layout_marginTop="210dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="60dp"
             android:layout_marginRight="60dp"
             android:gravity="center"
             android:textColor="@color/raffle_type"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgCover_RD" />
 
         <TextView
             android:id="@+id/txtTicketPrice_RD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
+            android:layout_width="185dp"
+            android:layout_height="24dp"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblTicketPrice"
+            app:layout_constraintEnd_toEndOf="@+id/txtLocation_RD"
             app:layout_constraintStart_toEndOf="@+id/lblTicketPrice"
             app:layout_constraintTop_toTopOf="@+id/lblTicketPrice"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/txtDesc_RD"
-            android:layout_width="283dp"
+            android:layout_width="291dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:ems="10"
             android:textSize="16sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtTicketPrice_RD"
+            app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
             app:layout_constraintTop_toBottomOf="@+id/lblMaxTickets" />
 
         <TextView
             android:id="@+id/txtStartDate_RD"
-            android:layout_width="130dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblStartDate"
@@ -282,12 +254,13 @@
 
         <TextView
             android:id="@+id/txtPrize"
-            android:layout_width="130dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:ems="10"
-            android:textSize="16sp"
+            android:textColor="@color/delete_btn"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblPrize"
             app:layout_constraintStart_toEndOf="@+id/lblPrize"
             app:layout_constraintTop_toTopOf="@+id/lblPrize" />
@@ -296,19 +269,17 @@
             android:id="@+id/lblWinnersDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/winner"
-            android:textColor="@color/textTitle"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgCover_RD" />
+            app:layout_constraintStart_toStartOf="@+id/lblPrize"
+            app:layout_constraintTop_toBottomOf="@+id/lblPrize" />
 
         <TextView
             android:id="@+id/lblFullName"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
             android:layout_marginLeft="60dp"
@@ -322,7 +293,7 @@
 
         <TextView
             android:id="@+id/lblAddress"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/address"
@@ -334,7 +305,7 @@
 
         <TextView
             android:id="@+id/lblEmail"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/email"
@@ -346,7 +317,7 @@
 
         <TextView
             android:id="@+id/lblMobile"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/mobile"
@@ -358,31 +329,31 @@
 
         <TextView
             android:id="@+id/txtName"
-            android:layout_width="220dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
-            android:layout_marginLeft="29dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblFullName"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblFullName"
             app:layout_constraintTop_toTopOf="@+id/lblFullName" />
 
         <TextView
             android:id="@+id/txtAddress"
-            android:layout_width="220dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblAddress"
+            app:layout_constraintEnd_toEndOf="@+id/txtName"
             app:layout_constraintStart_toEndOf="@+id/lblAddress"
             app:layout_constraintTop_toTopOf="@+id/lblAddress" />
 
         <TextView
             android:id="@+id/lblTicketNum"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/ticket_num"
@@ -394,15 +365,27 @@
 
         <TextView
             android:id="@+id/txtTicketNum"
-            android:layout_width="100dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblTicketNum"
+            app:layout_constraintEnd_toEndOf="@+id/txtMobile"
             app:layout_constraintStart_toEndOf="@+id/lblTicketNum"
             app:layout_constraintTop_toTopOf="@+id/lblTicketNum" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/raffle_details"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/lblTicketNum"
+            app:layout_constraintTop_toBottomOf="@+id/lblTicketNum" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
