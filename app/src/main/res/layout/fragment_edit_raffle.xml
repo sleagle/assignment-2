@@ -68,7 +68,7 @@
             android:id="@+id/lblDesc"
             android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="@string/description"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
@@ -80,9 +80,7 @@
         <EditText
             android:id="@+id/txtDesc_edit"
             android:layout_width="@dimen/text_create_width"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_height="70dp"
             android:autofillHints="@string/description"
             android:ems="10"
             android:gravity="start|top"
@@ -92,10 +90,9 @@
             android:textColor="@color/design_default_color_on_secondary"
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
-            app:layout_constraintBottom_toBottomOf="@+id/lblDesc"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtName_edit"
             app:layout_constraintStart_toEndOf="@+id/lblDesc"
-            app:layout_constraintTop_toTopOf="@+id/lblDesc" />
+            app:layout_constraintTop_toBottomOf="@+id/txtName_edit" />
 
         <TextView
             android:id="@+id/lblRaffleType"
@@ -108,22 +105,21 @@
             android:textStyle="bold"
             app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblDesc"
-            app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDesc_edit" />
 
         <EditText
             android:id="@+id/txtRaffleType_edit"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/description"
             android:ems="10"
             android:gravity="start|top"
-            android:hint="Description"
+            android:hint="Raffle Type"
             android:textColor="@color/textTitle"
+            android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblRaffleType"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtDesc_edit"
             app:layout_constraintStart_toEndOf="@+id/lblRaffleType"
             app:layout_constraintTop_toTopOf="@+id/lblRaffleType" />
 
@@ -221,8 +217,6 @@
             android:id="@+id/txtPrize_edit"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/prize"
             android:ems="10"
             android:hint="Prize worth"
@@ -231,7 +225,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblPrize"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtRaffleType_edit"
             app:layout_constraintStart_toEndOf="@+id/lblPrize"
             app:layout_constraintTop_toTopOf="@+id/lblPrize" />
 
@@ -252,8 +246,6 @@
             android:id="@+id/txtLocation_edit"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/location"
             android:ems="10"
             android:hint="Location"
@@ -262,7 +254,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblLocation"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtPrize_edit"
             app:layout_constraintStart_toEndOf="@+id/lblLocation"
             app:layout_constraintTop_toTopOf="@+id/lblLocation" />
 
@@ -283,8 +275,6 @@
             android:id="@+id/txTicketPrice_edit"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/ticket_price"
             android:ems="10"
             android:hint="Ticket price"
@@ -293,7 +283,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblTicketPrice"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtLocation_edit"
             app:layout_constraintStart_toEndOf="@+id/lblTicketPrice"
             app:layout_constraintTop_toTopOf="@+id/lblTicketPrice" />
 
@@ -314,8 +304,6 @@
             android:id="@+id/txtNumTickets_edit"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/num_tickets"
             android:ems="10"
             android:hint="Number of tickets"
@@ -324,7 +312,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblNumTickets"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txTicketPrice_edit"
             app:layout_constraintStart_toEndOf="@+id/lblNumTickets"
             app:layout_constraintTop_toTopOf="@+id/lblNumTickets" />
 
@@ -345,8 +333,6 @@
             android:id="@+id/txtMaxTickets_edit"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/max_tickets"
             android:ems="10"
             android:hint="Max"
@@ -355,19 +341,20 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblMaxTickets"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtNumTickets_edit"
             app:layout_constraintStart_toEndOf="@+id/lblMaxTickets"
             app:layout_constraintTop_toTopOf="@+id/lblMaxTickets" />
 
         <CheckBox
             android:id="@+id/cbxCoverImage_edit"
-            android:layout_width="wrap_content"
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/add_cover"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblMaxTickets"
             app:layout_constraintTop_toBottomOf="@+id/lblMaxTickets" />
 
@@ -389,6 +376,7 @@
             android:text="@string/update"
             android:textColor="@color/btn_txt"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/btnDiscard_edit"
             app:layout_constraintEnd_toEndOf="@+id/txtMaxTickets_edit"
             app:layout_constraintTop_toTopOf="@+id/btnDiscard_edit" />
@@ -403,6 +391,7 @@
             android:text="@string/discard"
             android:textColor="@color/btn_txt"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/lblMaxTickets"
             app:layout_constraintTop_toBottomOf="@+id/imgCover_edit" />

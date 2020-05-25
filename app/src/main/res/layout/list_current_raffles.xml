@@ -12,8 +12,8 @@
         android:id="@+id/lblRaffle"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_weight="5"
         android:focusable="false"
@@ -31,6 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:focusable="false"
+        android:textSize="16sp"
+        app:fontFamily="@font/adamina"
         app:layout_constraintStart_toStartOf="@+id/lblRaffle"
         app:layout_constraintTop_toBottomOf="@+id/lblRaffle" />
 
@@ -40,6 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:focusable="false"
+        android:textSize="16sp"
+        app:fontFamily="@font/adamina"
         app:layout_constraintStart_toStartOf="@+id/lblRaffleType"
         app:layout_constraintTop_toBottomOf="@+id/lblRaffleType" />
 
@@ -63,20 +67,24 @@
 
     <TextView
         android:id="@+id/lblTicketPrice"
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        app:fontFamily="@font/adamina"
         app:layout_constraintEnd_toEndOf="@+id/lblPrize"
         app:layout_constraintStart_toStartOf="@+id/lblPrize"
         app:layout_constraintTop_toBottomOf="@+id/lblPrize" />
 
     <TextView
         android:id="@+id/lblNumTicketsSold"
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        app:fontFamily="@font/adamina"
         app:layout_constraintEnd_toEndOf="@+id/lblTicketPrice"
         app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
         app:layout_constraintTop_toBottomOf="@+id/lblTicketPrice" />

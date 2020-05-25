@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblMobile"
             app:layout_constraintEnd_toEndOf="@+id/txtEmail"
             app:layout_constraintStart_toEndOf="@+id/lblMobile"
@@ -28,6 +29,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblEmail"
             app:layout_constraintEnd_toEndOf="@+id/txtAddress"
             app:layout_constraintStart_toEndOf="@+id/lblEmail"
@@ -62,6 +64,7 @@
             android:textColor="@color/delete_btn"
             android:textSize="20sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/txtRaffleType_RD"
             app:layout_constraintTop_toBottomOf="@+id/txtRaffleType_RD" />
 
@@ -74,63 +77,70 @@
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblLocation"
             app:layout_constraintTop_toBottomOf="@+id/lblLocation" />
 
         <TextView
             android:id="@+id/lblLocation"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/location"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblDrawDate"
             app:layout_constraintTop_toBottomOf="@+id/lblDrawDate" />
 
         <TextView
             android:id="@+id/txtMaxTickets_RD"
-            android:layout_width="60dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/lblMaxTickets"
+            app:layout_constraintEnd_toEndOf="@+id/txtNumTickets_RD"
             app:layout_constraintStart_toEndOf="@+id/lblMaxTickets"
             app:layout_constraintTop_toTopOf="@+id/lblMaxTickets"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/lblStartDate"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/start_date"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/txtNumTickets_RD"
-            android:layout_width="78dp"
+            android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblNumTickets"
+            app:layout_constraintEnd_toEndOf="@+id/txtTicketPrice_RD"
             app:layout_constraintStart_toEndOf="@+id/lblNumTickets"
             app:layout_constraintTop_toTopOf="@+id/lblNumTickets"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/lblMaxTickets"
-            android:layout_width="180dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/max_tickets"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblNumTickets"
             app:layout_constraintTop_toBottomOf="@+id/lblNumTickets" />
 
@@ -140,6 +150,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
             app:layout_constraintStart_toEndOf="@+id/lblDrawDate"
             app:layout_constraintTop_toTopOf="@+id/lblDrawDate"
@@ -147,26 +158,26 @@
 
         <TextView
             android:id="@+id/lblDrawDate"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/draw_date"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblStartDate"
             app:layout_constraintTop_toBottomOf="@+id/lblStartDate" />
 
         <TextView
             android:id="@+id/txtLocation_RD"
-            android:layout_width="210dp"
-            android:layout_height="22dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_width="190dp"
+            android:layout_height="28dp"
             android:ems="10"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblLocation"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtTicketNum"
             app:layout_constraintStart_toEndOf="@+id/lblLocation"
             app:layout_constraintTop_toTopOf="@+id/lblLocation"
             app:layout_constraintVertical_bias="0.0" />
@@ -180,6 +191,7 @@
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
             app:layout_constraintTop_toBottomOf="@+id/lblTicketPrice" />
 
@@ -210,6 +222,7 @@
             android:gravity="center"
             android:textColor="@color/raffle_type"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -218,9 +231,10 @@
         <TextView
             android:id="@+id/txtTicketPrice_RD"
             android:layout_width="185dp"
-            android:layout_height="24dp"
+            android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblTicketPrice"
             app:layout_constraintEnd_toEndOf="@+id/txtLocation_RD"
             app:layout_constraintStart_toEndOf="@+id/lblTicketPrice"
@@ -235,6 +249,7 @@
             android:ems="10"
             android:textSize="16sp"
             android:textStyle="italic"
+            app:fontFamily="@font/adamina"
             app:layout_constraintEnd_toEndOf="@+id/txtTicketPrice_RD"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
@@ -246,6 +261,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblStartDate"
             app:layout_constraintStart_toEndOf="@+id/lblStartDate"
             app:layout_constraintTop_toTopOf="@+id/lblStartDate"
@@ -260,6 +276,7 @@
             android:ems="10"
             android:textColor="@color/delete_btn"
             android:textSize="20sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblPrize"
             app:layout_constraintStart_toEndOf="@+id/lblPrize"
             app:layout_constraintTop_toTopOf="@+id/lblPrize" />
@@ -273,6 +290,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblPrize"
             app:layout_constraintTop_toBottomOf="@+id/lblPrize" />
 
@@ -287,6 +305,7 @@
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblWinnersDetails" />
 
@@ -299,6 +318,7 @@
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblFullName"
             app:layout_constraintTop_toBottomOf="@+id/lblFullName" />
 
@@ -311,6 +331,7 @@
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblAddress"
             app:layout_constraintTop_toBottomOf="@+id/lblAddress" />
 
@@ -323,6 +344,7 @@
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblEmail"
             app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
 
@@ -334,6 +356,7 @@
             android:layout_marginRight="60dp"
             android:ems="10"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblFullName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblFullName"
@@ -345,6 +368,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblAddress"
             app:layout_constraintEnd_toEndOf="@+id/txtName"
             app:layout_constraintStart_toEndOf="@+id/lblAddress"
@@ -352,22 +376,24 @@
 
         <TextView
             android:id="@+id/lblTicketNum"
-            android:layout_width="80dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/ticket_num"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblMobile"
             app:layout_constraintTop_toBottomOf="@+id/lblMobile" />
 
         <TextView
             android:id="@+id/txtTicketNum"
-            android:layout_width="210dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblTicketNum"
             app:layout_constraintEnd_toEndOf="@+id/txtMobile"
             app:layout_constraintStart_toEndOf="@+id/lblTicketNum"
@@ -383,12 +409,13 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblTicketNum"
             app:layout_constraintTop_toBottomOf="@+id/lblTicketNum" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="180dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
@@ -396,6 +423,7 @@
             android:text="Contact Winner"
             android:textColor="@color/btn_txt"
             android:textSize="16sp"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/txtDesc_RD"
             app:layout_constraintStart_toStartOf="@+id/txtDesc_RD"

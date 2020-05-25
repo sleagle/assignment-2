@@ -3,63 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="80dp"
     android:background="#F4D9C7"
     android:orientation="horizontal">
 
     <TextView
         android:id="@+id/lblRaffleP"
-        android:layout_width="187dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
         android:layout_weight="5"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="15sp"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
         android:textStyle="bold"
+        app:fontFamily="@font/adamina"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblPrize"
-        android:layout_width="155dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toEndOf="@+id/lblRaffleP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="16sp"
+        app:fontFamily="@font/adamina"
+        app:layout_constraintBottom_toBottomOf="@+id/lblRaffleP"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/lblRaffleP" />
-
-    <TextView
-        android:id="@+id/txtDrawDateP"
-        android:layout_width="70dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/draw_date"
-        android:textColor="#7F0606"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/lblRaffleP"
-        app:layout_constraintTop_toBottomOf="@+id/lblRaffleP" />
 
     <TextView
         android:id="@+id/lblDrawDateP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtDrawDateP"
-        app:layout_constraintStart_toEndOf="@+id/txtDrawDateP"
-        app:layout_constraintTop_toTopOf="@+id/txtDrawDateP" />
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/delete_btn"
+        android:textSize="16sp"
+        app:fontFamily="@font/adamina"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/lblRaffleP"
+        app:layout_constraintTop_toBottomOf="@+id/lblRaffleP" />
 
     <TextView
         android:id="@+id/lblWinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="38dp"
-        app:layout_constraintStart_toEndOf="@+id/lblDrawDateP"
-        app:layout_constraintTop_toBottomOf="@+id/lblPrize" />
+        android:textColor="@color/textTitle"
+        android:textSize="16sp"
+        app:fontFamily="@font/adamina"
+        app:layout_constraintBottom_toBottomOf="@+id/lblDrawDateP"
+        app:layout_constraintEnd_toEndOf="@+id/lblPrize"
+        app:layout_constraintTop_toTopOf="@+id/lblDrawDateP" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

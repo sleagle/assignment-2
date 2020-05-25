@@ -361,13 +361,15 @@
 
         <CheckBox
             android:id="@+id/cbxCoverImage"
-            android:layout_width="wrap_content"
+            android:layout_width="332dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/add_cover"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
+            app:layout_constraintEnd_toEndOf="@+id/txtMaxTickets"
             app:layout_constraintStart_toStartOf="@+id/lblMaxTickets"
             app:layout_constraintTop_toBottomOf="@+id/lblMaxTickets" />
 
