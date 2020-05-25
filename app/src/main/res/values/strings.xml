@@ -66,7 +66,7 @@
     <string name="sell">Sell</string>
 
     <!-- strings related to ticket info fragment -->
-    <string name="ticket_detail_title">%1$s\'s Ticket Detail(s)</string>
+    <string name="ticket_detail_title">%1$s\'s Tickets</string>
 
     <string-array name="title_array">
         <item>Dr</item>
