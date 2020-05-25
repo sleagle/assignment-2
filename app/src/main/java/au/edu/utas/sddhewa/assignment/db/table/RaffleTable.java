@@ -130,7 +130,7 @@ public class RaffleTable {
         ArrayList<Raffle> raffles = new ArrayList<>();
 
         Cursor c = db.query(TABLE_NAME, null, KEY_IS_ACTIVE+"=?", new String[] { "1" },
-                null, null, null);
+                null, null, KEY_RAFFLE_ID+" DESC");
 
         if (c != null) {
             c.moveToFirst();

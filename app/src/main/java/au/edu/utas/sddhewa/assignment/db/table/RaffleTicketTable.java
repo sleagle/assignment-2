@@ -51,6 +51,20 @@ public class RaffleTicketTable {
         return db.insert(TABLE_NAME, null, values);
     }
 
+    public static long update(SQLiteDatabase db, RaffleTicket raffleTicket) {
+
+        Log.d("### purch Date:", raffleTicket.getPurchasedDate());
+        ContentValues values = new ContentValues();
+        values.put(KEY_RAFFLE_ID, raffleTicket.getRaffleId());
+        values.put(KEY_NUM_TICKETS, raffleTicket.getNumTickets());
+        values.put(KEY_CUSTOMER_ID, raffleTicket.getCustomerId());
+        values.put(KEY_PURCHASED_DATE, raffleTicket.getPurchasedDate());
+        values.put(KEY_TOTAL_PRICE, raffleTicket.getTotalPrice());
+
+        return db.update(TABLE_NAME, values, KEY_RAFFLE_TICKET_ID+"= ?",
+                new String[] { ""+raffleTicket.getRaffleTicketId() });
+    }
+
     public static ArrayList<RaffleTicket> selectAll(SQLiteDatabase db) throws ParseException {
 
         ArrayList<RaffleTicket> raffleTickets = new ArrayList<>();
@@ -131,10 +145,10 @@ public class RaffleTicketTable {
         return raffleTickets;
     }
 
-    public static ArrayList<RaffleTicket> selectAllByRaffleAndCustomerId(
+    public static RaffleTicket selectAllByRaffleAndCustomerId(
             SQLiteDatabase db, long raffleId, long customerId) throws ParseException {
 
-        ArrayList<RaffleTicket> raffleTickets = new ArrayList<>();
+        RaffleTicket raffleTicket = null;
 
         Cursor c = db.query(TABLE_NAME, null,  KEY_RAFFLE_ID+"=? and " +KEY_CUSTOMER_ID+"=?",
                 new String[] { String.valueOf(raffleId) , String.valueOf(customerId) },
@@ -144,13 +158,13 @@ public class RaffleTicketTable {
             c.moveToFirst();
 
             while (!c.isAfterLast()) {
-                raffleTickets.add(createFromCursor(c));
+                raffleTicket =  createFromCursor(c);
 
                 c.moveToNext();
             }
         }
 
-        return raffleTickets;
+        return raffleTicket;
     }
 
     public static RaffleTicket selectByRaffleTicketId(SQLiteDatabase db, long raffleTicketId) throws ParseException {

@@ -58,6 +58,7 @@ public class SellTicket extends Fragment implements FormInteraction {
     private float total;
     private List<Integer> ticketsList;
     private int difference;
+    private RaffleTicket existingRaffleTicket;
 
     private Spinner rafflesSpinner;
     private Spinner numTicketsSpinner;
@@ -265,22 +266,31 @@ public class SellTicket extends Fragment implements FormInteraction {
     @Override
     public void createOrUpdateEntity() {
 
+        int numTickets = Integer.parseInt(numTicketsSpinner.getSelectedItem().toString());
         RaffleTicket raffleTicket = new RaffleTicket(raffle.getRaffleId(),
-                Integer.parseInt(numTicketsSpinner.getSelectedItem().toString()), total, new Date());
+                numTickets, total, new Date());
         if (existingUserCbx.isChecked()) {
             raffleTicket.setCustomerId(customer.getCustomerId());
         }
         else {
             raffleTicket.setCustomerId((createCustomer()));
         }
-        raffleTicket.setRaffleTicketId(RaffleTicketTable.insert(db, raffleTicket));
-        Log.d("###### CreateRaffleTket","insert successful");
-
-        if (raffle.getTypeId().equals(RaffleType.NORMAL_RAFFLE)) {
-            createNormalTicket(raffleTicket);
+        if (existingRaffleTicket != null) {
+            existingRaffleTicket.setTotalPrice(total);
+            existingRaffleTicket.setNumTickets(numTickets);
+            raffleTicket = existingRaffleTicket;
+            RaffleTicketTable.update(db, raffleTicket);
         }
         else {
-            createMarginTicket(raffleTicket);
+            raffleTicket.setRaffleTicketId(RaffleTicketTable.insert(db, raffleTicket));
+            Log.d("###### CreateRaffleTket", "insert successful");
+        }
+
+        if (raffle.getTypeId().equals(RaffleType.NORMAL_RAFFLE)) {
+            createNormalTicket(numTickets, raffleTicket.getRaffleTicketId());
+        }
+        else {
+            createMarginTicket(numTickets, raffleTicket.getRaffleTicketId());
         }
     }
 
@@ -288,17 +298,15 @@ public class SellTicket extends Fragment implements FormInteraction {
 
         if (existingUserCbx.isChecked()) {
             try {
-                List<RaffleTicket> tickets =
+                RaffleTicket ticket =
                         RaffleTicketTable.selectAllByRaffleAndCustomerId(db, raffle.getRaffleId(),
                                 customer.getCustomerId());
-                if (tickets.size() == 0) {
+                if (ticket == null) {
                     return AlertType.VALID;
                 } else {
+                    existingRaffleTicket = ticket;
                     int selected = Integer.parseInt(numTicketsSpinner.getSelectedItem().toString());
-                    int count = 0;
-                    for (RaffleTicket rt : tickets) {
-                        count += rt.getNumTickets();
-                    }
+                    int count = ticket.getNumTickets();
 
                     if (count == raffle.getMaxTickets()){
                         return AlertType.MAX_BUY_ALERT;
@@ -316,16 +324,16 @@ public class SellTicket extends Fragment implements FormInteraction {
         return AlertType.VALID;
     }
 
-    private void createNormalTicket(RaffleTicket raffleTicket) {
+    private void createNormalTicket(int numTickets,  long raffleTicketId) {
 
         int number = raffle.getTicketsSold();
 
-        for (int i = 1 ; i <= raffleTicket.getNumTickets();  i++) {
+        for (int i = 1 ; i <= numTickets;  i++) {
 
             number++;
             String ticketNum = raffle.getRaffleNameForTicket() + number;
 
-            TicketTable.insert(db, new Ticket(ticketNum, raffleTicket.getRaffleTicketId()));
+            TicketTable.insert(db, new Ticket(ticketNum, raffleTicketId));
         }
         Log.d("###### Create ticket","insert successful");
 
@@ -339,7 +347,7 @@ public class SellTicket extends Fragment implements FormInteraction {
         resetForm();
     }
 
-    private void createMarginTicket(RaffleTicket raffleTicket) {
+    private void createMarginTicket(int numTickets, long raffleTicketId) {
 
         int number = raffle.getTicketsSold();
 
@@ -348,14 +356,14 @@ public class SellTicket extends Fragment implements FormInteraction {
             Long[] array = raffleTickets.toArray(new Long[0]);
             Set<String> tickets = new HashSet<>(TicketTable.getTicketIdsByRaffleTicketList(db, array));
 
-            for (int i = 1 ; i <= raffleTicket.getNumTickets();  i++) {
+            for (int i = 1 ; i <= numTickets;  i++) {
                 number++;
                 String ticketNum;
                 do {
                     ticketNum = getRandomTicketId();
                 } while (!tickets.add(ticketNum));
 
-                TicketTable.insert(db, new Ticket(ticketNum, raffleTicket.getRaffleTicketId()));
+                TicketTable.insert(db, new Ticket(ticketNum, raffleTicketId));
                 Log.d("###, insertedTicket", "ticketNum");
             }
             Log.d("###### Create ticket(s)","insert successful");

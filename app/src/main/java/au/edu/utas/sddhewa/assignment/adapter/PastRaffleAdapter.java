@@ -2,6 +2,7 @@ package au.edu.utas.sddhewa.assignment.adapter;
 
 import android.app.Service;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,18 +13,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.ParseException;
 import java.util.List;
 
 import au.edu.utas.sddhewa.assignment.R;
+import au.edu.utas.sddhewa.assignment.db.table.CustomerTable;
+import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 
 public class PastRaffleAdapter extends ArrayAdapter<Raffle> {
 
     private  int layoutResourceId;
 
-    public PastRaffleAdapter(@NonNull Context context, int resource, @NonNull List<Raffle> objects) {
+    private SQLiteDatabase db;
+
+    public PastRaffleAdapter(@NonNull Context context, int resource, @NonNull List<Raffle> objects,
+                             SQLiteDatabase db) {
         super(context, resource, objects);
         layoutResourceId = resource;
+        this.db = db;
     }
 
     @NonNull
@@ -47,13 +55,18 @@ public class PastRaffleAdapter extends ArrayAdapter<Raffle> {
         TextView lblRaffleP = row.findViewById(R.id.lblRaffleP);
         lblRaffleP.setText(raffle.getName());
 
-        TextView lblDescP = row.findViewById(R.id.lblDescP);
-        lblDescP.setText(raffle.getDescription());
-
-        TextView lblRaffleTypeP = row.findViewById(R.id.lblRaffleTypeP);
-        lblRaffleTypeP.setText(raffle.getTypeId().name);
+        TextView lblPrize = row.findViewById(R.id.lblPrize);
+        lblPrize.setText(raffle.getTicketPriceString());
 
         TextView lblDrawDateP = row.findViewById(R.id.lblDrawDateP);
         lblDrawDateP.setText(raffle.getDrawDate());
+
+        TextView lblWinner = row.findViewById(R.id.lblWinner);
+        try {
+            Customer customer = CustomerTable.selectById(db, raffle.getWinningDetailsDTO().getTicketOwnerId());
+            lblWinner.setText(customer.getFullName());
+        } catch (ParseException e) {
+            e.printStackTrace();;
+        }
     }
 }
