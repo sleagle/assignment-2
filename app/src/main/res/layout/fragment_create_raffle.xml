@@ -49,8 +49,6 @@
             android:id="@+id/txtName"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/name"
             android:ems="10"
             android:hint="Name"
@@ -59,7 +57,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblName"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/lblCreateRaffle"
             app:layout_constraintStart_toEndOf="@+id/lblName"
             app:layout_constraintTop_toTopOf="@+id/lblName" />
 
@@ -80,8 +78,6 @@
             android:id="@+id/txtDesc"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="70dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/description"
             android:ems="10"
             android:gravity="start|top"
@@ -91,7 +87,7 @@
             android:textColor="@color/design_default_color_on_secondary"
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtName"
             app:layout_constraintStart_toEndOf="@+id/lblDesc"
             app:layout_constraintTop_toBottomOf="@+id/txtName" />
 
@@ -112,12 +108,10 @@
             android:id="@+id/raffle_type_spinner"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:textColor="@color/textTitle"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblRaffleType"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtDesc"
             app:layout_constraintStart_toEndOf="@+id/lblRaffleType"
             app:layout_constraintTop_toTopOf="@+id/lblRaffleType" />
 
@@ -214,15 +208,13 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/adamina"
-            app:layout_constraintStart_toStartOf="@+id/lblDrawDate"
-            app:layout_constraintTop_toBottomOf="@+id/lblDrawDate" />
+            app:layout_constraintStart_toStartOf="@+id/lblLocation"
+            app:layout_constraintTop_toBottomOf="@+id/lblLocation" />
 
         <EditText
             android:id="@+id/txtPrize"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/prize"
             android:ems="10"
             android:hint="Prize worth"
@@ -231,7 +223,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblPrize"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtLocation"
             app:layout_constraintStart_toEndOf="@+id/lblPrize"
             app:layout_constraintTop_toTopOf="@+id/lblPrize" />
 
@@ -245,15 +237,13 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/adamina"
-            app:layout_constraintStart_toStartOf="@+id/lblPrize"
-            app:layout_constraintTop_toBottomOf="@+id/lblPrize" />
+            app:layout_constraintStart_toStartOf="@+id/lblDrawDate"
+            app:layout_constraintTop_toBottomOf="@+id/lblDrawDate" />
 
         <EditText
             android:id="@+id/txtLocation"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/location"
             android:ems="10"
             android:hint="Enter the City name"
@@ -262,7 +252,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblLocation"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/raffle_type_spinner"
             app:layout_constraintStart_toEndOf="@+id/lblLocation"
             app:layout_constraintTop_toTopOf="@+id/lblLocation" />
 
@@ -276,15 +266,13 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/adamina"
-            app:layout_constraintStart_toStartOf="@+id/lblLocation"
-            app:layout_constraintTop_toBottomOf="@+id/lblLocation" />
+            app:layout_constraintStart_toStartOf="@+id/lblPrize"
+            app:layout_constraintTop_toBottomOf="@+id/lblPrize" />
 
         <EditText
             android:id="@+id/txTicketPrice"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/ticket_price"
             android:ems="10"
             android:hint="Ticket price"
@@ -293,7 +281,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblTicketPrice"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtPrize"
             app:layout_constraintStart_toEndOf="@+id/lblTicketPrice"
             app:layout_constraintTop_toTopOf="@+id/lblTicketPrice" />
 
@@ -314,8 +302,6 @@
             android:id="@+id/txtNumTickets"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/num_tickets"
             android:ems="10"
             android:hint="Number of tickets"
@@ -324,7 +310,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblNumTickets"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txTicketPrice"
             app:layout_constraintStart_toEndOf="@+id/lblNumTickets"
             app:layout_constraintTop_toTopOf="@+id/lblNumTickets" />
 
@@ -345,8 +331,6 @@
             android:id="@+id/txtMaxTickets"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:autofillHints="@string/max_tickets"
             android:ems="10"
             android:hint="Max"
@@ -355,7 +339,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblMaxTickets"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtNumTickets"
             app:layout_constraintStart_toEndOf="@+id/lblMaxTickets"
             app:layout_constraintTop_toTopOf="@+id/lblMaxTickets" />
 
@@ -391,6 +375,7 @@
             android:text="@string/create"
             android:textColor="@color/btn_txt"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/btnDiscard"
             app:layout_constraintEnd_toEndOf="@+id/txtMaxTickets"
             app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
@@ -405,6 +390,7 @@
             android:text="@string/discard"
             android:textColor="@color/btn_txt"
             android:textStyle="bold"
+            app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/lblMaxTickets"
             app:layout_constraintTop_toBottomOf="@+id/imgCover" />
