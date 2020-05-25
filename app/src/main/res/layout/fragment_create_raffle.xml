@@ -35,9 +35,9 @@
             android:id="@+id/lblName"
             android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="24dp"
             android:text="@string/name"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
@@ -50,6 +50,8 @@
             android:id="@+id/txtName"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:autofillHints="@string/name"
             android:ems="10"
             android:hint="Name"
@@ -58,6 +60,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblName"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblName"
             app:layout_constraintTop_toTopOf="@+id/lblName" />
 
@@ -78,6 +81,8 @@
             android:id="@+id/txtDesc"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:autofillHints="@string/description"
             android:ems="10"
             android:gravity="start|top"
@@ -88,6 +93,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblDesc"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblDesc"
             app:layout_constraintTop_toTopOf="@+id/lblDesc" />
 
@@ -108,9 +114,12 @@
             android:id="@+id/raffle_type_spinner"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:textColor="@color/textTitle"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblRaffleType"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblRaffleType"
             app:layout_constraintTop_toTopOf="@+id/lblRaffleType" />
 
@@ -129,7 +138,7 @@
 
         <TextView
             android:id="@+id/txtStartDate"
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:autofillHints="@string/start_date"
             android:ems="10"
@@ -147,8 +156,11 @@
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginEnd="95dp"
+            android:layout_marginRight="95dp"
             android:background="@drawable/ic_date"
             app:layout_constraintBottom_toBottomOf="@+id/txtStartDate"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txtStartDate"
             app:layout_constraintTop_toTopOf="@+id/txtStartDate" />
 
@@ -167,7 +179,7 @@
 
         <TextView
             android:id="@+id/txtCR_DrawDate"
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:autofillHints="@string/draw_date"
             android:ems="10"
@@ -185,11 +197,14 @@
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/ic_date"
+            android:layout_marginEnd="95dp"
 
-            app:layout_constraintBottom_toBottomOf="@+id/lblDrawDate"
+            android:layout_marginRight="95dp"
+            android:background="@drawable/ic_date"
+            app:layout_constraintBottom_toBottomOf="@+id/txtCR_DrawDate"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txtCR_DrawDate"
-            app:layout_constraintTop_toTopOf="@+id/lblDrawDate" />
+            app:layout_constraintTop_toTopOf="@+id/txtCR_DrawDate" />
 
         <TextView
             android:id="@+id/lblPrize"
@@ -208,6 +223,8 @@
             android:id="@+id/txtPrize"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:autofillHints="@string/prize"
             android:ems="10"
             android:hint="Prize worth"
@@ -216,6 +233,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblPrize"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblPrize"
             app:layout_constraintTop_toTopOf="@+id/lblPrize" />
 
@@ -236,14 +254,17 @@
             android:id="@+id/txtLocation"
             android:layout_width="@dimen/text_create_width"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:autofillHints="@string/location"
             android:ems="10"
-            android:hint="Location"
+            android:hint="Enter the City name"
             android:inputType="textPersonName"
             android:textColor="@color/design_default_color_on_secondary"
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblLocation"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblLocation"
             app:layout_constraintTop_toTopOf="@+id/lblLocation" />
 
@@ -262,8 +283,10 @@
 
         <EditText
             android:id="@+id/txTicketPrice"
-            android:layout_width="175dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:autofillHints="@string/ticket_price"
             android:ems="10"
             android:hint="Ticket price"
@@ -272,6 +295,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblTicketPrice"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblTicketPrice"
             app:layout_constraintTop_toTopOf="@+id/lblTicketPrice" />
 
@@ -290,8 +314,10 @@
 
         <EditText
             android:id="@+id/txtNumTickets"
-            android:layout_width="175dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:autofillHints="@string/num_tickets"
             android:ems="10"
             android:hint="Number of tickets"
@@ -300,6 +326,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblNumTickets"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblNumTickets"
             app:layout_constraintTop_toTopOf="@+id/lblNumTickets" />
 
@@ -318,8 +345,10 @@
 
         <EditText
             android:id="@+id/txtMaxTickets"
-            android:layout_width="95dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
             android:autofillHints="@string/max_tickets"
             android:ems="10"
             android:hint="Max"
@@ -328,6 +357,7 @@
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
             app:layout_constraintBottom_toBottomOf="@+id/lblMaxTickets"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblMaxTickets"
             app:layout_constraintTop_toTopOf="@+id/lblMaxTickets" />
 
@@ -349,6 +379,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="15dp"
             android:contentDescription="@string/cover_image"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="@+id/cbxCoverImage"
             app:layout_constraintTop_toBottomOf="@+id/cbxCoverImage" />
 
@@ -356,22 +387,18 @@
             android:id="@+id/btnCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="60dp"
-            android:layout_marginRight="60dp"
             android:background="@drawable/rounded_btn"
             android:text="@string/create"
             android:textColor="@color/btn_txt"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/btnDiscard"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtMaxTickets"
             app:layout_constraintTop_toTopOf="@+id/btnDiscard" />
 
         <Button
             android:id="@+id/btnDiscard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/rounded_delete_btn"
@@ -379,7 +406,7 @@
             android:textColor="@color/btn_txt"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/lblMaxTickets"
             app:layout_constraintTop_toBottomOf="@+id/imgCover" />
 
         <Button
@@ -388,8 +415,11 @@
             android:layout_height="@dimen/txt_height"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginRight="60dp"
             android:background="@drawable/ic_camera"
             app:layout_constraintBottom_toBottomOf="@+id/imgCover"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgCover"
             app:layout_constraintTop_toTopOf="@+id/imgCover" />
 

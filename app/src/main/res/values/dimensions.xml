@@ -8,5 +8,5 @@
     <dimen name="txt_width">200dp</dimen>
     <dimen name="title_width">100dp</dimen>
     <dimen name="title_create_width">105dp</dimen>
-    <dimen name="text_create_width">190dp</dimen>
+    <dimen name="text_create_width">225dp</dimen>
 </resources>
