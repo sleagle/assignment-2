@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -24,7 +23,6 @@ import java.util.List;
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.db.table.RaffleTable;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
-import au.edu.utas.sddhewa.assignment.ui.alert.CustomErrorDialog;
 import au.edu.utas.sddhewa.assignment.ui.alert.CustomWarningDialog;
 import au.edu.utas.sddhewa.assignment.ui.view.ViewRaffle;
 import au.edu.utas.sddhewa.assignment.util.AlertType;
@@ -76,9 +74,6 @@ public class PlaceholderFragment extends Fragment {
         Log.d("***************", "Inflated view");
         final ListView tabListView = root.findViewById(R.id.rafflesList);
 
-        final Button editButton = root.findViewById(R.id.btnEdit);
-        final Button deleteButton = root.findViewById(R.id.btnDelete);
-
         try {
             if (selectedTab == 0) {
                 raffles = RaffleTable.selectCurrentRaffles(db);
@@ -88,13 +83,6 @@ public class PlaceholderFragment extends Fragment {
             }
             else if (selectedTab == 1) {
                 raffles= RaffleTable.selectPastRaffles(db);
-                editButton.setEnabled(false);
-                editButton.setAlpha(0.5f);
-                editButton.setClickable(false);
-
-                deleteButton.setEnabled(false);
-                deleteButton.setAlpha(0.5f);
-                deleteButton.setClickable(false);
                 pageViewModel.setPastRaffles(getContext(), R.layout.list_past_raffles, raffles, selectedTab, db);
                 Log.d("***************", "set the past raffles adapter");
             }
@@ -102,73 +90,12 @@ public class PlaceholderFragment extends Fragment {
             e.printStackTrace();
         }
 
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<Raffle> rafflesAdded = pageViewModel.getCurrentRafflesAdapter().getAddedRaffles();
-
-                AlertType type = validateClick(rafflesAdded, true);
-                if (type.equals(AlertType.VALID)) {
-
-                }
-                else {
-                    CustomErrorDialog customErrorDialog = new CustomErrorDialog(type);
-                    customErrorDialog.show(getActivity().getSupportFragmentManager(), "error");
-                }
-            }
-        });
-
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<Raffle> rafflesAdded = pageViewModel.getCurrentRafflesAdapter().getAddedRaffles();
-                List<String> notDeleted = new ArrayList<>();
-
-                AlertType type = validateClick(rafflesAdded, false);
-
-                if (type.equals(AlertType.VALID)) {
-
-                    for (Raffle raffle : rafflesAdded) {
-                        if (raffle.getTicketsSold() > 0) {
-                            notDeleted.add(raffle.getName());
-                        } else {
-                            raffles.remove(raffle);
-                            RaffleTable.deleteRaffle(db, raffle);
-                        }
-                    }
-
-                    if (notDeleted.size() > 0 && notDeleted.size() != rafflesAdded.size()) {
-                        displayCustomWarningDialog(notDeleted);
-                        Utility.createDeleteSuccessToast(getContext(), pageViewModel);
-                    }
-                    else if (notDeleted.size() > 0) {
-                        displayCustomWarningDialog(notDeleted);
-                    }
-                    else {
-                        Utility.createDeleteSuccessToast(getContext(), pageViewModel);
-                    }
-                }
-                else {
-                    CustomErrorDialog customErrorDialog = new CustomErrorDialog(type);
-                    customErrorDialog.show(getActivity().getSupportFragmentManager(), "error");
-                }
-                pageViewModel.getCurrentRafflesAdapter().clearAddedList(rafflesAdded);
-            }
-        });
-
         pageViewModel.getRaffleList().observe(getViewLifecycleOwner(), new Observer<ArrayAdapter<Raffle>>() {
             @Override
             public void onChanged(@Nullable ArrayAdapter<Raffle> adapter) {
                 Log.d("***************", "on change adapter");
                 tabListView.setAdapter(adapter);
 
-            }
-        });
-
-        tabListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                return false;
             }
         });
 
