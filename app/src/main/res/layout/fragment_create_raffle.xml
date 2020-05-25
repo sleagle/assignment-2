@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="40dp"
             android:layout_marginRight="40dp"
             android:background="@color/background"
@@ -37,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="25dp"
             android:text="@string/name"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
@@ -68,7 +67,7 @@
             android:id="@+id/lblDesc"
             android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="@string/description"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
@@ -80,36 +79,34 @@
         <EditText
             android:id="@+id/txtDesc"
             android:layout_width="@dimen/text_create_width"
-            android:layout_height="80dp
-"
+            android:layout_height="70dp"
             android:layout_marginEnd="40dp"
             android:layout_marginRight="40dp"
             android:autofillHints="@string/description"
-            android:scrollbars="vertical"
             android:ems="10"
             android:gravity="start|top"
             android:hint="Description"
+            android:scrollbars="vertical"
             android:scrollHorizontally="false"
             android:textColor="@color/design_default_color_on_secondary"
             android:textSize="16sp"
             app:fontFamily="@font/adamina"
-            app:layout_constraintBottom_toBottomOf="@+id/lblDesc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lblDesc"
-            app:layout_constraintTop_toTopOf="@+id/lblDesc" />
+            app:layout_constraintTop_toBottomOf="@+id/txtName" />
 
         <TextView
             android:id="@+id/lblRaffleType"
             android:layout_width="@dimen/title_create_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:text="@string/type"
             android:textColor="@color/textTitle"
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/adamina"
             app:layout_constraintStart_toStartOf="@+id/lblDesc"
-            app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDesc" />
 
         <Spinner
             android:id="@+id/raffle_type_spinner"
@@ -400,7 +397,7 @@
             android:id="@+id/btnDiscard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/rounded_delete_btn"
             android:text="@string/discard"

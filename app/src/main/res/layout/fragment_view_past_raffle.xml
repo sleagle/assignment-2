@@ -232,12 +232,11 @@
             android:layout_width="291dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
             android:ems="10"
             android:textSize="16sp"
             android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/txtTicketPrice_RD"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
             app:layout_constraintTop_toBottomOf="@+id/lblMaxTickets" />
 
@@ -270,7 +269,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/winner"
+            android:text="Winner Details"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -386,6 +385,21 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/lblTicketNum"
             app:layout_constraintTop_toBottomOf="@+id/lblTicketNum" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_btn"
+            android:text="Contact Winner"
+            android:textColor="@color/btn_txt"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtDesc_RD"
+            app:layout_constraintStart_toStartOf="@+id/txtDesc_RD"
+            app:layout_constraintTop_toBottomOf="@+id/txtDesc_RD" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
