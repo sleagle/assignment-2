@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="95dp"
+    android:background="@drawable/raffle_card"
+    android:elevation="5dp"
     android:orientation="horizontal">
 
     <TextView
@@ -58,18 +60,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:background="@drawable/raffle_card"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/prize_card"
         android:textColor="@color/delete_btn"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:fontFamily="@font/adamina"
         app:layout_constraintBottom_toBottomOf="@+id/lblRaffle"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lblRaffle"
         app:layout_constraintTop_toTopOf="@+id/lblRaffle" />
 
     <TextView
         android:id="@+id/lblTicketPrice"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="@+id/lblPrize"
         app:layout_constraintStart_toStartOf="@+id/lblPrize"
@@ -77,11 +85,11 @@
 
     <TextView
         android:id="@+id/lblNumTicketsSold"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="@+id/lblTicketPrice"
         app:layout_constraintStart_toStartOf="@+id/lblTicketPrice"
         app:layout_constraintTop_toBottomOf="@+id/lblTicketPrice" />
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,8 @@
     <color name="textTitle">#274F73</color>
     <color name="raffle_type">#730ee8</color>
     <color name="background">#eff5f5</color>
-    <color name="card">#f4e2ff</color>
+    <color name="card">#b1eff4</color>
+    <color name="prize_card">#e6cc65</color>
+    <color name="sold_tickets_card"> #e5fcfa</color>
     <color name="transparent" />
 </resources>

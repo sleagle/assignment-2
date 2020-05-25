@@ -73,7 +73,7 @@
 
         <Spinner
             android:id="@+id/num_tickets_spinner"
-            android:layout_width="75dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/lblNumTickets"
             app:layout_constraintStart_toEndOf="@+id/lblNumTickets"
