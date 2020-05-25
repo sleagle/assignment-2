@@ -1,6 +1,7 @@
 package au.edu.utas.sddhewa.assignment.ui.home;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.widget.ArrayAdapter;
 
 import androidx.arch.core.util.Function;
@@ -52,8 +53,8 @@ public class PageViewModel extends ViewModel {
         return currentRaffles;
     }
 
-    public void setPastRaffles (Context context, int resource, List<Raffle> objects, int tabId) {
-        pastRaffles = new PastRaffleAdapter(context, resource, objects);
+    public void setPastRaffles(Context context, int resource, List<Raffle> objects, int tabId, SQLiteDatabase db) {
+        pastRaffles = new PastRaffleAdapter(context, resource, objects, db);
     }
 
     public LiveData<ArrayAdapter<Raffle>> getRaffleList() {

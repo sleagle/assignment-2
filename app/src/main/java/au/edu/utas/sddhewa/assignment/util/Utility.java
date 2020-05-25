@@ -4,9 +4,12 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 import au.edu.utas.sddhewa.assignment.R;
 import au.edu.utas.sddhewa.assignment.ui.home.PageViewModel;
@@ -40,6 +43,8 @@ public final class Utility {
 
         return titleDropDown;
     }
+
+    NumberFormat format = NumberFormat.getCurrencyInstance(Locale.ENGLISH);
 
     public static ArrayAdapter<String> getUserStateAdapter(Context context, String[] array) {
 
@@ -87,6 +92,10 @@ public final class Utility {
             default:
                 return -1;
         }
+    }
+
+    public static String formatPrize(float prize) {
+        return new DecimalFormat("$ #,###").format(prize);
     }
 
     public static void createDeleteSuccessToast(Context context, PageViewModel pageViewModel) {

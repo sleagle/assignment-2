@@ -383,7 +383,7 @@ public class Raffle implements Parcelable {
     }
 
     public String getRafflePrizeString() {
-        return Utility.getFormattedPrice(getPrize());
+        return Utility.formatPrize(getPrize());
     }
 
     public String getTicketsSoldStringForList() {

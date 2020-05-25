@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,6 +103,7 @@ public class CreateRaffle extends Fragment implements FormInteraction {
 
         name = createRaffle.findViewById(R.id.txtName);
         description = createRaffle.findViewById(R.id.txtDesc);
+        description.setMovementMethod(new ScrollingMovementMethod());
         raffleType = createRaffle.findViewById(R.id.raffle_type_spinner);
         startDate = createRaffle.findViewById(R.id.txtStartDate);
         drawDate = createRaffle.findViewById(R.id.txtCR_DrawDate);

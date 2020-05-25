@@ -14,11 +14,12 @@
         android:layout_marginStart="85dp"
         android:layout_marginLeft="85dp"
         android:layout_marginTop="8dp"
-        android:background="@color/edit_btn"
+        android:background="@drawable/rounded_edit_btn"
         android:drawableStart="@drawable/ic_edit"
         android:drawableLeft="@drawable/ic_edit"
         android:text="@string/edit"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/btn_txt"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,11 +30,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="85dp"
         android:layout_marginRight="85dp"
-        android:background="@color/delete_btn"
+        android:background="@drawable/rounded_delete_btn"
         android:drawableStart="@drawable/ic_delete"
         android:drawableLeft="@drawable/ic_delete"
         android:text="@string/delete"
-        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        android:textColor="@color/btn_txt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

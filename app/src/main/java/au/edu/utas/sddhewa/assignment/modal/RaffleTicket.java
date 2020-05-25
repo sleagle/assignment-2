@@ -80,7 +80,13 @@ public class RaffleTicket implements Parcelable {
     }
 
     public void setNumTickets(int numTickets) {
-        this.numTickets = numTickets;
+
+        if (this.numTickets == 0) {
+            this.numTickets = numTickets;
+        }
+        else {
+            this.numTickets += numTickets;
+        }
     }
 
     public float getTotalPrice() {
@@ -88,7 +94,12 @@ public class RaffleTicket implements Parcelable {
     }
 
     public void setTotalPrice(float price) {
-        this.totalPrice = price;
+        if (this.totalPrice == 0) {
+            this.totalPrice = price;
+        }
+        else {
+            this.totalPrice += price;
+        }
     }
 
     public String getPurchasedDate() {

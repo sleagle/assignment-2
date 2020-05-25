@@ -95,7 +95,7 @@ public class PlaceholderFragment extends Fragment {
                 deleteButton.setEnabled(false);
                 deleteButton.setAlpha(0.5f);
                 deleteButton.setClickable(false);
-                pageViewModel.setPastRaffles(getContext(), R.layout.list_past_raffles, raffles, selectedTab);
+                pageViewModel.setPastRaffles(getContext(), R.layout.list_past_raffles, raffles, selectedTab, db);
                 Log.d("***************", "set the past raffles adapter");
             }
         } catch (ParseException e) {
@@ -165,6 +165,12 @@ public class PlaceholderFragment extends Fragment {
             }
         });
 
+        tabListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                return false;
+            }
+        });
 
         tabListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
