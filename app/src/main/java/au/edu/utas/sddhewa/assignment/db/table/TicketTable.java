@@ -41,7 +41,7 @@ public class TicketTable {
 
     public static Ticket getTicketByTicketNumber(SQLiteDatabase db, String ticketNumber) throws ParseException {
 
-        Ticket ticket = new Ticket();
+        Ticket ticket = null;
 
         Cursor c = db.query(TABLE_NAME, null, KEY_TICKET_NUMBER+"=?",
                 new String[] { ticketNumber }, null, null, null);

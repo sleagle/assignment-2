@@ -122,6 +122,8 @@
 
     <string name="winner_dialog_title">Congratulations!</string>
     <string name="winner_dialog_msg">Winning ticket number is: %1$s \nBelongs to: %2$s</string>
+    <string name="margin_draw_dialog">Enter the winning margin</string>
+    <string name="margin_draw_dialog_btn">Check</string>
 
     <string name="error_dialog_create_title">Create Error!</string>
     <string name="error_dialog_create_msg">All fields are required!</string>
@@ -131,6 +133,8 @@
     <string name="error_dialog_edit_multi_msg">Can only edit one raffle at a time!</string>
     <string name="error_not_deleted_msg_multi">The following Raffle(s): %1$s Not deleted\nReason: Raffles have already started.</string>
     <string name="error_not_deleted_msg_single">Raffle not deleted %1$s Not deleted\nReason: The Raffle have started.</string>
+    <string name="error_margin_draw_title">Margin Ticket Draw Winner Error!</string>
+    <string name="error_margin_draw_msg">Sorry\nNo customer has a ticket number matching the margin</string>
 
     <string name="edit_raffle">Edit Raffle</string>
     <string name="winner">Winners Detail</string>

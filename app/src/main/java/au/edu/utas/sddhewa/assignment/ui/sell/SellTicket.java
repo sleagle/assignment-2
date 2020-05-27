@@ -358,9 +358,11 @@ public class SellTicket extends Fragment implements FormInteraction {
 
             for (int i = 1 ; i <= numTickets;  i++) {
                 number++;
-                String ticketNum;
+                String ticketNum = "";
                 do {
+                    Log.d("### failed", ticketNum);
                     ticketNum = getRandomTicketId();
+                    Log.d("### trying", ticketNum);
                 } while (!tickets.add(ticketNum));
 
                 TicketTable.insert(db, new Ticket(ticketNum, raffleTicketId));
@@ -424,7 +426,7 @@ public class SellTicket extends Fragment implements FormInteraction {
         Random random = new Random();
         int generatedNumber;
         String ticketNum = "";
-        generatedNumber = random.nextInt(raffle.getMaxTickets()) + 1;
+        generatedNumber = random.nextInt(raffle.getNoOfTickets()) + 1;
         ticketNum = raffle.getRaffleNameForTicket() + generatedNumber;
 
         return ticketNum;

@@ -31,21 +31,25 @@ import au.edu.utas.sddhewa.assignment.modal.Customer;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.modal.RaffleTicket;
 import au.edu.utas.sddhewa.assignment.modal.Ticket;
+import au.edu.utas.sddhewa.assignment.ui.alert.CustomMarginDrawDialog;
 import au.edu.utas.sddhewa.assignment.ui.alert.CustomWarningDialog;
 import au.edu.utas.sddhewa.assignment.ui.alert.CustomWinnerDialog;
 import au.edu.utas.sddhewa.assignment.ui.edit.EditRaffle;
 import au.edu.utas.sddhewa.assignment.ui.home.Home;
 import au.edu.utas.sddhewa.assignment.util.AlertType;
+import au.edu.utas.sddhewa.assignment.util.RaffleType;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
 public class RaffleDetail extends Fragment {
 
     private final SQLiteDatabase db;
     private final Raffle raffle;
+    private final RaffleDetail detail;
 
     public RaffleDetail(Bundle bundle, SQLiteDatabase db) {
         this.db = db;
         this.raffle = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
+        this.detail = this;
     }
 
     @Nullable
@@ -96,34 +100,22 @@ public class RaffleDetail extends Fragment {
             imageView.setImageBitmap(bitmap);
         }
 
-        final RaffleDetail detail = this;
-
         Button drawButton = viewRaffle.findViewById(R.id.btnDraw);
         drawButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String ticketNum = getWinningTicketNumber();
-                try {
-                    Ticket winningTicket = TicketTable.getTicketByTicketNumber(db, ticketNum);
+                if (raffle.getTypeId() == RaffleType.NORMAL_RAFFLE) {
+                    String ticketNum = getWinningTicketNumber();
+                    try {
+                        Ticket winningTicket = TicketTable.getTicketByTicketNumber(db, ticketNum);
+                        getWinningCustomerDetails(winningTicket, ticketNum, db);
 
-                    RaffleTicket winningRaffleTicket =
-                            RaffleTicketTable.selectByRaffleTicketId(db, winningTicket.getRaffleTicketId());
-
-                    Customer customer = CustomerTable.selectById(db, winningRaffleTicket.getCustomerId());
-
-                    WinningDetailsDTO winningDetails = new WinningDetailsDTO(ticketNum, customer.getCustomerId());
-                    raffle.setWinningDetails(winningDetails);
-                    raffle.setActive(0);
-
-                    RaffleTable.update(db, raffle);
-
-                    CustomWinnerDialog customWinnerDialog = new CustomWinnerDialog(
-                            detail, ticketNum, customer.getFullName());
-                    customWinnerDialog.show(getActivity().getSupportFragmentManager(), "winner");
-
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    CustomMarginDrawDialog customMarginDrawDialog = new CustomMarginDrawDialog(detail, raffle, db);
+                    customMarginDrawDialog.show(getActivity().getSupportFragmentManager(), "margin-draw");
                 }
             }
         });
@@ -170,6 +162,29 @@ public class RaffleDetail extends Fragment {
                         new Home(db, getActivity().getSupportFragmentManager(),
                                 getContext()))
                 .commit();
+    }
+
+    public void getWinningCustomerDetails(Ticket winningTicket, String ticketNum, SQLiteDatabase db) {
+        try {
+            RaffleTicket winningRaffleTicket =
+                    RaffleTicketTable.selectByRaffleTicketId(this.db, winningTicket.getRaffleTicketId());
+
+            Customer customer = CustomerTable.selectById(this.db, winningRaffleTicket.getCustomerId());
+
+            if (customer != null) {
+                WinningDetailsDTO winningDetails = new WinningDetailsDTO(ticketNum, customer.getCustomerId());
+                raffle.setWinningDetails(winningDetails);
+                raffle.setActive(0);
+
+                RaffleTable.update(this.db, raffle);
+
+                CustomWinnerDialog customWinnerDialog = new CustomWinnerDialog(
+                        detail, ticketNum, customer.getFullName());
+                customWinnerDialog.show(getActivity().getSupportFragmentManager(), "winner");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private String getWinningTicketNumber() {

@@ -42,6 +42,10 @@ public class CustomErrorDialog extends DialogFragment {
                 builder.setTitle(R.string.error_dialog_select_title);
                 builder.setMessage(R.string.error_dialog_no_select_msg);
                 break;
+            case NO_MARGIN_TICKET:
+                builder.setTitle(R.string.error_margin_draw_title);
+                builder.setMessage(R.string.error_margin_draw_msg);
+                break;
         }
 
 
