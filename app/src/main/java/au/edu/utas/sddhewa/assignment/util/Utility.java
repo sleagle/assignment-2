@@ -24,6 +24,8 @@ public final class Utility {
 
     public static final String KEY_SELECTED_RAFFLE_TICKET = "SELECTED_RAFFLE_TICKET";
 
+    public static final String KEY_SELECTED_CUSTOMER = "SELECTED_CUSTOMER";
+
     public static final String KEY_TICKET_NUMBER = "ticketNumber";
 
     public static final String TICKET_OWNER_ID = "ticketOwnerId";

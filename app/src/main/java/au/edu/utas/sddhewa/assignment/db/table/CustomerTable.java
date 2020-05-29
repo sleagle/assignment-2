@@ -57,6 +57,22 @@ public class CustomerTable {
         return db.insert(TABLE_NAME, null, values);
     }
 
+    public static long update(SQLiteDatabase db, Customer customer) {
+        ContentValues values = new ContentValues();
+        values.put(KEY_TITLE, customer.getTitle());
+        values.put(KEY_FIRST_NAME, customer.getFirstName());
+        values.put(KEY_LAST_NAME, customer.getLastName());
+        values.put(KEY_MOBILE_NO, customer.getMobileNo());
+        values.put(KEY_EMAIL, customer.getEmail());
+        values.put(KEY_ADDRESS, customer.getAddress());
+        values.put(KEY_SUBURB, customer.getSuburb());
+        values.put(KEY_STATE, customer.getState());
+        values.put(KEY_POST_CODE, customer.getPostCode());
+
+        return db.update(TABLE_NAME, values, KEY_CUSTOMER_ID+"= ?",
+                new String[] { ""+customer.getCustomerId() });
+    }
+
     public static ArrayList<Customer> selectAll(SQLiteDatabase db) throws ParseException {
 
         ArrayList<Customer> customers = new ArrayList<>();

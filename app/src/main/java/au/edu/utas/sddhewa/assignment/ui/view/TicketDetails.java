@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ import au.edu.utas.sddhewa.assignment.db.table.TicketTable;
 import au.edu.utas.sddhewa.assignment.dto.TicketsSoldDTO;
 import au.edu.utas.sddhewa.assignment.modal.Raffle;
 import au.edu.utas.sddhewa.assignment.modal.Ticket;
+import au.edu.utas.sddhewa.assignment.ui.edit.EditUser;
 import au.edu.utas.sddhewa.assignment.util.Utility;
 
 
@@ -52,8 +54,8 @@ public class TicketDetails extends Fragment {
 
         ListView ticketsList = soldTickets.findViewById(R.id.ticketDetailsList);
 
-        Raffle raffle = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
-        TicketsSoldDTO ticketsSold = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE_TICKET);
+        final Raffle raffle = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE);
+        final TicketsSoldDTO ticketsSold = bundle.getParcelable(Utility.KEY_SELECTED_RAFFLE_TICKET);
 
         TextView header = soldTickets.findViewById(R.id.lblTicketDetailsHead);
         header.setText(getResources().getString(R.string.ticket_detail_title, ticketsSold.getCustomer().getFullName()));
@@ -69,6 +71,20 @@ public class TicketDetails extends Fragment {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        Button editCustomerButton = soldTickets.findViewById(R.id.btnEditCustomer);
+        editCustomerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bundle.putParcelable(Utility.KEY_SELECTED_CUSTOMER, ticketsSold.getCustomer());
+                bundle.putParcelable(Utility.KEY_SELECTED_RAFFLE, raffle);
+
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,
+                                new EditUser(db, bundle)).addToBackStack(null).commit();
+            }
+        });
+
         return soldTickets;
     }
 }

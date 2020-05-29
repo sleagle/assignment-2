@@ -56,7 +56,7 @@ public class PastRaffleAdapter extends ArrayAdapter<Raffle> {
         lblRaffleP.setText(raffle.getName());
 
         TextView lblPrize = row.findViewById(R.id.lblPrize);
-        lblPrize.setText(raffle.getTicketPriceString());
+        lblPrize.setText(raffle.getRafflePrizeString());
 
         TextView lblDrawDateP = row.findViewById(R.id.lblDrawDateP);
         lblDrawDateP.setText(raffle.getDrawDate());

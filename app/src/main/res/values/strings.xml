@@ -35,6 +35,7 @@
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
     <string name="prize">Prize:</string>
+    <string name="edit_customer">Edit Customer</string>
 
     <!-- strings related to create customer fragment -->
     <string name="create_customer_form">Create Customer</string>
@@ -104,6 +105,7 @@
     </string-array>
 
     <string name="create_customer_success">Created Customer Successfully</string>
+    <string name="update_customer_success">Updated Customer Successfully</string>
     <string name="create_raffle_success">Created Raffle Successfully</string>
     <string name="update_raffle_success">Updated Raffle Successfully</string>
     <string name="sell_ticket_success">Sold Ticket(s) Successfully</string>
@@ -132,7 +134,7 @@
     <string name="error_dialog_no_select_msg">To edit need to select one Raffle! \nTo delete need to select at least one Raffle!</string>
     <string name="error_dialog_edit_multi_msg">Can only edit one raffle at a time!</string>
     <string name="error_not_deleted_msg_multi">The following Raffle(s): %1$s Not deleted\nReason: Raffles have already started.</string>
-    <string name="error_not_deleted_msg_single">Raffle not deleted %1$s Not deleted\nReason: The Raffle have started.</string>
+    <string name="error_not_deleted_msg_single">Raffle<b>%1$s</b> Not deleted\n<b>Reason:</b> The Raffle has started.</string>
     <string name="error_margin_draw_title">Margin Ticket Draw Winner Error!</string>
     <string name="error_margin_draw_msg">Sorry\nNo customer has a ticket number matching the margin</string>
 
