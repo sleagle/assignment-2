@@ -10,9 +10,10 @@ This application has the following features:
     3.  Create, Edit & Delete Raffle
     4.  Draw winner
     5.  Create Customer
-    6.  Sell Raffle
-    7.  View Sold Tickets
-    8.  Share Ticket Information`
+    6.  Edit/View Customer
+    7.  Sell Raffle
+    8.  View Sold Tickets
+    9.  Share Ticket Information`
 ---------------------------------------------------------------------------------------
 This application has the following know issue(s):
     1.  On back press the fragment does not resume, hence instead of using the back
